@@ -14,10 +14,6 @@ class DefaultController extends Controller
     {
         return $this->render('@Event/Default/event.html.twig');
     }
-    public function newsAction()
-    {
-        return $this->render('@Event/Default/news.html.twig');
-    }
     public function reclamationAction()
     {
         return $this->render('@Event/Default/reclamation.html.twig');

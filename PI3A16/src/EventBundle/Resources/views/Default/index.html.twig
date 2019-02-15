@@ -1,8 +1,29 @@
 {% extends 'base.html.twig' %}
 {% block title %} <title>Tech-Events</title> {% endblock title %}
 {% block menu_home %} class="active" {% endblock menu_home %}
-{% block current_page %}
+{%block css%}
+    <link rel="stylesheet" type="text/css" href="{{ asset ('styles/main_styles.css') }}">
+{%endblock css%}
 
+{% block current_page %}
+    <div class="home_content_container">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="home_content">
+                        <div class="home_date">August 25, 2018</div>
+                        <div class="home_title">2018 Public Policy Conference</div>
+                        <div class="home_location">Miami Marina Bay, FL</div>
+                        <div class="home_text">Donec quis metus ac arcu luctus accumsan. Nunc in justo tincidunt, sodales nunc id, finibus nibh. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</div>
+                        <div class="home_buttons">
+                            <div class="button home_button"><a href="#">Buy Tickets Now!</a></div>
+                            <div class="button home_button"><a href="#">Find out more</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock current_page %}
 {% block content %}
 <div class="intro">

@@ -4,7 +4,7 @@
 
 <head>
     {% block title %}
-        <title>Teckevents</title>
+        <title>Tech-Events</title>
     {% endblock title %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,7 +24,7 @@
 		<link rel="stylesheet" type="text/css" href="{{ asset ('styles/news_responsive.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ asset ('styles/speakers.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ asset ('styles/speakers_responsive.css') }}">
-		<link rel="stylesheet" type="text/css" href="{{ asset ('styles/main_styles.css') }}">
+		
 		<link rel="stylesheet" type="text/css" href="{{ asset ('styles/responsive.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ asset ('styles/contact.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset ('styles/contact_responsive.css') }}">
@@ -49,16 +49,15 @@
                         <div class="logo_container d-flex flex-row align-items-start justify-content-start">
                             <div class="logo_image"><div><img src="{{ asset('images/logo.png') }}" alt=""></div></div>
                             <div class="logo_content">
-                                <div class="logo_text logo_text_not_ie">The Conference</div>
-                                <div class="logo_sub">August 25, 2018 - Miami Marina Bay</div>
+                                <div class="logo_text logo_text_not_ie">Tech-Events</div>
+                                <div class="logo_sub">For all your technological needs</div>
                             </div>
                         </div>
                     </a>
                 </div>
                 <ul>
                     <li class="menu_item"><a href="{{ path("index")}}">Home</a></li>
-                    <li class="menu_item"><a href="{{ path("index")}}">Blog</a></li>
-                    <li class="menu_item"><a href="{{ path("index")}}">Forum</a></li>
+                    <li class="menu_item"><a href="{{ path("forum")}}">Forum</a></li>
                     <li class="menu_item"><a href="{{ path("events")}}">Tickets</a></li>
                     <li class="menu_item"><a href="{{ path("blog")}}">Blog</a></li>
                     <li class="menu_item"><a href="{{ path("reclamation")}}">Reclamation</a></li>
@@ -96,8 +95,8 @@
                                                 <div class="logo_container d-flex flex-row align-items-start justify-content-start">
                                                     <div class="logo_image"><div><img src="{{ asset('images/logo.png') }}" alt=""></div></div>
                                                     <div class="logo_content">
-                                                        <div id="logo_text" class="logo_text logo_text_not_ie">The Conference</div>
-                                                        <div class="logo_sub">August 25, 2018 - Miami Marina Bay</div>
+                                                        <div id="logo_text" class="logo_text logo_text_not_ie">Tech-Events</div>
+                                                        <div class="logo_sub">For all your technological needs</div>
                                                     </div>
                                                 </div>
                                             </a>
@@ -265,10 +264,10 @@
                                 <div>
                                     <a href="#">
                                         <div class="logo_container d-flex flex-row align-items-start justify-content-start">
-                                            <div class="logo_image"><div><img src="images/logo.png" alt=""></div></div>
+                                            <div class="logo_image"><div><img src="{{ asset('images/logo.png') }}" alt=""></div></div>
                                             <div class="logo_content">
-                                                <div id="logo_text" class="logo_text logo_text_not_ie">The Conference</div>
-                                                <div class="logo_sub">August 25, 2018 - Miami Marina Bay</div>
+                                                <div id="logo_text" class="logo_text logo_text_not_ie">Tech-Events</div>
+                                                <div class="logo_sub">For all your technological needs</div>
                                             </div>
                                         </div>
                                     </a>
