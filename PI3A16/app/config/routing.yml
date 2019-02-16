@@ -1,7 +1,0 @@
-event:
-    resource: "@EventBundle/Resources/config/routing.yml"
-    prefix:   /
-
-app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
