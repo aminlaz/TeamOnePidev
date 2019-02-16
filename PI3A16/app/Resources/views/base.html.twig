@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- head -->
+
+<head>
+    {% block title %}
+        <title>Tech-Events</title>
+    {% endblock title %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Conference project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="{{ asset ('styles/bootstrap4/bootstrap.min.css') }}">
+        <link href="{{asset ('plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="{{ asset ('plugins/OwlCarousel2-2.2.1/owl.carousel.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset ('plugins/OwlCarousel2-2.2.1/owl.theme.default.css') }}">
+        <link rel="stylesheet" type="text/css" href=" {{ asset ('plugins/OwlCarousel2-2.2.1/animate.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset ('styles/events.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset ('styles/events_responsive.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset ('styles/elements.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset ('styles/elements_responsive.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset ('styles/news.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset ('styles/news_responsive.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset ('styles/speakers.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset ('styles/speakers_responsive.css') }}">
+		
+		<link rel="stylesheet" type="text/css" href="{{ asset ('styles/responsive.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset ('styles/contact.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset ('styles/contact_responsive.css') }}">
+    {% block css %}
+    {% endblock css %}
+</head>
+
+
+
+<body>
+
+<div class="super_container">
+
+    <!-- Menu -->
+    {% block menu %}
+
+        <div class="menu trans_500">
+            <div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
+                <div class="menu_close_container"><div class="menu_close"></div></div>
+                <div class="logo menu_logo">
+                    <a href="#">
+                        <div class="logo_container d-flex flex-row align-items-start justify-content-start">
+                            <div class="logo_image"><div><img src="{{ asset('images/logo.png') }}" alt=""></div></div>
+                            <div class="logo_content">
+                                <div class="logo_text logo_text_not_ie">Tech-Events</div>
+                                <div class="logo_sub">For all your technological needs</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <ul>
+                    <li class="menu_item"><a href="{{ path("index")}}">Home</a></li>
+                    <li class="menu_item"><a href="{{ path("forum")}}">Forum</a></li>
+                    <li class="menu_item"><a href="{{ path("events")}}">Tickets</a></li>
+                    <li class="menu_item"><a href="{{ path("blog")}}">Blog</a></li>
+                    <li class="menu_item"><a href="{{ path("reclamation")}}">Reclamation</a></li>
+                </ul>
+            </div>
+            <div class="menu_social">
+                <div class="menu_social_title">Follow uf on Social Media</div>
+                <ul>
+                    <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    {% endblock menu %}
+    <!-- Home -->
+    {% block home  %}
+        <div class="home">
+            <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="{{ asset('images/events.jpg') }}" data-speed="0.8"></div>
+
+            <!-- Header -->
+
+            <header class="header" id="header">
+                <div>
+                    <div class="header_top">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="header_top_content d-flex flex-row align-items-center justify-content-start">
+                                        <div>
+                                            <a href="#">
+                                                <div class="logo_container d-flex flex-row align-items-start justify-content-start">
+                                                    <div class="logo_image"><div><img src="{{ asset('images/logo.png') }}" alt=""></div></div>
+                                                    <div class="logo_content">
+                                                        <div id="logo_text" class="logo_text logo_text_not_ie">Tech-Events</div>
+                                                        <div class="logo_sub">For all your technological needs</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="header_social ml-auto">
+                                            <ul>
+                                                <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header_nav" id="header_nav_pin">
+                        <div class="header_nav_inner">
+                            <div class="header_nav_container">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="header_nav_content d-flex flex-row align-items-center justify-content-start">
+
+                                                <nav class="main_nav">
+                                                    <ul>
+                                                        <li {%block menu_home %}{%endblock menu_home %}><a href="{{ path("index")}}">Home</a></li>
+                                                        <li {%block menu_events %}{%endblock menu_events %}><a href="{{ path("events")}}">Events</a></li>
+                                                        <li {%block menu_forum %}{%endblock menu_forum %}><a href="{{ path("forum")}}">Forum</a></li>
+                                                        <li {%block menu_blog %}{%endblock menu_blog %}><a href="{{ path("blog")}}">Blog</a></li>
+                                                        <li {%block menu_reclamation %}{%endblock menu_reclamation %}><a href="{{ path("reclamation")}}">Reclamation</a></li>
+                                                    </ul>
+                                                </nav>
+                                                <div class="header_extra ml-auto">
+                                                    <div class="header_search"><i class="fa fa-search" aria-hidden="true"></i></div>
+
+                                                    <!-- start login button -->
+
+
+                                                        <div class="text-center" style="display: inline-block;
+	                                                                                vertical-align: middle;
+	                                                                                        padding: 10px;
+	                                                                                        cursor: pointer;" >
+                                                            <a href="" data-toggle="modal" data-target="#modalLoginForm"> Login </a>
+                                                        </div>
+
+
+
+                                                    <!-- end login button -->
+                                                    <div class="button header_button"><a href="#">Buy Tickets Now!</a></div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="search_container">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="search_content d-flex flex-row align-items-center justify-content-end">
+                                                <form action="#" id="search_container_form" class="search_container_form">
+                                                    <input type="text" class="search_container_input" placeholder="Search" required="required">
+                                                    <button class="search_container_button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- login popup start -->
+            <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body mx-3">
+                            <div class="md-form mb-5">
+                                <i class="grey-text text-center"> Email </i>
+                                <input type="email" id="defaultForm-email" class="form-control validate">
+
+                            </div>
+
+                            <div class="md-form mb-4">
+                                <i class="grey-text text-center "> Password </i>
+                                <input type="password" id="defaultForm-pass" class="form-control validate">
+                            </div>
+
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button class="btn btn-default">Login</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- login popup end -->
+            <!-- current page -->
+            {% block current_page %}
+            <div class="home_content_container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="home_content d-flex flex-row align-items-end justify-content-start">
+                                <div class="current_page">Events</div>
+                                <div class="breadcrumbs ml-auto">
+                                    <ul>
+                                        <li><a href="index.html">Home</a></li>
+                                        <li>Events</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endblock current_page %}
+            <!-- current page -->
+        </div>
+
+    {% endblock home %}
+    <!-- Events -->
+    {% block content %}
+
+    {% endblock content %}
+    <!-- Call to action -->
+    {% block getyourticket  %}
+        <div class="cta">
+            <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="{{ asset('images/cta_1.jpg') }}" data-speed="0.8"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="cta_content text-center">
+                            <div class="cta_title">Get your tickets now!</div>
+                            <div class="button cta_button"><a href="#">Find out more</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock getyourticket %}
+    <!-- Footer -->
+    {% block footer %}
+        <footer class="footer">
+            <div class="footer_content">
+                <div class="container">
+                    <div class="row">
+
+                        <!-- Footer Column -->
+                        <div class="col-lg-4 footer_col">
+                            <div class="footer_about">
+                                <div>
+                                    <a href="#">
+                                        <div class="logo_container d-flex flex-row align-items-start justify-content-start">
+                                            <div class="logo_image"><div><img src="{{ asset('images/logo.png') }}" alt=""></div></div>
+                                            <div class="logo_content">
+                                                <div id="logo_text" class="logo_text logo_text_not_ie">Tech-Events</div>
+                                                <div class="logo_sub">For all your technological needs</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="footer_about_text">
+                                    <p>Donec quis metus ac arcu luctus accumsan. Nunc in justo tincidunt, sodales nunc id, finibus nibh. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Footer Column -->
+                        <div class="col-lg-3 footer_col">
+                            <div class="footer_links">
+                                <ul>
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Services</a></li>
+                                    <li><a href="#">Speakers</a></li>
+                                    <li><a href="#">Event Dates</a></li>
+                                    <li><a href="#">Information</a></li>
+                                    <li><a href="#">Calendar</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Footer Column -->
+                        <div class="col-lg-3 footer_col">
+                            <div class="footer_links">
+                                <ul>
+                                    <li><a href="#">Logistics</a></li>
+                                    <li><a href="#">Our Partners</a></li>
+                                    <li><a href="#">Testimonials</a></li>
+                                    <li><a href="#">Price Plans</a></li>
+                                    <li><a href="#">News</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Footer Column -->
+                        <div class="col-lg-2 footer_col">
+                            <div class="footer_links">
+                                <ul>
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Services</a></li>
+                                    <li><a href="#">Speakers</a></li>
+                                    <li><a href="#">Event Dates</a></li>
+                                    <li><a href="#">Information</a></li>
+                                    <li><a href="#">Calendar</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="footer_extra">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="footer_extra_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-start justify-content-center">
+                                <div class="footer_social">
+                                    <div class="footer_social_title">Follow us on Social Media</div>
+                                    <ul class="footer_social_list">
+                                        <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="footer_extra_right ml-lg-auto text-lg-right">
+                                    <div class="footer_extra_links">
+                                        <ul>
+                                            <li><a href="contact.html">Contact us</a></li>
+                                            <li><a href="#">Sitemap</a></li>
+                                            <li><a href="#">Privacy</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    {% endblock footer %}
+</div>
+
+{% block js %}
+    <script src="{{ asset ('js/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset ('styles/bootstrap4/popper.js') }}"></script>
+    <script src="{{ asset ('styles/bootstrap4/bootstrap.min.js') }}"></script>
+    <script src="{{ asset ('plugins/OwlCarousel2-2.2.1/owl.carousel.js') }}"></script>
+    <script src="{{ asset ('plugins/easing/easing.js') }}"></script>
+    <script src="{{ asset ('plugins/parallax-js-master/parallax.min.js') }}"></script>
+    <script src="{{ asset ('js/events.js') }}"></script>
+    <script src="{{ asset ('plugins/greensock/TweenMax.min.js') }}"></script>
+	<script src="{{ asset ('plugins/greensock/TimelineMax.min.js') }}"></script>
+	<script src="{{ asset ('plugins/scrollmagic/ScrollMagic.min.js') }}"></script>
+	<script src="{{ asset ('plugins/greensock/animation.gsap.min.js') }}"></script>
+	<script src="{{ asset ('plugins/greensock/ScrollToPlugin.min.js') }}"></script>
+	<script src="{{ asset ('plugins/progressbar/progressbar.min.js') }}"></script>
+	<script src="{{ asset ('plugins/jquery-circle-progress-1.2.2/circle-progress.js') }}"></script>
+	<script src="{{ asset ('js/elements.js') }}"></script>
+	<script src="{{ asset ('js/news.js') }}"></script>
+	<script src="{{ asset ('js/speakers.js') }}"></script>
+	<script src="{{ asset ('js/custom.js') }}"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
+	<script src="{{ asset ('js/contact.js') }}"></script>
+
+{% endblock js %}
+</body>
+</html>
