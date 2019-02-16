@@ -3,24 +3,34 @@
 {% if error %}
     <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 {% endif %}
+<div class="events align-content-center">
 
+    <form action="{{ path("fos_user_security_check") }}" method="post">
+        <div class="card">
+            <div class="card-body">
+                <p class="card-description">
+                    Login
+                </p>
+                {% if csrf_token %}
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                {% endif %}
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" required="required" />
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="_password" required="required" />
+                </div>
+                <input type="submit" class="btn btn-success mr-2" id="_submit" name="_submit" value="Submit" />
 
-<br>
-<form align="center" action="{{ path("fos_user_security_check") }}" method="post">
-    {% if csrf_token %}
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-    {% endif %}
+                <div class="form-check form-check-flat">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" id="remember_me" name="_remember_me" value="on" /> remember me
+                    </label>
+                </div>
+            </div>
+        </div>
+    </form>
 
-    <label for="username">{{ 'Username'|trans }}</label><br>
-    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" /><br>
-
-    <label for="password">{{ 'Password'|trans }}</label><br>
-    <input type="password" id="password" name="_password" required="required" /><br>
-
-    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-    <label for="remember_me">{{ 'Remember me'|trans }}</label><br>
-
-    <input type="submit" id="_submit" name="_submit" value="{{ 'Login'|trans }}" /><br>
-</form>
-<br>
-
+</div>
