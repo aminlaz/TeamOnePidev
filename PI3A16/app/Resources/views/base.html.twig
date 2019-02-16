@@ -11,23 +11,23 @@
     <meta name="description" content="Conference project">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" type="text/css" href="{{ asset ('styles/bootstrap4/bootstrap.min.css') }}">
-        <link href="{{asset ('plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" type="text/css" href="{{ asset ('plugins/OwlCarousel2-2.2.1/owl.carousel.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset ('plugins/OwlCarousel2-2.2.1/owl.theme.default.css') }}">
-        <link rel="stylesheet" type="text/css" href=" {{ asset ('plugins/OwlCarousel2-2.2.1/animate.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset ('styles/events.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset ('styles/events_responsive.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset ('styles/elements.css') }}">
-		<link rel="stylesheet" type="text/css" href="{{ asset ('styles/elements_responsive.css') }}">
-		<link rel="stylesheet" type="text/css" href="{{ asset ('styles/news.css') }}">
-		<link rel="stylesheet" type="text/css" href="{{ asset ('styles/news_responsive.css') }}">
-		<link rel="stylesheet" type="text/css" href="{{ asset ('styles/speakers.css') }}">
-		<link rel="stylesheet" type="text/css" href="{{ asset ('styles/speakers_responsive.css') }}">
-		
-		<link rel="stylesheet" type="text/css" href="{{ asset ('styles/responsive.css') }}">
-		<link rel="stylesheet" type="text/css" href="{{ asset ('styles/contact.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset ('styles/contact_responsive.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset ('styles/bootstrap4/bootstrap.min.css') }}">
+    <link href="{{asset ('plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{ asset ('plugins/OwlCarousel2-2.2.1/owl.carousel.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset ('plugins/OwlCarousel2-2.2.1/owl.theme.default.css') }}">
+    <link rel="stylesheet" type="text/css" href=" {{ asset ('plugins/OwlCarousel2-2.2.1/animate.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset ('styles/events.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset ('styles/events_responsive.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset ('styles/elements.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset ('styles/elements_responsive.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset ('styles/news.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset ('styles/news_responsive.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset ('styles/speakers.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset ('styles/speakers_responsive.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset ('styles/responsive.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset ('styles/contact.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset ('styles/contact_responsive.css') }}">
     {% block css %}
     {% endblock css %}
 </head>
@@ -175,23 +175,23 @@
             </header>
             <!-- current page -->
             {% block current_page %}
-            <div class="home_content_container">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <div class="home_content d-flex flex-row align-items-end justify-content-start">
-                                <div class="current_page">Events</div>
-                                <div class="breadcrumbs ml-auto">
-                                    <ul>
-                                        <li><a href="index.html">Home</a></li>
-                                        <li>Events</li>
-                                    </ul>
+                <div class="home_content_container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="home_content d-flex flex-row align-items-end justify-content-start">
+                                    <div class="current_page">Events</div>
+                                    <div class="breadcrumbs ml-auto">
+                                        <ul>
+                                            <li><a href="index.html">Home</a></li>
+                                            <li>Events</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
             {% endblock current_page %}
             <!-- current page -->
         </div>
@@ -230,13 +230,13 @@
                                 <div>
                                     <a href="#">
                                         {% block test %}
-                                        <div class="logo_container d-flex flex-row align-items-start justify-content-start">
-                                            <div class="logo_image"><div><img src="{{ asset('images/logo.png') }}" alt=""></div></div>
-                                            <div class="logo_content">
-                                                <div id="logo_text" class="logo_text logo_text_not_ie">Tech-Events</div>
-                                                <div class="logo_sub">For all your technological needs</div>
+                                            <div class="logo_container d-flex flex-row align-items-start justify-content-start">
+                                                <div class="logo_image"><div><img src="{{ asset('images/logo.png') }}" alt=""></div></div>
+                                                <div class="logo_content">
+                                                    <div id="logo_text" class="logo_text logo_text_not_ie">Tech-Events</div>
+                                                    <div class="logo_sub">For all your technological needs</div>
+                                                </div>
                                             </div>
-                                        </div>
                                         {% endblock test %}
                                     </a>
                                 </div>
@@ -337,18 +337,18 @@
     <script src="{{ asset ('plugins/parallax-js-master/parallax.min.js') }}"></script>
     <script src="{{ asset ('js/events.js') }}"></script>
     <script src="{{ asset ('plugins/greensock/TweenMax.min.js') }}"></script>
-	<script src="{{ asset ('plugins/greensock/TimelineMax.min.js') }}"></script>
-	<script src="{{ asset ('plugins/scrollmagic/ScrollMagic.min.js') }}"></script>
-	<script src="{{ asset ('plugins/greensock/animation.gsap.min.js') }}"></script>
-	<script src="{{ asset ('plugins/greensock/ScrollToPlugin.min.js') }}"></script>
-	<script src="{{ asset ('plugins/progressbar/progressbar.min.js') }}"></script>
-	<script src="{{ asset ('plugins/jquery-circle-progress-1.2.2/circle-progress.js') }}"></script>
-	<script src="{{ asset ('js/elements.js') }}"></script>
-	<script src="{{ asset ('js/news.js') }}"></script>
-	<script src="{{ asset ('js/speakers.js') }}"></script>
-	<script src="{{ asset ('js/custom.js') }}"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
-	<script src="{{ asset ('js/contact.js') }}"></script>
+    <script src="{{ asset ('plugins/greensock/TimelineMax.min.js') }}"></script>
+    <script src="{{ asset ('plugins/scrollmagic/ScrollMagic.min.js') }}"></script>
+    <script src="{{ asset ('plugins/greensock/animation.gsap.min.js') }}"></script>
+    <script src="{{ asset ('plugins/greensock/ScrollToPlugin.min.js') }}"></script>
+    <script src="{{ asset ('plugins/progressbar/progressbar.min.js') }}"></script>
+    <script src="{{ asset ('plugins/jquery-circle-progress-1.2.2/circle-progress.js') }}"></script>
+    <script src="{{ asset ('js/elements.js') }}"></script>
+    <script src="{{ asset ('js/news.js') }}"></script>
+    <script src="{{ asset ('js/speakers.js') }}"></script>
+    <script src="{{ asset ('js/custom.js') }}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
+    <script src="{{ asset ('js/contact.js') }}"></script>
 
 {% endblock js %}
 </body>
