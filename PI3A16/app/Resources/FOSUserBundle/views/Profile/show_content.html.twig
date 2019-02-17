@@ -1,14 +1,9 @@
-
+{% trans_default_domain 'FOSUserBundle' %}
 
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-
-    <!------ Include the above in your HEAD tag ---------->
-
-
 
     <div class="container emp-profile">
         <form method="post">
@@ -28,7 +23,7 @@
                 <div class="col-md-6">
 
                     <div class="profile-head">
-                        <h5> Kshiti Ghelani </h5>
+                        <h5> {{ user.username }} </h5>
                         <h6> Web Developer and Designer </h6>
                         <p class="proile-rating">RANKINGS : <span> 8/10 </span> </p>
 
@@ -88,7 +83,7 @@
                                     <label>Name</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>Kshiti Ghelani</p>
+                                    <p>{{ user.username }}</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -96,7 +91,7 @@
                                     <label>Email</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>kshitighelani@gmail.com</p>
+                                    <p>{{ user.email }}</p>
                                 </div>
                             </div>
                             <div class="row">

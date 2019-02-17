@@ -66,10 +66,8 @@
             <div class="menu_social">
                 <div class="menu_social_title">Follow uf on Social Media</div>
                 <ul>
-
                     <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                     <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-
                     <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
                 </ul>
             </div>
@@ -102,11 +100,8 @@
                                         </div>
                                         <div class="header_social ml-auto">
                                             <ul>
-                                                <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
                                                 <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                                                 <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
                                                 <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
                                             </ul>
                                         </div>
@@ -137,23 +132,23 @@
                                                     <div class="header_search"><i class="fa fa-search" aria-hidden="true"></i></div>
 
 
-                                                    <div class="button header_button">
+                                                    <div class="button header_button" style="width: auto">
                                                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                                             <a class="dropdown-item" href="{{ path('fos_user_security_logout') }}">
-                                                                {{ 'Logout'|trans({}, 'FOSUserBundle') }}
+                                                                {{ 'LOGOUT'|trans({}, 'FOSUserBundle') }}
                                                             </a>
                                                         {% else %}
-                                                            <a class="dropdown-item" href="{{ path('fos_user_security_login') }}">{{ 'Login'|trans({}, 'FOSUserBundle') }}</a>
+                                                            <a class="dropdown-item" href="{{ path('fos_user_security_login') }}">{{ 'LOGIN'|trans({}, 'FOSUserBundle') }}</a>
 
                                                         {% endif %}
                                                     </div>
-                                                    <div class="button header_button">
+                                                    <div class="button header_button" style="width: auto">
                                                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                                            <a class="dropdown-item" href="{{ path('fos_user_registration_register') }}">
-                                                                {{ 'Profile'|trans({}, 'FOSUserBundle') }}
+                                                            <a class="dropdown-item" href="{{ path('fos_user_profile_show') }}">
+                                                                {{ 'PROFILE'|trans({}, 'FOSUserBundle') }}
                                                             </a>
                                                         {% else %}
-                                                            <a class="dropdown-item" href="{{ path('fos_user_registration_register') }}">{{ 'Register'|trans({}, 'FOSUserBundle') }}</a>
+                                                            <a class="dropdown-item" href="{{ path('fos_user_registration_register') }}">{{ 'REGISTER'|trans({}, 'FOSUserBundle') }}</a>
 
                                                         {% endif %}
                                                     </div>
