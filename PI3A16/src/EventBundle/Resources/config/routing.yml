@@ -1,6 +1,4 @@
-index:
-    path:     /
-    defaults: { _controller: EventBundle:Default:index }
+
 events:
     path:     /event
     defaults: { _controller: EventBundle:Default:event }
