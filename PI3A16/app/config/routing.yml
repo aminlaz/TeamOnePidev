@@ -1,7 +1,32 @@
+blog:
+    resource: "@BlogBundle/Resources/config/routing.yml"
+    prefix:   /
+
+reservation:
+    resource: "@ReservationBundle/Resources/config/routing.yml"
+    prefix:   /
+
+profiling:
+    resource: "@ProfilingBundle/Resources/config/routing.yml"
+    prefix:   /
+
+reclamation:
+    resource: "@ReclamationBundle/Resources/config/routing.yml"
+    prefix:   /
+
+communication:
+    resource: "@CommunicationBundle/Resources/config/routing.yml"
+    prefix:   /
+
 
 event:
     resource: "@EventBundle/Resources/config/routing.yml"
     prefix:   /
+
+event:
+    resource: "@EventBundle/Resources/config/routing.yml"
+    prefix:   /
+
 
 app:
     resource: '@AppBundle/Controller/'
