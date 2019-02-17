@@ -147,6 +147,13 @@
                                                             <a class="dropdown-item" href="{{ path('fos_user_security_login') }}">{{ 'Login'|trans({}, 'FOSUserBundle') }}</a>
                                                         {% endif %}
                                                     </div>
+                                                    <div class="button header_button">
+                                                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                                        {% else %}
+                                                            <a class="dropdown-item" href="{{ path('fos_user_registration_register') }}">{{ 'register'|trans({}, 'FOSUserBundle') }}</a>
+                                                        {% endif %}
+                                                    </div>
+
 
 
                                                 </div>
