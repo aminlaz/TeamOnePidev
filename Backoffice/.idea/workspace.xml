@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f8652baf-afa4-4b6f-9557-7807765b7bc8" name="Default Changelist" comment="" />
+    <list default="true" id="f8652baf-afa4-4b6f-9557-7807765b7bc8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../PI3A16/src/CommunicationBundle/Entity/CategorieForum.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PI3A16/src/CommunicationBundle/Entity/Questions.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PI3A16/src/CommunicationBundle/Entity/Reponses.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PI3A16/src/CommunicationBundle/Repository/CategorieForumRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PI3A16/src/CommunicationBundle/Repository/CatÃ©gorie_ForumRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PI3A16/src/CommunicationBundle/Repository/QuestionsRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PI3A16/src/CommunicationBundle/Repository/ReponsesRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PI3A16/src/EventBundle/Entity/Event.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PI3A16/src/EventBundle/Entity/review.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PI3A16/src/EventBundle/Repository/EventRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PI3A16/src/EventBundle/Repository/reviewRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PI3A16/app/Resources/views/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/../PI3A16/app/Resources/views/base.html.twig" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -502,7 +516,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24807198" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
