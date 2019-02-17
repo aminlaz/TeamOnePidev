@@ -1,0 +1,4 @@
+
+reclamation:
+    path:     /reclamation
+    defaults: { _controller: ReclamationBundle:Default:reclamation }

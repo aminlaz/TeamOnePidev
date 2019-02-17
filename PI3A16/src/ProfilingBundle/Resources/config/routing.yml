@@ -1,0 +1,3 @@
+profiling:
+    path:     /profile
+    defaults: { _controller: ProfilingBundle:Default:profile }
