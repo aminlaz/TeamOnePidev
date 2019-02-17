@@ -1,8 +1,5 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-{% if error %}
-    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-{% endif %}
 <div class="events container " style="max-width: 650px">
 
 <form action="{{ path("fos_user_security_check") }}" method="post">
@@ -26,6 +23,10 @@
                     <input type="checkbox" class="form-check-input" id="remember_me" name="_remember_me" value="on" /> remember me
                 </label>
             </div>
+
+            {% if error %}
+                <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
         </div>
     </div>
 </form>

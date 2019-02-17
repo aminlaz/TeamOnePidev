@@ -1,15 +1,5 @@
-index:
-    path:     /
-    defaults: { _controller: EventBundle:Default:index }
+
 events:
     path:     /event
     defaults: { _controller: EventBundle:Default:event }
-blog:
-    path:     /blog
-    defaults: { _controller: EventBundle:Default:blog }
-reclamation:
-    path:     /reclamation
-    defaults: { _controller: EventBundle:Default:reclamation }
-forum:
-    path:     /forum
-    defaults: { _controller: EventBundle:Default:forum }
+

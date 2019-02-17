@@ -1,0 +1,3 @@
+forum:
+    path:     /forum
+    defaults: { _controller: CommunicationBundle:Default:forum }
