@@ -49,16 +49,16 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="lastname", type="string", length=255)
+     * @ORM\Column(name="last_name", type="string", length=255)
      */
-    private $lastname;
+    private $last_name;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="score", type="integer")
      */
-    private $score=0;
+    private $score;
 
 
 
@@ -96,9 +96,9 @@ class User extends BaseUser
      *
      * @return User
      */
-    public function setLastName($lastname)
+    public function setLastName($lastName)
     {
-        $this->lastname = $lastname;
+        $this->last_name = $lastName;
 
         return $this;
     }
@@ -110,30 +110,6 @@ class User extends BaseUser
      */
     public function getLastName()
     {
-        return $this->lastname;
-    }
-
-    /**
-     * Set score
-     *
-     * @param integer $score
-     *
-     * @return User
-     */
-    public function setScore($score)
-    {
-        $this->score = $score;
-
-        return $this;
-    }
-
-    /**
-     * Get score
-     *
-     * @return integer
-     */
-    public function getScore()
-    {
-        return $this->score;
+        return $this->last_name;
     }
 }

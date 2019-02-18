@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f8652baf-afa4-4b6f-9557-7807765b7bc8" name="Default Changelist" comment="" />
+    <list default="true" id="f8652baf-afa4-4b6f-9557-7807765b7bc8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../PI3A16/src/ProfilingBundle/Entity/Badge.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PI3A16/src/ProfilingBundle/Entity/Interet.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PI3A16/src/ProfilingBundle/Entity/Tag.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PI3A16/src/ProfilingBundle/Entity/Type_Badge.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PI3A16/app/Resources/views/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/../PI3A16/app/Resources/views/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PI3A16/src/CommunicationBundle/Entity/Questions.php" beforeDir="false" afterPath="$PROJECT_DIR$/../PI3A16/src/CommunicationBundle/Entity/Questions.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,8 +122,11 @@
     <session id="-767951164">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.17" value="1" />
+          <entry key="project.open.time.47" value="1" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -181,8 +192,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/BackofficeBundle/Resources/views/Default/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="640">
-              <caret line="573" selection-start-line="573" selection-end-line="573" />
+            <state relative-caret-position="473">
+              <caret line="475" column="65" selection-start-line="475" selection-start-column="65" selection-end-line="475" selection-end-column="65" />
             </state>
           </provider>
         </entry>
@@ -231,9 +242,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Dummy.txt" root0="SKIP_INSPECTION" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -321,9 +329,9 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-27" />
-    <option name="width" value="1303" />
-    <option name="height" value="1047" />
+    <option name="x" value="-7" />
+    <option name="width" value="814" />
+    <option name="height" value="867" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -331,6 +339,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -436,7 +445,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -493,18 +501,20 @@
       <workItem from="1550328431039" duration="167000" />
       <workItem from="1550330500314" duration="22018000" />
       <workItem from="1550393673483" duration="2627000" />
-      <workItem from="1550404227221" duration="1771000" />
+      <workItem from="1550404227221" duration="2372000" />
+      <workItem from="1550433124279" duration="1120000" />
+      <workItem from="1550475356225" duration="773000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33396000" />
+    <option name="totallyTimeSpent" value="35890000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24807198" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25449872" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -707,8 +717,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BackofficeBundle/Resources/views/Default/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="640">
-          <caret line="573" selection-start-line="573" selection-end-line="573" />
+        <state relative-caret-position="473">
+          <caret line="475" column="65" selection-start-line="475" selection-start-column="65" selection-end-line="475" selection-end-column="65" />
         </state>
       </provider>
     </entry>
