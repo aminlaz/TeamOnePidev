@@ -140,6 +140,7 @@
                                                         {% else %}
                                                             <a class="dropdown-item" href="{{ path('fos_user_security_login') }}">{{ 'Connexion'|trans({}, 'FOSUserBundle') }}</a>
 
+
                                                         {% endif %}
                                                     </div>
                                                     <div class="button header_button" style="width: auto">
@@ -149,13 +150,17 @@
 
                                                             <a class="dropdown-item" href="{{ path('fos_user_profile_show') }}">
                                                                 {{ 'Profil'|trans({}, 'FOSUserBundle') }}
-
+                                                                {{ app.user.username }}
                                                             </a>
+
                                                         {% else %}
                                                             <a class="dropdown-item" href="{{ path('fos_user_registration_register') }}">{{ 'Inscription'|trans({}, 'FOSUserBundle') }}</a>
 
+
                                                         {% endif %}
                                                     </div>
+
+
                                                  </div>
                                             </div>
                                         </div>
