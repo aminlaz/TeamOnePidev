@@ -1,14 +1,9 @@
-
+{% trans_default_domain 'FOSUserBundle' %}
 
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-
-    <!------ Include the above in your HEAD tag ---------->
-
-
 
     <div class="container emp-profile">
         <form method="post">
@@ -28,7 +23,11 @@
                 <div class="col-md-6">
 
                     <div class="profile-head">
-                        <h5> Kshiti Ghelani </h5>
+
+                        <h5> {{ user.name }} {{ user.lastname }} </h5>
+
+                        <h5> {{ user.username }} </h5>
+
                         <h6> Web Developer and Designer </h6>
                         <p class="proile-rating">RANKINGS : <span> 8/10 </span> </p>
 
@@ -50,10 +49,11 @@
                     </div>
 
                 </div>
-
                 <div class="col-md-2">
-                    <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+
+                    <a href="{{ path('fos_user_profile_edit') }}"> <input type="button" class="profile-edit-btn" name="btnAddMore" value="Modifier"  /></a>
                 </div>
+
 
             </div>
 
@@ -77,7 +77,7 @@
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label>User Id</label>
+                                    <label>Pseudonyme</label>
                                 </div>
                                 <div class="col-md-6">
                                     <p>{{ user.username }}</p>
@@ -85,10 +85,27 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label>Name</label>
+                                    <label>Prénom</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>Kshiti Ghelani</p>
+
+                                    <p>{{ user.lastname }}</p>
+
+
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Nom</label>
+                                </div>
+                                <div class="col-md-6">
+
+                                    <p>{{ user.name }} </p>
+
+
+
                                 </div>
                             </div>
                             <div class="row">
@@ -96,26 +113,36 @@
                                     <label>Email</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>kshitighelani@gmail.com</p>
+
+                                    <p>{{user.email}}</p>
+
+
+
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label>Phone</label>
+                                    <label>Score</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>123 456 7890</p>
+                                    <p>{{ user.score }}</p>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label>Profession</label>
+                                    <label>Intérêts</label>
                                 </div>
+
                                 <div class="col-md-6">
                                     <p>Web Developer and Designer</p>
                                 </div>
-                            </div>
-                        </div>
+
+                                <div class="button header_button" style="width: auto">
+                                    <div class="row">
+                                            <a class="dropdown-item" href="{{ path('fos_user_change_password') }}">{{ 'Modifier mot de passe'|trans({}, 'FOSUserBundle') }}</a>
+                                       </div>
+                                </div></div>
+
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                             <div class="row">
                                 <div class="col-md-6">

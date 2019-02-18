@@ -64,6 +64,12 @@ class Reponses
     private $idUser;
 
     /**
+     * @ORM\ManyToOne(targetEntity="CommunicationBundle\Entity\Reponses")
+     * @ORM\JoinColumn(name="sousreponse_id", referencedColumnName="id")
+     */
+    private $idRep;
+
+    /**
      * Get id
      *
      * @return int
@@ -167,6 +173,30 @@ class Reponses
     public function getDownvotes()
     {
         return $this->downvotes;
+    }
+
+    /**
+     * Set IdRep
+     *
+     * @param integer $IdRep
+     *
+     * @return Reponses
+     */
+    public function setIdRep($IdRep)
+    {
+        $this->IdRep = $IdRep;
+
+        return $this;
+    }
+
+    /**
+     * Get IdRep
+     *
+     * @return int
+     */
+    public function getIdRep()
+    {
+        return $this->idRep;
     }
 
     /**

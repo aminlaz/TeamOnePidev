@@ -71,7 +71,7 @@ class Questions
 
     /**
      * @ORM\ManyToOne(targetEntity="CommunicationBundle\Entity\CategorieForum")
-     * @ORM\JoinColumn(name="categorie_question", referencedColumnName="nom")
+     * @ORM\JoinColumn(name="categorie_question", referencedColumnName="id")
      */
     private $categorie;
 
