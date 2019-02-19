@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new ProfilingBundle\ProfilingBundle(),
             new ReservationBundle\ReservationBundle(),
             new BlogBundle\BlogBundle(),
+            new BackOfficeIndexBundle\BackOfficeIndexBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
