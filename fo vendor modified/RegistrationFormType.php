@@ -39,6 +39,8 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('email', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
+            ->add('name', null, array('label' => 'form.name', 'translation_domain' => 'FOSUserBundle'))
+            ->add('last_name', null, array('label' => 'form.last_name', 'translation_domain' => 'FOSUserBundle'))
             ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
             ->add('plainPassword', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\RepeatedType'), array(
                 'type' => LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\PasswordType'),
@@ -48,12 +50,18 @@ class RegistrationFormType extends AbstractType
                 'invalid_message' => 'fos_user.password.mismatch',
             ))
 
-            ->add('roles', ChoiceType::class, array('label' => 'Type
-',
-                'choices' => array(' Organisateur' => 'Organisateur',
-                    'Participant' => 'Participant'),
-                'required' => true, 'multiple' => true,))
-        ;
+            ->add('roles', ChoiceType::class, array(
+                    'choices' => array(
+                        'Participant' => 'ROLE_PARTICIPANT',
+                        'Organisateur' => 'ROLE_ORGANISATEUR',
+                        'Blogueur' => 'ROLE_BLOGUEUR'),
+
+                    'multiple' => true,
+                    'expanded' => true
+                )
+            );
+
+
     }
 
     /**
