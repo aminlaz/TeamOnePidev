@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% block title %} <title>Forum</title> {% endblock title %}
+{% block menu_forum %} class="active" {% endblock menu_forum %}
+{% block current_page %}
+    <div class="home_content_container">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="home_content d-flex flex-row align-items-end justify-content-start">
+                        <div class="current_page">Forum</div>
+                        <div class="breadcrumbs ml-auto">
+                            <ul>
+                                <li><a href="{{ path('index') }}">Home</a></li>
+                                <li>Forum</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock current_page %}
+{% block content %}
+
+
+
+    <!-- MAIN CODE OF CONTENT here -->
+
+
+
+
+{% endblock content %}

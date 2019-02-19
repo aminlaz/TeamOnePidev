@@ -1,0 +1,5 @@
+index:
+    path:     /
+    defaults: { _controller: ProfilingBundle:Default:index }
+
+

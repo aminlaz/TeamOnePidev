@@ -6,24 +6,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
-    public function indexAction()
-    {
-        return $this->render('@Event/Default/index.html.twig');
-    }
+
     public function eventAction()
     {
         return $this->render('@Event/Default/event.html.twig');
     }
-    public function reclamationAction()
+    public function addeventAction()
     {
-        return $this->render('@Event/Default/reclamation.html.twig');
+        return $this->render('@Event/Default/addevent.html.twig');
     }
-    public function forumAction()
-    {
-        return $this->render('@Event/Default/forum.html.twig');
-    }
-    public function blogAction()
-    {
-        return $this->render('@Event/Default/blog.html.twig');
-    }
+
 }
