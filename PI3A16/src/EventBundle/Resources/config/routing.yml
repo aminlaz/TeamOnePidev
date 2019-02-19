@@ -1,4 +1,5 @@
 
+
 events:
     path:     /event
     defaults: { _controller: EventBundle:Default:event }
