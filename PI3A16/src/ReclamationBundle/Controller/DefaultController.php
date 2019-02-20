@@ -9,7 +9,7 @@ class DefaultController extends Controller
 
     public function reclamationAction()
     {
-        return $this->render('@Reclamation/Default/reclamation.html.twig');
+        return $this->redirectToRoute('reclamation_new');
     }
 
 }

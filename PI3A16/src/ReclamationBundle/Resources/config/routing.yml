@@ -1,3 +1,10 @@
+reclamation_reclamation:
+    resource: "@ReclamationBundle/Resources/config/routing/reclamation.yml"
+    prefix:   /reclamation
+
+reclamation_typereclamation:
+    resource: "@ReclamationBundle/Resources/config/routing/typereclamation.yml"
+    prefix:   /typereclamation
 
 reclamation:
     path:     /reclamation

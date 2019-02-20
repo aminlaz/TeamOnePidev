@@ -248,20 +248,24 @@
                     </a>
                 </li>
                 <!-- ceci un exemple d'un bouton qui a deux boutons a l'interieur pour mieux catagorisé -->
+
+
+
+
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic" >
+                    <a class="nav-link" data-toggle="collapse" href="#Reclamation" aria-expanded="false" aria-controls="Reclamation" >
                         <i class="menu-icon mdi mdi-content-copy"></i>
-                        <span class="menu-title">Basic UI Elements</span>
+                        <span class="menu-title">Gestion des reclamations</span>
                         <i class="menu-arrow"></i>
                     </a>
 
-                    <div class="collapse" id="ui-basic">
+                    <div class="collapse" id="Reclamation">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item">
-                                <a class="nav-link" href=""  >  Buttons     </a> <!--metre le lien de la page dans href exmeple "{{ asset('exemple') }}" -->
+                                <a class="nav-link" href="{{ path('reclamation') }}"  >  Reclamation    </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href=""  >Typography      </a> <!--metre le lien de la page dans href exmeple "{{ asset('exemple') }}" -->
+                                <a class="nav-link" href="{{ path('reclamation') }}"  >  Type des reclamations   </a>
                             </li>
                         </ul>
                     </div>
