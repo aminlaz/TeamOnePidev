@@ -7,5 +7,5 @@ reclamation_typereclamation:
     prefix:   /typereclamation
 
 reclamation:
-    path:     /reclamation
+    path:     /reclama
     defaults: { _controller: ReclamationBundle:Default:reclamation }

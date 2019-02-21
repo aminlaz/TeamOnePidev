@@ -9,7 +9,7 @@ class DefaultController extends Controller
 
     public function reclamationAction()
     {
-        return $this->redirectToRoute('reclamation_new');
+        return $this->redirectToRoute('reclamation');
     }
 
 }
