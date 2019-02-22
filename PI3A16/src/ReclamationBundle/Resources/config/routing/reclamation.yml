@@ -3,6 +3,16 @@ reclamation_index:
     defaults: { _controller: "ReclamationBundle:Reclamation:index" }
     methods:  GET
 
+corbeille:
+    path:     /corbeille
+    defaults: { _controller: "ReclamationBundle:Reclamation:corbeille" }
+    methods:  GET
+
+archive:
+    path:     /archive
+    defaults: { _controller: "ReclamationBundle:Reclamation:archive" }
+    methods:  GET
+
 reclamation_show:
     path:     /{id}/show
     defaults: { _controller: "ReclamationBundle:Reclamation:show" }

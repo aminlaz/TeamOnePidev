@@ -128,4 +128,26 @@ class ReclamationController extends Controller
             ->getForm()
         ;
     }
+
+    public function corbeilleAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $reclamations = $em->getRepository('ReclamationBundle:Reclamation')->findAll();
+
+        return $this->render('@Reclamation/Reclamation/corbeille.html.twig', array(
+            'reclamations' => $reclamations,
+        ));
+    }
+
+    public function archiveAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $reclamations = $em->getRepository('ReclamationBundle:Reclamation')->findAll();
+
+        return $this->render('@Reclamation/Reclamation/archive.html.twig', array(
+            'reclamations' => $reclamations,
+        ));
+    }
 }
