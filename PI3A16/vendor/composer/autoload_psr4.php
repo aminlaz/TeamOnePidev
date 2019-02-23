@@ -28,6 +28,7 @@ return array(
     'Sensio\\Bundle\\FrameworkExtraBundle\\' => array($vendorDir . '/sensio/framework-extra-bundle'),
     'Sensio\\Bundle\\DistributionBundle\\' => array($vendorDir . '/sensio/distribution-bundle'),
     'SensioLabs\\Security\\' => array($vendorDir . '/sensiolabs/security-checker/SensioLabs/Security'),
+    'Pusher\\' => array($vendorDir . '/pusher/pusher-php-server/src'),
     'Psr\\SimpleCache\\' => array($vendorDir . '/psr/simple-cache/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'Psr\\Link\\' => array($vendorDir . '/psr/link/src'),

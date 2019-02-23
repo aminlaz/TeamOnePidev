@@ -10,6 +10,7 @@ imports:
     - { resource: "@ReservationBundle/Resources/config/services.yml" }
     - { resource: "@BlogBundle/Resources/config/services.yml" }
     - { resource: "@BackOfficeIndexBundle/Resources/config/services.yml" }
+    - { resource: "@NotificationBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -86,3 +87,9 @@ fos_user:
     from_email:
         address: "tech-events@esprit.tn"
         sender_name: "tech-events"
+# NotificationsBundle configuration
+notifications:
+    app_id:     720637
+    app_key:    eb837646523e14c0bf59
+    app_secret: acb39a17f0aafa4b454c
+    cluster:    eu

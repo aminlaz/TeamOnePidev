@@ -10,4 +10,24 @@ namespace ReclamationBundle\Repository;
  */
 class ReclamationRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function RechercheDQL($champ,$id)
+    {
+        $dqlresult = $this->getEntityManager()
+            ->createQuery("SELECT r
+                               FROM ReclamationBundle:Reclamation r
+                               WHERE r.'$champ'= '$id'
+                              ");
+        return $dqlresult->getResult();
+    }
+
+    public function findDQL($id)
+    {
+        $dqlresult = $this->getEntityManager()
+            ->createQuery("SELECT r
+                               FROM ReclamationBundle:Reclamation r
+                               WHERE r.corbeille= '$id'
+                               AND r.archive='$id'
+                              ");
+        return $dqlresult->getResult();
+    }
 }

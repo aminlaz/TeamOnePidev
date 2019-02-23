@@ -3,6 +3,9 @@
 namespace ReclamationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use NotificationBundle\Entity\Notification;
+use SBC\NotificationsBundle\Builder\NotificationBuilder;
+use SBC\NotificationsBundle\Model\NotifiableInterface;
 
 /**
  * Reclamation
@@ -10,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="reclamation")
  * @ORM\Entity(repositoryClass="ReclamationBundle\Repository\ReclamationRepository")
  */
-class Reclamation
+class Reclamation implements NotifiableInterface
 {
     /**
      * @var int
@@ -249,5 +252,50 @@ class Reclamation
     {
         return $this->corbeille;
     }
+
+
+    /**
+     * Build notifications on entity creation
+     * @param NotificationBuilder $builder
+     * @return NotificationBuilder
+     */
+    public function notificationsOnCreate(NotificationBuilder $builder)
+    {
+        $notification = new Notification();
+        $notification
+            ->setTitle('New Reclamation')
+            ->setDescription('"'.$this->contenu.'" has been created')
+            ->setRoute('reclamation_new')
+            ->setParameters(array('id' => $this->id))
+        ;
+        $builder->addNotification($notification);
+
+        return $builder;
+    }
+
+    /**
+     * Build notifications on entity update
+     * @param NotificationBuilder $builder
+     * @return NotificationBuilder
+     */
+    public function notificationsOnUpdate(NotificationBuilder $builder)
+    {
+        // in case you don't want any notification for a special event
+        // you can simply return an empty $builder
+        return $builder;
+    }
+
+    /**
+     * Build notifications on entity delete
+     * @param NotificationBuilder $builder
+     * @return NotificationBuilder
+     */
+    public function notificationsOnDelete(NotificationBuilder $builder)
+    {
+        // in case you don't want any notification for a special event
+        // you can simply return an empty $builder
+        return $builder;
+    }
+
 }
 

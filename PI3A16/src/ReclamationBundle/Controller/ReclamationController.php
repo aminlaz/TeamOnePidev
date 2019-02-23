@@ -21,7 +21,8 @@ class ReclamationController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $reclamations = $em->getRepository('ReclamationBundle:Reclamation')->findAll();
+        $reclamations = $em->getRepository('ReclamationBundle:Reclamation')->findDQL(0);
+
 
         return $this->render('@Reclamation/Reclamation/index.html.twig', array(
             'reclamations' => $reclamations,
@@ -133,7 +134,7 @@ class ReclamationController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $reclamations = $em->getRepository('ReclamationBundle:Reclamation')->findAll();
+        $reclamations = $em->getRepository('ReclamationBundle:Reclamation')->RechercheDQL('corbeille',1);
 
         return $this->render('@Reclamation/Reclamation/corbeille.html.twig', array(
             'reclamations' => $reclamations,
@@ -144,7 +145,7 @@ class ReclamationController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $reclamations = $em->getRepository('ReclamationBundle:Reclamation')->findAll();
+        $reclamations = $em->getRepository('ReclamationBundle:Reclamation')->RechercheDQL('archive',1);
 
         return $this->render('@Reclamation/Reclamation/archive.html.twig', array(
             'reclamations' => $reclamations,

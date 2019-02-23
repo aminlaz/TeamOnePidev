@@ -1,15 +1,5 @@
 {% extends 'basebo.html.twig' %}
 {% block navbar %}
-<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-    <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="index.html">
-            <img src="{{ asset('bo/images/logo.svg') }}" alt="logo" />
-        </a>
-        <a class="navbar-brand brand-logo-mini" href="index.html">
-            <img src="{{ asset('bo/images/logo-mini.svg') }}" alt="logo" />
-        </a>
-    </div>
-    <div class="navbar-menu-wrapper d-flex align-items-center">
         <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
             <li class="nav-item">
                 <a href="{{  path('archive') }}" class="nav-link">Archive
@@ -25,7 +15,6 @@
                     <i class="mdi mdi-bookmark-plus-outline"></i></a>
             </li>
         </ul>
-
         {% endblock %}
 
         {% block content %}
@@ -35,7 +24,7 @@
 
 
 
-   <h1>Reclamations list</h1>
+   <h1> Liste des Reclamations </h1>
 
         <table>
 
@@ -79,6 +68,4 @@
 
         </div>
     </center>
-    </div>
-</nav>
 {% endblock %}

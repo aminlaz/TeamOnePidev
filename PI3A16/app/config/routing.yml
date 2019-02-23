@@ -1,3 +1,7 @@
+notification:
+    resource: "@NotificationBundle/Resources/config/routing.yml"
+    prefix:   /
+
 back_office_index:
     resource: "@BackOfficeIndexBundle/Resources/config/routing.yml"
     prefix:   /bo
