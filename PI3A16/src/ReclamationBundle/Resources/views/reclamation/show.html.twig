@@ -1,15 +1,40 @@
 {% extends 'base.html.twig' %}
 
+{% block title %} <title>Reclamation</title> {% endblock title %}
+{% block menu_reclamation %} class="active" {% endblock menu_reclamation %}
+{% block current_page %}
+    <div class="home_content_container">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="home_content d-flex flex-row align-items-end justify-content-start">
+                        <div class="current_page">Reclamation</div>
+                        <div class="breadcrumbs ml-auto">
+                            <ul>
+                                <li><a href="{{ path('index') }}">Home</a></li>
+                                <li>Reclamation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock current_page %}
+
 {% block content %}
-    <center>
-        <h1>Reclamation</h1>
 
-        <table>
+<center>
+<br><br><br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 contact_form_container">
 
-            <tr>
-                <th>Id</th>
-                <td>{{ reclamation.id }}</td>
-            </tr>
+        <h1 class="contact_form_title"> Votre Reclamation </h1>
+            <br><br>
+
+        <table  class="table   table-hover">
             <tr>
                 <th>Sujet</th>
                 <td>{{ reclamation.sujet }}</td>
@@ -18,37 +43,30 @@
                 <th>Contenu</th>
                 <td>{{ reclamation.contenu }}</td>
             </tr>
-            <tr>
-                <th>Traite</th>
-                <td>{% if reclamation.traite %}Yes{% else %}No{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Dater</th>
-                <td>{% if reclamation.dateR %}{{ reclamation.dateR|date('Y-m-d') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Archive</th>
-                <td>{% if reclamation.archive %}Yes{% else %}No{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Corbeille</th>
-                <td>{% if reclamation.corbeille %}Yes{% else %}No{% endif %}</td>
-            </tr>
-
         </table>
 
-        <ul>
-            <li>
-                <a href="{{ path('reclamation_index') }}">Back to the list</a>
-            </li>
-            <li>
-                <a href="{{ path('reclamation_edit', { 'id': reclamation.id }) }}">Edit</a>
-            </li>
-            <li>
+            <a href="{{ path('reclamation_edit', { 'id': reclamation.id }) }}">
+            <button class="button contact_button" style="width: 2.7cm">
+                <span> Valider </span>
+            </button>
+            </a>
+
+            <a href="{{ path('reclamation_edit', { 'id': reclamation.id }) }}">
+            <button class="button contact_button" style="width: 2.7cm">
+                <span> Modifier </span>
+            </button>
+            </a>
+
                 {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+            <button class="button contact_button">
+                <span> Supprimer la Reclamation </span>
+            </button>
                 {{ form_end(delete_form) }}
-            </li>
-        </ul>
-    </center>
+
+
+        </div>
+    </div>
+</div>
+<br><br><br>
+</center>
 {% endblock %}

@@ -117,29 +117,6 @@
                 <li class="nav-item dropdown">
                         {{ render(controller('NotificationBundle:Default:display')) }}
 
-                    <script
-                            src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-                            integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
-                            crossorigin="anonymous">
-                    </script>
-                      {{ notifications_assets() }}
-                    <script>
-                       function onNotificationsPushed(data){
-                            console.log('data',data);
-                            data.forEach(function(item) {
-                                let li =`
-                                    <li>
-                                    `+item.title+`<br>
-                                    `+item.description+`<br>
-                                     <a href="`+item.fullUrl+`"> see </a>
-                                </li>
-                                `;
-                                $('#notification').append(li);
-                            });
-                        }
-                    </script>
-
-
                 </li>
                 <li class="nav-item dropdown d-none d-xl-inline-block">
                     <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">

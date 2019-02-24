@@ -7,11 +7,11 @@
             <div class="row">
                 <div class="col">
                     <div class="home_content d-flex flex-row align-items-end justify-content-start">
-                        <div class="current_page">Contact</div>
+                        <div class="current_page">Reclamation</div>
                         <div class="breadcrumbs ml-auto">
                             <ul>
                                 <li><a href="{{ path('index') }}">Home</a></li>
-                                <li>Contact</li>
+                                <li>Reclamation</li>
                             </ul>
                         </div>
                     </div>
@@ -30,7 +30,16 @@
                         <div class="contact_form_title">Get in touch</div>
                               <center>
                                     {{ form_start(form) }}
-                            {{ form_widget(form.type, {'attr' : {'class': 'contact_input','placeholder':'Type'}}) }}<br><br>
+                           <div id="type">
+                               {{ form_widget(form.type, {'attr' : {'class': 'contact_input','placeholder':'Type'}}) }}<br><br>
+                           </div>
+                           <div id="event" >
+                               {{ form_widget(form.event, {'attr' : {'class': 'contact_input','placeholder':'Événement'}}) }}<br><br>
+                            </div>
+                            <div id="org" >
+                                {{ form_widget(form.organisateur, {'attr' : {'class': 'contact_input','placeholder':'Organisateur'}}) }}<br><br>
+
+                            </div>
                             {{ form_widget(form.sujet, {'attr' : {'class': 'contact_input','placeholder':'Sujet...'}}) }}<br><br>
                             {{ form_widget(form.contenu, {'attr' : {'class': 'contact_textarea contact_input','placeholder':'Contenu...'}}) }}<br><br>
                             <button class="button contact_button"><span> Envoyer la Reclamation </span></button>
@@ -78,6 +87,28 @@
             </div>
         </div>
     </div>
+
+
+    <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+    <script>
+    //pour vérifier l'intégration de la biblio jquery
+    //$(document).ready(
+    // function(){
+    //alert("Script working properly"); });
+    $('#event').hide();
+    $('#org').hide();
+
+    $('#type').click(
+        function () {
+            $('#event').show();
+
+        }
+    );
+
+    </script>
+
+
+
 
 {% endblock %}
 

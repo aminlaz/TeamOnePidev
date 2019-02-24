@@ -14,8 +14,7 @@ class ReclamationType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('sujet')
-                 ->add('contenu')
+        $builder
                  //->add('traite')
                  //->add('dateR')
                 // ->add('archive')
@@ -24,7 +23,19 @@ class ReclamationType extends AbstractType
                      'class'=>'ReclamationBundle\Entity\TypeReclamation',
                      'choice_label'=>'nom',
                      'multiple'=>false
-                 ));
+                 ))
+                ->add('event',EntityType::class,array(
+                      'class'=>'EventBundle\Entity\Event',
+                      'choice_label'=>'name',
+                       'multiple'=>false
+                 ))
+                ->add('organisateur',EntityType::class,array(
+                        'class'=>'UserBundle\Entity\User',
+                        'choice_label'=>'username',
+                         'multiple'=>false
+                 ))
+                 ->add('sujet')
+                 ->add('contenu');
 
 
     }/**

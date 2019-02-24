@@ -1,6 +1,9 @@
 <?php
 
+
+
 namespace ReclamationBundle\Entity;
+
 
 use Doctrine\ORM\Mapping as ORM;
 use NotificationBundle\Entity\Notification;
@@ -29,6 +32,24 @@ class Reclamation implements NotifiableInterface
      *@ORM\JoinColumn(name="type_id",referencedColumnName="id")
      */
     private $type;
+
+    /**
+     *@ORM\ManyToOne(targetEntity="\EventBundle\Entity\Event")
+     *@ORM\JoinColumn(name="event_id",referencedColumnName="id")
+     */
+    private $event;
+
+    /**
+     *@ORM\ManyToOne(targetEntity="\UserBundle\Entity\User")
+     *@ORM\JoinColumn(name="organisateur_id",referencedColumnName="id")
+     */
+    private $organisateur;
+
+    /**
+     *@ORM\ManyToOne(targetEntity="\UserBundle\Entity\User")
+     *@ORM\JoinColumn(name="user_id",referencedColumnName="id")
+     */
+    private $user;
 
     /**
      * @var string
@@ -84,27 +105,87 @@ class Reclamation implements NotifiableInterface
     }
 
     /**
-     * Set type
-     *
-     * @param TypeReclamation $type
-     *
-     * @return Reclamation
-     */
-    public function setType(TypeReclamation $type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return TypeReclamation
+     * @return mixed
      */
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * @param mixed $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
+
+
+    /**
+     * Get event
+     *
+     * @return \EventBundle\Entity\Event
+     */
+    public function getEvent()
+    {
+        return $this->event;
+    }
+
+    /**
+     * Set event
+     *
+     * @param \EventBundle\Entity\Event $event
+     *
+     * @return Reclamation
+     */
+    public function setEvent($event)
+    {
+        $this->event = $event;
+    }
+
+    /**
+     * Get organisateur
+     *
+     * @return \UserBundle\Entity\User
+     */
+    public function getOrganisateur()
+    {
+        return $this->organisateur;
+    }
+
+    /**
+     * Set organisateur
+     *
+     * @param \UserBundle\Entity\User $organisateur
+     *
+     * @return Reclamation
+     */
+    public function setOrganisateur($organisateur )
+    {
+        $this->organisateur = $organisateur;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \UserBundle\Entity\User $user
+     *
+     * @return Reclamation
+     */
+    public function setUser($user )
+    {
+        $this->user = $user;
     }
 
 
@@ -280,8 +361,15 @@ class Reclamation implements NotifiableInterface
      */
     public function notificationsOnUpdate(NotificationBuilder $builder)
     {
-        // in case you don't want any notification for a special event
-        // you can simply return an empty $builder
+        $notification = new Notification();
+        $notification
+            ->setTitle('edit Reclamation')
+            ->setDescription('"'.$this->contenu.'" has been created')
+            ->setRoute('reclamation_new')
+            ->setParameters(array('id' => $this->id))
+        ;
+        $builder->addNotification($notification);
+
         return $builder;
     }
 

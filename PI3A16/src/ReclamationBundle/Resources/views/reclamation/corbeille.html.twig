@@ -5,8 +5,12 @@
             <a href="{{  path('reclamation_index') }}" class="nav-link">Back</a>
         </li>
         <li class="nav-item">
-            <a href="{{  path('archive') }}" class="nav-link">Archive
+            <a href="{{  path('reclamation_list') }}" class="nav-link">Reclamations
                 <span class="badge badge-primary ml-1">New</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{  path('archive') }}" class="nav-link">Archive
             </a>
         </li>
         <li class="nav-item active">
@@ -21,7 +25,7 @@
 
                 <div class="container">
                     <h1>Reclamations list</h1>
-                      <table>
+                      <table class="table table-bordered table-striped table-hover">
                         <tr>
                             <th>Id</th>
                             <th>Sujet</th>

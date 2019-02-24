@@ -1,24 +1,50 @@
 {% extends 'base.html.twig' %}
 
+{% block title %} <title>Reclamation</title> {% endblock title %}
+{% block menu_reclamation %} class="active" {% endblock menu_reclamation %}
+{% block current_page %}
+    <div class="home_content_container">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="home_content d-flex flex-row align-items-end justify-content-start">
+                        <div class="current_page">Reclamation</div>
+                        <div class="breadcrumbs ml-auto">
+                            <ul>
+                                <li><a href="{{ path('index') }}">Home</a></li>
+                                <li>Reclamation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock current_page %}
+
 {% block content %}
-    <center>
-        <h1>Reclamation edit</h1>
+
+<br><br><br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6" style="">
+         <h1>Reclamation edit</h1>
 
         {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
         <input type="submit" value="Edit" />
         {{ form_end(edit_form) }}
 
-        <ul>
-            <li>
+
                 <a href="{{ path('reclamation_index') }}">Back to the list</a>
-            </li>
-            <li>
+
                 {{ form_start(delete_form) }}
                 <input type="submit" value="Delete">
                 {{ form_end(delete_form) }}
-            </li>
-        </ul>
-    </center>
+
+        </div>
+    </div>
+</div>
 
 {% endblock %}

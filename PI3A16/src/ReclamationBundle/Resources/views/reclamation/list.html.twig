@@ -1,13 +1,14 @@
 {% extends 'basebo.html.twig' %}
 {% block navbar %}
         <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a href="{{  path('reclamation_list') }}" class="nav-link">Reclamations
                     <span class="badge badge-primary ml-1">New</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="{{  path('archive') }}" class="nav-link">Archive
+                    <span class="badge badge-primary ml-1">New</span>
                 </a>
             </li>
             <li class="nav-item ">
@@ -28,14 +29,18 @@
 
 
 
-   <h1> Liste des nouveaux Reclamations </h1>
+   <h1> Liste des  Reclamations </h1>
 
-        <table style="text-align: center; width: 10cm">
+        <table>
 
             <tr>
                 <th>Id</th>
                 <th>Sujet</th>
-                <th>Date</th>
+                <th>Contenu</th>
+                <th>Traite</th>
+                <th>Dater</th>
+                <th>Archive</th>
+                <th>Corbeille</th>
                 <th>Actions</th>
             </tr>
 
@@ -44,15 +49,27 @@
                 <tr>
                     <td><a href="{{ path('reclamation_show', { 'id': reclamation.id }) }}">{{ reclamation.id }}</a></td>
                     <td>{{ reclamation.sujet }}</td>
+                    <td>{{ reclamation.contenu }}</td>
+                    <td>{% if reclamation.traite %}Yes{% else %}No{% endif %}</td>
                     <td>{% if reclamation.dateR %}{{ reclamation.dateR|date('Y-m-d') }}{% endif %}</td>
+                    <td>{% if reclamation.archive %}Yes{% else %}No{% endif %}</td>
+                    <td>{% if reclamation.corbeille %}Yes{% else %}No{% endif %}</td>
                     <td>
-                        <a href="{{ path('reclamation_show', { 'id': reclamation.id }) }}">show</a>
+                        <ul>
+                            <li>
+                                <a href="{{ path('reclamation_show', { 'id': reclamation.id }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('reclamation_edit', { 'id': reclamation.id }) }}">edit</a>
+                            </li>
+                        </ul>
                     </td>
                 </tr>
             {% endfor %}
 
         </table>
 
+                <a href="{{ path('reclamation_new') }}">Create a new reclamation</a>
 
         </div>
     </center>

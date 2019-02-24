@@ -14,11 +14,22 @@ class NotificationRepository extends \Doctrine\ORM\EntityRepository
     public function rechercheDQL($champ,$id)
     {
         $dqlresult = $this->getEntityManager()
-               ->createQuery("SELECT r
+            ->createQuery("SELECT r
                                FROM NotificationBundle:Notification r
                                 WHERE r.'$champ'= '$id'
                               ");
         return $dqlresult->getResult();
+    }
+    public function updateDQL()
+    {
+        $dqlresult = $this->getEntityManager()
+
+            ->createQuery(" UPDATE NotificationBundle:Notification r
+                                 SET r.seen= 1
+                                 WHERE r.seen= 0
+                               ");
+        return $dqlresult->getResult();
+
     }
 
 

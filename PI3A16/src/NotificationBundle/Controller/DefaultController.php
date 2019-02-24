@@ -6,6 +6,7 @@ use NotificationBundle\Entity\Notification;
 use NotificationBundle\NotificationBundle;
 use NotificationBundle\Repository\NotificationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
@@ -16,14 +17,29 @@ class DefaultController extends Controller
     public function displayAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $notification= $em->getRepository('NotificationBundle:Notification')
+        $notificationNotSeen= $em->getRepository('NotificationBundle:Notification')
                             ->rechercheDQL('seen',0);
-        $not=count($notification);
+        $not=count($notificationNotSeen);
+
+        $notification= $em->getRepository('NotificationBundle:Notification')
+            ->findAll();
 
         return($this->render('@Notification/Default/index.html.twig',array(
             'notifications' => $notification,
            'notif'=> $not,
 
         )));
+    }
+
+    public function updateAction()
+    {
+            $em = $this->getDoctrine()->getManager();
+            $em->getRepository('NotificationBundle:Notification')
+                ->updateDQL();
+            $em->flush();
+
+
+        return $this->displayAction();
+
     }
 }

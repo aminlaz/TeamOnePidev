@@ -1,3 +1,7 @@
 notification_homepage:
     path:     /notification_index
     defaults: { _controller: NotificationBundle:Default:index }
+
+update_route:
+    path:     /update_route
+    defaults: { _controller: NotificationBundle:Default:update }
