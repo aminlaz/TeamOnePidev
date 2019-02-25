@@ -1,11 +1,11 @@
+event_eventtype:
+    resource: "@EventBundle/Resources/config/routing/eventtype.yml"
+    prefix:   /bo/eventtype
 
+event_review:
+  resource: "@EventBundle/Resources/config/routing/review.yml"
+  prefix:   /review
 
-events:
-    path:     /event
-    defaults: { _controller: EventBundle:Default:event }
-
-
-addevent:
-    path:     /addevent
-    defaults: { _controller: EventBundle:Default:addevent }
-
+event_events:
+  resource: "@EventBundle/Resources/config/routing/event.yml"
+  prefix:   /events

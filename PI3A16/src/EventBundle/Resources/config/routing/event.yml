@@ -1,0 +1,24 @@
+events_index:
+    path:     /
+    defaults: { _controller: "EventBundle:Event:index" }
+    methods:  GET
+
+events_show:
+    path:     /{id}/show/
+    defaults: { _controller: "EventBundle:Event:show" }
+    methods:  [GET, POST]
+
+events_new:
+    path:     /new
+    defaults: { _controller: "EventBundle:Event:new" }
+    methods:  [GET, POST]
+
+events_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EventBundle:Event:edit" }
+    methods:  [GET, POST]
+
+events_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EventBundle:Event:delete" }
+    methods:  [GET,POST]

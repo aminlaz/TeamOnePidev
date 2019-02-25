@@ -28,8 +28,12 @@ class CategorieForum
      */
     private $nom;
 
-
-
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=2000)
+     */
+    private $description;
 
 
     /**
@@ -65,5 +69,28 @@ class CategorieForum
     {
         return $this->nom;
     }
-}
 
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return CategorieForum
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+}

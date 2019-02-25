@@ -1,0 +1,41 @@
+{% extends 'basebo.html.twig' %}
+
+{% block content %}
+    <h1>Categorieforums list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for categorieForum in categorieForums %}
+            <tr>
+                <td><a href="{{ path('categorieforum_show', { 'id': categorieForum.id }) }}">{{ categorieForum.id }}</a></td>
+                <td>{{ categorieForum.nom }}</td>
+                <td>{{ categorieForum.description }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('categorieforum_show', { 'id': categorieForum.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('categorieforum_edit', { 'id': categorieForum.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('categorieforum_new') }}">Create a new categorieForum</a>
+        </li>
+    </ul>
+{% endblock %}

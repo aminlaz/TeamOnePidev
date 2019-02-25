@@ -93,4 +93,6 @@ class eventtype
     {
         return $this->description;
     }
+
+    public function __toString(){ return $this->name; }
 }
