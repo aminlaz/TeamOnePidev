@@ -25,6 +25,8 @@ class EventController extends Controller
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
+        $bar=null;
+        $pieChart=null;
         if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
             $myevents = $em->getRepository('EventBundle:Event')
                 ->findBy(['idorganisateur' => $this->getUser()->getId()]);
