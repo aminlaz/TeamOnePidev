@@ -39,7 +39,7 @@ class review
     /**
      * @var string
      *
-     * @ORM\Column(name="reviewtext", type="string", length=255)
+     * @ORM\Column(name="reviewtext", type="text", length=65535)
      */
     private $reviewtext;
 
@@ -49,6 +49,13 @@ class review
      * @ORM\Column(name="rate", type="integer")
      */
     private $rate;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="likes", type="integer")
+     */
+    private $likes;
 
 
     /**
@@ -155,5 +162,29 @@ class review
     public function getRate()
     {
         return $this->rate;
+    }
+
+    /**
+     * Set likes
+     *
+     * @param integer $likes
+     *
+     * @return review
+     */
+    public function setLikes($likes)
+    {
+        $this->likes = $likes;
+
+        return $this;
+    }
+
+    /**
+     * Get likes
+     *
+     * @return integer
+     */
+    public function getLikes()
+    {
+        return $this->likes;
     }
 }

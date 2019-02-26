@@ -10,8 +10,6 @@ imports:
     - { resource: "@ReservationBundle/Resources/config/services.yml" }
     - { resource: "@BlogBundle/Resources/config/services.yml" }
     - { resource: "@BackOfficeIndexBundle/Resources/config/services.yml" }
-    - { resource: "@NotificationBundle/Resources/config/services.yml" }
-    - { resource: "@CronBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -43,9 +41,10 @@ framework:
 
 # Twig Configuration
 twig:
+    form_themes:
+        - 'bootstrap_3_layout.html.twig'
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
-    form_themes: ['bootstrap_4_layout.html.twig']
 
 # Doctrine Configuration
 doctrine:
@@ -89,9 +88,20 @@ fos_user:
     from_email:
         address: "tech-events@esprit.tn"
         sender_name: "tech-events"
-# NotificationsBundle configuration
-notifications:
-    app_id:     720637
-    app_key:    eb837646523e14c0bf59
-    app_secret: acb39a17f0aafa4b454c
-    cluster:    eu
+
+knp_paginator:
+    page_range: 5                       # number of links showed in the pagination menu (e.g: you have 10 pages, a page_range of 3, on the 5th page you'll see links to page 4, 5, 6)
+    default_options:
+        page_name: page                 # page query parameter name
+        sort_field_name: sort           # sort field query parameter name
+        sort_direction_name: direction  # sort direction query parameter name
+        distinct: true                  # ensure distinct results, useful when ORM queries are using GROUP BY statements
+        filter_field_name: filterField  # filter field query parameter name
+        filter_value_name: filterValue  # filter value query parameter name
+    template:
+        pagination: '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig'     # sliding pagination controls template
+        sortable: '@KnpPaginator/Pagination/sortable_link.html.twig' # sort link template
+        filtration: '@KnpPaginator/Pagination/filtration.html.twig'  # filters template
+cmen_google_charts:
+    version: "current"
+    language: "fr"

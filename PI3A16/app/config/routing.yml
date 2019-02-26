@@ -1,14 +1,6 @@
-cron:
-    resource: "@CronBundle/Resources/config/routing.yml"
-    prefix:   /
-
-notification:
-    resource: "@NotificationBundle/Resources/config/routing.yml"
-    prefix:   /
-
 back_office_index:
     resource: "@BackOfficeIndexBundle/Resources/config/routing.yml"
-    prefix:   /bo
+    prefix: /bo
 
 blog:
     resource: "@BlogBundle/Resources/config/routing.yml"

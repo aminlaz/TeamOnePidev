@@ -25,10 +25,8 @@
 </head>
 
 <body>
-
 <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
-
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
             <a class="navbar-brand brand-logo" href="index.html">
@@ -38,9 +36,7 @@
                 <img src="{{ asset('bo/images/logo-mini.svg') }}" alt="logo" />
             </a>
         </div>
-
         <div class="navbar-menu-wrapper d-flex align-items-center">
-            {% block navbar %}
             <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
                 <li class="nav-item">
                     <a href="#" class="nav-link">Schedule
@@ -56,7 +52,6 @@
                         <i class="mdi mdi-bookmark-plus-outline"></i>Score</a>
                 </li>
             </ul>
-            {% endblock %}
             <ul class="navbar-nav navbar-nav-right">
                 <li class="nav-item dropdown">
                     <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
@@ -113,10 +108,60 @@
                         </a>
                     </div>
                 </li>
-
                 <li class="nav-item dropdown">
-                        {{ render(controller('NotificationBundle:Default:display')) }}
-
+                    <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+                        <i class="mdi mdi-bell"></i>
+                        <span class="count">4</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+                        <a class="dropdown-item">
+                            <p class="mb-0 font-weight-normal float-left">You have 4 new notifications
+                            </p>
+                            <span class="badge badge-pill badge-warning float-right">View all</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item preview-item">
+                            <div class="preview-thumbnail">
+                                <div class="preview-icon bg-success">
+                                    <i class="mdi mdi-alert-circle-outline mx-0"></i>
+                                </div>
+                            </div>
+                            <div class="preview-item-content">
+                                <h6 class="preview-subject font-weight-medium text-dark">Application Error</h6>
+                                <p class="font-weight-light small-text">
+                                    Just now
+                                </p>
+                            </div>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item preview-item">
+                            <div class="preview-thumbnail">
+                                <div class="preview-icon bg-warning">
+                                    <i class="mdi mdi-comment-text-outline mx-0"></i>
+                                </div>
+                            </div>
+                            <div class="preview-item-content">
+                                <h6 class="preview-subject font-weight-medium text-dark">Settings</h6>
+                                <p class="font-weight-light small-text">
+                                    Private message
+                                </p>
+                            </div>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item preview-item">
+                            <div class="preview-thumbnail">
+                                <div class="preview-icon bg-info">
+                                    <i class="mdi mdi-email-outline mx-0"></i>
+                                </div>
+                            </div>
+                            <div class="preview-item-content">
+                                <h6 class="preview-subject font-weight-medium text-dark">New user registration</h6>
+                                <p class="font-weight-light small-text">
+                                    2 days ago
+                                </p>
+                            </div>
+                        </a>
+                    </div>
                 </li>
                 <li class="nav-item dropdown d-none d-xl-inline-block">
                     <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
@@ -153,6 +198,8 @@
                         {% else %}
                             <a class="dropdown-item" href="{{ path('fos_user_security_login') }}">{{ 'Login'|trans({}, 'FOSUserBundle') }}</a>
                         {% endif %}
+
+
                     </div>
                 </li>
             </ul>
@@ -186,9 +233,9 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path("index")}}">
+                    <a class="nav-link" href="index.html">
                         <i class="menu-icon mdi mdi-television"></i>
-                        <span class="menu-title"> Front </span>
+                        <span class="menu-title">Dashboard</span>
                     </a>
                 </li>
                 <!-- ajouter les boutons des pages ici -->
@@ -201,27 +248,34 @@
                     </a>
                 </li>
                 <!-- ceci un exemple d'un bouton qui a deux boutons a l'interieur pour mieux catagorisé -->
-
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#Reclamation" aria-expanded="false" aria-controls="Reclamation" >
+                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic" >
                         <i class="menu-icon mdi mdi-content-copy"></i>
-                        <span class="menu-title">Gestion des reclamations</span>
+                        <span class="menu-title">Basic UI Elements</span>
                         <i class="menu-arrow"></i>
                     </a>
 
-                    <div class="collapse" id="Reclamation">
+                    <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ path('reclamation_index') }}"  >  Reclamations    </a>
+                                <a class="nav-link" href=""  >  Buttons     </a> <!--metre le lien de la page dans href exmeple "{{ asset('exemple') }}" -->
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ path('typereclamation_index') }}"  >  Type des reclamations   </a>
+                                <a class="nav-link" href=""  >Typography      </a> <!--metre le lien de la page dans href exmeple "{{ asset('exemple') }}" -->
                             </li>
                         </ul>
                     </div>
                 </li>
 
                 <!-- ICI -->
+
+
+
+
+
+
+
+
 
 
                 <!-- ajouter les boutons des pages ici -->
@@ -241,9 +295,11 @@
             <!-- partial:partials/_footer.html -->
             <footer class="footer">
                 <div class="container-fluid clearfix">
-                  Copyright © 2019
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018
               <a href="http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
-             </span>
+                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with
+              <i class="mdi mdi-heart text-danger"></i>
+            </span>
                 </div>
             </footer>
             <!-- partial -->

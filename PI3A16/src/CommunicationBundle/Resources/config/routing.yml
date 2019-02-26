@@ -1,3 +1,7 @@
+communication_categorieforum:
+    resource: "@CommunicationBundle/Resources/config/routing/categorieforum.yml"
+    prefix:   /categorieforum
+
 forum:
     path:     /forum
     defaults: { _controller: CommunicationBundle:Default:forum }

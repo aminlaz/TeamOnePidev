@@ -1,10 +1,64 @@
 
-events:
-    path:     /event
-    defaults: { _controller: EventBundle:Default:event }
+events_index:
+  path:     /events/
+  defaults: { _controller: "EventBundle:Event:index" }
+  methods:  GET
+
+events_show:
+  path:     /events/{id}/show/
+  defaults: { _controller: "EventBundle:Event:show" }
+  methods:  [GET, POST]
+
+events_new:
+  path:     /events/new
+  defaults: { _controller: "EventBundle:Event:new" }
+  methods:  [GET, POST]
+
+events_edit:
+  path:     /events/{id}/edit
+  defaults: { _controller: "EventBundle:Event:edit" }
+  methods:  [GET, POST]
+
+events_delete:
+  path:     /events/{id}/delete
+  defaults: { _controller: "EventBundle:Event:delete" }
+  methods:  [GET,POST]
 
 
-addevent:
-    path:     /addevent
-    defaults: { _controller: EventBundle:Default:addevent }
 
+eventtype_index:
+  path:     /bo/eventtype/
+  defaults: { _controller: "EventBundle:eventtype:index" }
+  methods:  GET
+
+eventtype_show:
+  path:     /bo/eventtype/{id}/show
+  defaults: { _controller: "EventBundle:eventtype:show" }
+  methods:  GET
+
+eventtype_new:
+  path:     /bo/eventtype/new
+  defaults: { _controller: "EventBundle:eventtype:new" }
+  methods:  [GET, POST]
+
+eventtype_edit:
+  path:     /bo/eventtype/{id}/edit
+  defaults: { _controller: "EventBundle:eventtype:edit" }
+  methods:  [GET, POST]
+
+eventtype_delete:
+  path:     /bo/eventtype/{id}/delete
+  defaults: { _controller: "EventBundle:eventtype:delete" }
+  methods:  DELETE
+
+
+
+review_delete:
+  path:     /review/{id}/delete/{idevent}
+  defaults: { _controller: "EventBundle:review:delete" }
+  methods:  [GET,POST]
+
+review_like:
+  path:     /review/{id}/like/{idevent}
+  defaults: { _controller: "EventBundle:review:like" }
+  methods:  [GET,POST]
