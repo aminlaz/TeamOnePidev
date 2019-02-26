@@ -28,6 +28,10 @@ class AppKernel extends Kernel
             new ReservationBundle\ReservationBundle(),
             new BlogBundle\BlogBundle(),
             new BackOfficeIndexBundle\BackOfficeIndexBundle(),
+            new \SBC\NotificationsBundle\NotificationsBundle(),
+            new NotificationBundle\NotificationBundle(),
+            new Cron\CronBundle\CronCronBundle(),
+            new CronBundle\CronBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

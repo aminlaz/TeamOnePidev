@@ -54,9 +54,7 @@ class RegistrationFormType extends AbstractType
                     'choices' => array(
                         'Participant' => 'ROLE_PARTICIPANT',
                         'Organisateur' => 'ROLE_ORGANISATEUR',
-                        'Blogueur' => 'ROLE_BLOGUEUR',
-                        'Admin' => 'ROLE_ADMIN'
-                    ),
+                        'Blogueur' => 'ROLE_BLOGUEUR'),
 
                     'multiple' => true,
                     'expanded' => true

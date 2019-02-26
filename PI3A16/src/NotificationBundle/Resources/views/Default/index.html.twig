@@ -1,0 +1,82 @@
+
+<a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown"  >
+    <i class="mdi mdi-bell" > </i>
+    {% if notif != 0 %}
+        <span class="count" id="g">  {{ notif }}  </span>
+    {% endif %}
+</a>
+<script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+<script>
+    $(document).ready(function () {
+        $(document).ready(
+            function (){
+                $('#notificationDropdown').blur(function () {
+                     $.ajax({
+                             url: '{{ (path('update_route')) }}',
+                             async: true,
+                         })
+                     location.reload();
+                })
+
+            }
+        );
+    });
+</script>
+
+<div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+
+    <a class="dropdown-item" href="{{ path('notification_index') }}">
+
+        <p class="mb-0 font-weight-normal float-left">
+            You have  {{ notif }} new notifications
+        </p>
+        <span class="badge badge-pill badge-warning float-right">View all</span>
+    </a>
+    {% for notification in notifications %}
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item preview-item" href="#">
+        <div class="preview-thumbnail">
+            <div class="preview-icon bg-success">
+                <i class="mdi mdi-alert-circle-outline mx-0"></i>
+            </div>
+        </div>
+        <div class="preview-item-content">
+            <h6 class="preview-subject font-weight-medium text-dark">{{ notification.title }}</h6>
+            <p class="font-weight-light small-text">
+               {{ notification.description }}
+            </p>
+        </div>
+    </a>
+{% endfor %}
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item preview-item">
+        <div class="preview-thumbnail">
+            <div class="preview-icon bg-warning">
+                <i class="mdi mdi-comment-text-outline mx-0"></i>
+            </div>
+        </div>
+
+        <div class="preview-item-content">
+            <h6 class="preview-subject font-weight-medium text-dark">Settings</h6>
+            <p class="font-weight-light small-text">
+                Private message
+            </p>
+        </div>
+    </a>
+
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item preview-item">
+        <div class="preview-thumbnail">
+            <div class="preview-icon bg-info">
+                <i class="mdi mdi-email-outline mx-0"></i>
+            </div>
+        </div>
+
+        <div class="preview-item-content">
+            <h6 class="preview-subject font-weight-medium text-dark">New user registration</h6>
+            <p class="font-weight-light small-text">
+                2 days ago
+            </p>
+        </div>
+    </a>
+</div>

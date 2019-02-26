@@ -1,0 +1,15 @@
+{% extends 'basebo.html.twig' %}
+
+{% block content %}
+    <center>
+        <h1>Creation d'un nouveau type de reclamation</h1>
+        <br><br>
+        {{ form_start(form) }}
+        Nom : {{ form_widget(form.nom) }}
+        <input type="submit" value="Create" />
+        {{ form_end(form) }}
+        <br><br>
+      <a href="{{ path('typereclamation_index') }}">Back to the list</a>
+
+    </center>
+{% endblock %}

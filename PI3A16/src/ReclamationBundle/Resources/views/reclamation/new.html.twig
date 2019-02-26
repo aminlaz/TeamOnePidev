@@ -1,0 +1,148 @@
+{% extends 'base.html.twig' %}
+{% block title %} <title>Reclamation</title> {% endblock title %}
+{% block menu_reclamation %} class="active" {% endblock menu_reclamation %}
+{% block current_page %}
+    <div class="home_content_container">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="home_content d-flex flex-row align-items-end justify-content-start">
+                        <div class="current_page">Reclamation</div>
+                        <div class="breadcrumbs ml-auto">
+                            <ul>
+                                <li><a href="{{ path('index') }}">Home</a></li>
+                                <li>Reclamation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock current_page %}
+{% block content %}
+    {# <a href="{{ path('reclamation_index') }}">Back to the list</a> #}
+    <div class="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="contact_form_container">
+                        <div class="contact_form_title">Get in touch</div>
+                      <center>
+                                    {{ form_start(form) }}
+                           <div id="type">
+                               {{ form_widget(form.type, {'attr' : {'class': 'contact_input','placeholder':'Type'}}) }}<br><br>
+                           </div>
+                           <div id="event" >
+                               <select name="idEvent" class="contact_input">
+                                   <option value="null"  >  </option>
+                                   {% for e in events %}
+                                   <option value="{{ e.idEvent.id }}">
+                                       {{ e.idEvent.name }}
+                                   </option>
+                                   {% endfor %}
+                               </select>
+                            </div>
+                           <br><br>
+                            <div id="org" >
+                                <select name="idOrganisateur" class="contact_input">
+                                    <option value="null">  </option>
+                                    {% for org in organisateurs %}
+                                        <option value="{{ org.id }}">
+                                            {{ org.name }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                                  <br><br>
+                            {{ form_widget(form.sujet, {'attr' : {'class': 'contact_input','placeholder':'Sujet...'}}) }}<br><br>
+                            {{ form_widget(form.contenu, {'attr' : {'class': 'contact_textarea contact_input','placeholder':'Contenu...'}}) }}<br><br>
+                            <button class="button contact_button"><span> Envoyer la Reclamation </span></button>
+
+                                      {{ form_end(form) }}
+                              </center>
+                    </div>
+                </div>
+                <div class="col-lg-5 offset-lg-1">
+                    <div class="contact_info_container">
+                        {#
+                        <div>
+                            <a href="#">
+                                <div class="logo_container d-flex flex-row align-items-start justify-content-start">
+                                    <div class="logo_image"><div><img src="{{ asset('images/logo.png') }}" alt=""></div></div>
+                                    <div class="logo_content">
+                                        <div id="logo_text" class="logo_text logo_text_not_ie">The Conference</div>
+                                        <div class="logo_sub">August 25, 2018 - Miami Marina Bay</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        #}
+                        {#
+                        <div class="contact_info_list_container">
+                            <ul class="contact_info_list">
+                                <li class="d-flex flex-row align-items-start justify-content-start">
+                                    <div><div class="contact_info_icon text-center"><img src="{{ asset('images/contact_1.png') }}" alt=""></div></div>
+                                    <div class="contact_info_text">Blvd Libertad, 34 m05200 Los Angeles, CA</div>
+                                </li>
+                                <li class="d-flex flex-row align-items-start justify-content-start">
+                                    <div><div class="contact_info_icon text-center"><img src="{{ asset('images/contact_2.png') }}" alt=""></div></div>
+                                    <div class="contact_info_text">0034 37483 2445 322</div>
+                                </li>
+                                <li class="d-flex flex-row align-items-start justify-content-start">
+                                    <div><div class="contact_info_icon text-center"><img src="{{ asset('images/contact_3.png') }}" alt=""></div></div>
+                                    <div class="contact_info_text">hello@company.com</div>
+                                </li>
+                            </ul>
+                        </div>
+                        #}
+                        <div class="contact_info_pin"><div></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+    <script>
+    //pour vérifier l'intégration de la biblio jquery
+    $(document).ready(
+     function() {
+         //alert("Script working properly"); });
+         $('#event').hide();
+         $('#org').hide();
+
+         $("#reclamationbundle_reclamation_type").change(function () {
+             $.ajax({
+                 type: 'POST',
+                 typeValue: {"Select": $('#reclamationbundle_reclamation_type').val()}
+
+             });
+
+             if ($typeValue.val() == "Organisateur") {
+                 $('#org').show();
+             }
+             else if ($typeValue.val().equals('Événement')) {
+                 $('#event').show();
+             }
+
+
+         });
+
+     });
+
+    </script>
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+

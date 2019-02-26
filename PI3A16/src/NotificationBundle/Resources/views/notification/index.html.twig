@@ -1,0 +1,72 @@
+
+{% extends 'basebo.html.twig' %}
+{% block navbar %}
+{% endblock %}
+{% block content %}
+
+<center xmlns="http://www.w3.org/1999/html">
+    <h1> Notifications </h1>
+
+    <table  class="table table-condensed table-hover table-striped">
+      {% for notification in notifications %}
+          <tr>
+                <td style="width: 2cm" >
+                    <img src="{{ asset('bo/images/faces-clipart/pic-4.png') }}" alt="profile image">
+                </td>
+                <td  class="preview-item-content">
+                    <a  href="#" class="dropdown-item preview-item">
+                    <div>
+                        <h6 class="preview-subject font-weight-medium text-dark">{{ notification.title }}</h6>
+                        <p class="font-weight-light small-text">
+                            {{ notification.description }}
+                        </p>
+                    </div>
+                    </a>
+                </td>
+                <td style="width: 1cm">
+                    <a href="{{ path('notification_delete', { 'id': notification.id }) }}" >
+                        <img src="{{ asset ('images/Delete.png') }}"/>
+                    </a>
+                </td>
+         </tr>
+      {% endfor %}
+    </table>
+
+
+
+
+</center>
+
+
+
+    {#
+     <table class="table   table-hover table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Route</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for notification in notifications %}
+            <tr>
+                <td>{{ notification.title }}</td>
+                <td>{{ notification.description }}</td>
+                <td>{{ notification.route }}</td>
+                <td>{% if notification.date %}{{ notification.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <a href="#">show</a>
+                    <br>
+                    <a href="{{ path('notification_delete', { 'id': notification.id }) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    #}
+
+
+{% endblock %}
