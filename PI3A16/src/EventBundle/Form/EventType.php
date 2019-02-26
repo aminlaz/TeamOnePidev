@@ -23,9 +23,7 @@ class EventType extends AbstractType
             ->add('prix')
             ->add('capacity')->add('reserved')
             ->add('date', DateType::class, [
-                'widget' => 'choice',
-                'years' => range(date('Y'), date('Y') + 5),
-                'months' => range(date('m'), 12)
+                'widget' => 'single_text'
             ])
             ->add('time')->add('numberofdays')->add('eventtype');
     }

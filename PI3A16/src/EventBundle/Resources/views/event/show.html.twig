@@ -142,12 +142,12 @@
                     <div class='success-box'>
                         <h3>Average review rate : </h3>
                         {% if avgrate %}
-                        <h2 style="padding: 10px">{{ avgrate.rate|round(2,"floor") }}</h2>
-                        {% for i in range(1, avgrate.rate|round(2,"floor")) %}
-                            <span style="font-size: 2em;" ><i class="text-warning fa fa-star "></i></span>
-                        {% endfor %}
+                            <h2 style="padding: 10px">{{ avgrate.rate|round(2,"floor") }}</h2>
+                            {% for i in range(1, avgrate.rate|round(2,"floor")) %}
+                                <span style="font-size: 2em;"><i class="text-warning fa fa-star "></i></span>
+                            {% endfor %}
                         {% else %}
-                        <h2 style="padding: 10px">no reviews yet</h2>
+                            <h2 style="padding: 10px">no reviews yet</h2>
                         {% endif %}
                     </div>
                 </section>
@@ -236,6 +236,7 @@
                                         <div class="clearfix"></div>
                                         <p>{{ myreview.reviewtext }}</p>
                                         <p>
+                                            <i class="fa fa-heart"></i> {{ myreview.likes }}
                                             <a class="float-right btn text-white btn-dark"
                                                href="{{ path('review_delete', { 'id': myreview.id ,'idevent' : event.id}) }}">Delete
                                                 Review</a>
@@ -256,35 +257,51 @@
             <div class="container">
                 {% for review in reviews %}
                     {% if review==myreview %}
+                {% else %}
+                    <div class="card">
+                    <div class="card-body">
+                    <div class="row">
+                    <div class="col-md-2">
+                        <img src="https://image.ibb.co/jw55Ex/def_face.jpg"
+                             class="img img-rounded img-fluid"/>
+                        <!-- <p class="text-secondary text-center">15 Minutes Ago</p> -->
+                    </div>
+                    <div class="col-md-10">
+                    <p>
+                        <a class="float-left"
+                           href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>{{ review.iduser.name }}</strong></a>
+                        {% for i in range(1, review.rate) %}
+                            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                        {% endfor %}
+
+
+                    </p>
+                    <div class="clearfix"></div>
+                    <p>{{ review.reviewtext }}</p>
+                    <p>
+                    <i class="fa fa-heart"></i> {{ review.likes }}
+                    {% set liked = 'false' %}
+                    {% for reviewlike in reviewlikes %}
+                        {% if reviewlike.idreview == review     %}
+                            {% set liked = 'true' %}
+                        {% endif %}
+                    {% endfor %}
+                    {% if liked=='false' %}
+                        <a class="float-right btn text-white btn-danger"
+                           href="{{ path('review_like', { 'id': review.id ,'idevent' : event.id}) }}"> <i
+                                    class="fa fa-heart"></i>
+                            Like</a>
                     {% else %}
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <img src="https://image.ibb.co/jw55Ex/def_face.jpg"
-                                             class="img img-rounded img-fluid"/>
-                                        <!-- <p class="text-secondary text-center">15 Minutes Ago</p> -->
-                                    </div>
-                                    <div class="col-md-10">
-                                        <p>
-                                            <a class="float-left"
-                                               href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>{{ review.iduser.name }}</strong></a>
-                                            {% for i in range(1, review.rate) %}
-                                                <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                                            {% endfor %}
+                        <a class="float-right btn text-white btn-dark"
+                           href="{{ path('review_like', { 'id': review.id ,'idevent' : event.id}) }}"> <i
+                                    class="fa fa-heart"></i>
+                            Dislike</a>
+                        {% endif %}
 
-
-                                        </p>
-                                        <div class="clearfix"></div>
-                                        <p>{{ review.reviewtext }}</p>
-                                        <p>
-                                            <a class="float-right btn text-white btn-danger"> <i
-                                                        class="fa fa-heart"></i>
-                                                Like</a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                        </p>
+                        </div>
+                        </div>
+                        </div>
                         </div>
                     {% endif %}
                 {% endfor %}

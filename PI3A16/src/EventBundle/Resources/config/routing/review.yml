@@ -1,5 +1,0 @@
-
-review_delete:
-    path:     /{id}/delete/{idevent}
-    defaults: { _controller: "EventBundle:review:delete" }
-    methods:  GET

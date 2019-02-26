@@ -30,6 +30,11 @@
                         Add Event
                     </a>
                 </div>
+                <div class="button header_button">
+                    <a class="dropdown-item " href="{{ path('events_index',{'mine':'1'}) }} ">
+                        My Events
+                    </a>
+                </div>
                 <div class="button header_button float_right" >
                     <a style="color: white" data-toggle="modal" data-target="#myModal" >Statistiques</a>
                 </div>
@@ -62,7 +67,8 @@
         <div class="container">
             <div>
                 <form class="input-group mb-3" action="{{ path('events_index') }}" method="get" >
-                    <input class="form-control" name="filter" type="text" placeholder="recherche dans nom" >
+                    <input class="form-control" name="rechercheN" type="text" placeholder="rechercher un nom" >
+                    <input class="form-control" name="rechercheD" type="text" placeholder="rechercher dans une description" >
                     <div class="input-group-append">
                     <button type="submit" class="btn btn-outline-secondary">Rechercher</button>
                     </div>
@@ -79,8 +85,15 @@
                     <label >  Places Disponibles : </label>
                     <input name="pascomplet" type="checkbox" value="pascomplet" style="width: 35px;" >
 
-                    <button type="submit" class="btn btn-default btn-sm float-left"  >filtrer</button>
+                    <input list="browsers" name="eventtype">
 
+                    <datalist id="browsers">
+                        {% for type in eventtype %}
+                        <option value="{{ type.name }}">
+                        {% endfor %}
+                    </datalist>
+
+                    <button type="submit" class="btn btn-default btn-sm float-left"  >filtrer</button>
 
                 </form>
             </div>
@@ -121,25 +134,12 @@
                                     <!-- Event Speaker -->
                                     <div class="event_speaker d-flex flex-row align-items-center justify-content-start">
                                         <div>
-                                            <div class="event_speaker_image"><img
-                                                        src="{{ asset('images/event_speaker_1.jpg') }}" alt=""></div>
-                                        </div>
-                                        <div class="event_speaker_content">
-                                            <div class="event_speaker_name">Michael Smith</div>
-                                            <div class="event_speaker_title">Marketing Specialist</div>
+                                            <div class="event_location"> Organisateur :</div>
+                                            <div class="event_speaker_name">{{ event.idorganisateur.name ~ ' ' ~ event.idorganisateur.lastname }}</div>
+                                            <div class="event_speaker_title"></div>
                                         </div>
                                     </div>
                                     <!-- Event Speaker -->
-                                    <div class="event_speaker d-flex flex-row align-items-center justify-content-start">
-                                        <div>
-                                            <div class="event_speaker_image"><img
-                                                        src="{{ asset('images/event_speaker_2.jpg') }}" alt=""></div>
-                                        </div>
-                                        <div class="event_speaker_content">
-                                            <div class="event_speaker_name">Jessica Williams</div>
-                                            <div class="event_speaker_title">Marketing Specialist</div>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="event_buttons">
                                     <div class="button event_button event_button_1"><a href="#">Buy Tickets Now!</a>

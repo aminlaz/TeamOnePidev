@@ -8,6 +8,7 @@ use CMEN\GoogleChartsBundle\GoogleCharts\Charts\PieChart;
 use EventBundle\Entity\Event;
 use EventBundle\Entity\eventtype;
 use EventBundle\Entity\review;
+use EventBundle\EventBundle;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\Tools\Pagination\Paginator;
@@ -94,11 +95,13 @@ class EventController extends Controller
 
         //$events = $em->getRepository('EventBundle:Event')->findAll();
         $queryBuilder = $em->getRepository('EventBundle:Event')->createFindAllQuery();
-
-        if ($request->query->getAlnum('filter')) {
+        if (($request->query->getAlnum('rechercheN'))&&(($request->query->getAlnum('rechercheD')))) {
+        if ($request->query->getAlnum('rechercheN')) {
             $queryBuilder
-                ->where('E.name LIKE :search OR E.description LIKE :search')
-                ->setParameter('search', '%' . $request->query->getAlnum('filter') . '%');
+                ->where('E.name LIKE :searchN AND  E.description LIKE :searchD')
+                ->setParameter('searchN', '%' . $request->query->getAlnum('rechercheN') . '%')
+                ->setParameter('searchD', '%' . $request->query->getAlnum('rechercheD') . '%');
+        }
         }
         if ($request->query->getAlnum('free')) {
             $queryBuilder
@@ -108,6 +111,18 @@ class EventController extends Controller
             $queryBuilder
                 ->Andwhere('E.reserved < E.capacity');
         }
+        if ($request->query->getAlnum('eventtype')) {
+            $queryBuilder
+                ->Andwhere('E.eventtype= :type')
+                ->setParameter('type', $em->getRepository('EventBundle:eventtype')->findOneBy(['name' => $request->query->getAlnum('eventtype')]) );
+        }
+
+        if ($request->query->getAlnum('mine')) {
+            $queryBuilder
+                ->where('E.idorganisateur = :myid')
+                ->setParameter(':myid', $this->getUser()->getId());
+        }
+
         /**
          * @var $paginator \Knp\Component\Pager\Paginator
          */
@@ -119,10 +134,13 @@ class EventController extends Controller
             3
         );
 
+        $eventtype =  $em->getRepository('EventBundle:eventtype')->findAll();
+
         return $this->render('@Event/event/index.html.twig', array(
             'histogram' => $bar,
             'piechart' => $pieChart,
             'events' => $result,
+            'eventtype'=> $eventtype
         ));
     }
 
@@ -160,6 +178,7 @@ class EventController extends Controller
     {
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
+        $reviewlikes = $em ->getRepository('EventBundle:reviewlike')->findBy(['iduser'=>$user->getId()]);
         $reviews = $em->getRepository('EventBundle:review')
             ->findBy(['idevent' => $event->getId()]);
         if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
@@ -173,6 +192,7 @@ class EventController extends Controller
             $review->setIduser($user);
             $review->setIdevent($event);
             $review->setRate($request->get('reviewrate'));
+            $review->setLikes(0);
             $review->setReviewtext($request->get('reviewtext'));
             $em->persist($review);
             $em->flush();
@@ -184,7 +204,8 @@ class EventController extends Controller
             'reviews' => $reviews,
             'event' => $event,
             'myreview' => $myreview,
-            'avgrate' => $avg
+            'avgrate' => $avg,
+            'reviewlikes'=>$reviewlikes
 
         ));
 
@@ -203,7 +224,7 @@ class EventController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('events_edit', array('id' => $event->getId()));
+            return $this->redirectToRoute('events_show', array('id' => $event->getId()));
         }
 
         return $this->render('@Event/event/edit.html.twig', array(
@@ -225,6 +246,16 @@ class EventController extends Controller
         if (!$event) {
             throw $this->createNotFoundException('Unable to find Preisliste entity.');
         }
+        $reviews = $em->getRepository('EventBundle:review')->findBy(['idevent' => $event->getId()]);
+
+        foreach ($reviews as $review) {
+            $likes =$em->getRepository('EventBundle:reviewlike')->findBy(['idreview' => $review ]);
+            foreach ($likes as $like)
+            {
+                $em->remove($like);
+            }
+            $em->remove($review);
+        }
 
         $em->remove($event);
         $em->flush();
@@ -233,19 +264,5 @@ class EventController extends Controller
         return $this->redirectToRoute('events_index');
     }
 
-    public function deleteReviewAction(review $review, Event $event)
-    {
-
-        $em = $this->getDoctrine()->getManager();
-
-        if (!$review) {
-            throw $this->createNotFoundException('Unable to find Preisliste entity.');
-        }
-        if ($review->getIduser() == $this->getUser()) {
-            $em->remove($review);
-            $em->flush();
-        }
-        return $this->redirectToRoute('events_show', array('id' => $event->getId()));
-    }
 
 }
