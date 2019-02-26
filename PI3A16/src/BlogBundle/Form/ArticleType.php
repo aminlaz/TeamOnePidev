@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+
 class ArticleType extends AbstractType
 {
     /**
@@ -15,7 +16,7 @@ class ArticleType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('titrearticle')->add('contenuarticle')->add('photoarticle',FileType::class);
+        $builder->add('titrearticle')->add('contenuarticle');
 
     }/**
      * {@inheritdoc}

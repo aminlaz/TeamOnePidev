@@ -15,7 +15,7 @@ class UserProfileType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
+        $builder->add('lastname')->add('name')
 
             ->add('interets',EntityType::class,array(
             'class'=>'ProfilingBundle\Entity\Interet',

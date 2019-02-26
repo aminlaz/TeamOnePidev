@@ -4,6 +4,7 @@ namespace UserBundle\Form;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichImageType;
@@ -15,7 +16,7 @@ class UserType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('last_name')
+        $builder->add('last_name')->add('name')->add('roles')
 
             ->add('interets',EntityType::class,array(
             'class'=>'ProfilingBundle\Entity\Interet',
@@ -24,6 +25,19 @@ class UserType extends AbstractType
             'expanded'=>true,
 
         ))
+
+            ->add('roles', ChoiceType::class, array(
+                    'choices' => array(
+                        'Participant' => 'ROLE_PARTICIPANT',
+                        'Organisateur' => 'ROLE_ORGANISATEUR',
+                        'Blogueur' => 'ROLE_BLOGUEUR',
+                        'Admin' => 'ROLE_ADMIN'
+                    ),
+
+                    'multiple' => true,
+                    'expanded' => true
+                )
+            )
 
 
             ->add('devisFile', VichImageType::class);

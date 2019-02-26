@@ -13,7 +13,7 @@ class CategorieType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('libelecategorie')->add('photocategorie')->add('desccategorie');
+        $builder->add('libelecategorie')->add('desccategorie');
     }/**
      * {@inheritdoc}
      */

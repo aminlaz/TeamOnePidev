@@ -7,33 +7,31 @@
         <thead>
         <tr>
 
-            <th>Titrearticle</th>
-            <th>Contenuarticle</th>
-            <th>Photoarticle</th>
-            <th>Nbrvu</th>
-            <th>Nbrcomment</th>
-            <th>Datearticle</th>
-            <th>Actions</th>
+            <th><center>Titrearticle</center></th>
+            <th><center>Contenuarticle</center></th>
+            <th><center>Nbrvu</center></th>
+            <th><center>Nbrcomment</center></th>
+            <th><center>Datearticle</center></th>
+            <th><center>Actions</center></th>
         </tr>
         </thead>
         <tbody>
         {% for article in articles %}
             <tr>
 
-                <td>{{ article.titrearticle }}</td>
-                <td>{{ article.contenuarticle }}</td>
-                <td>{{ article.photoarticle }}</td>
-                <td>{{ article.nbrvu }}</td>
-                <td>{{ article.nbrcomment }}</td>
-                <td>{% if article.datearticle %}{{ article.datearticle|date('Y-m-d') }}{% endif %}</td>
+                <td><center>{{ article.titrearticle }}</center></td>
+                <td><center>{{ article.contenuarticle }}</center></td>
+                <td><center>{{ article.nbrvu }}</center></td>
+                <td><center>{{ article.nbrcomment }}</center></td>
+                <td>{% if article.datearticle %}<center>{{ article.datearticle|date('Y-m-d') }}</center>{% endif %}</td>
                 <td>
                     <ul>
-                        <li>
-                            <a href="{{ path('afficherunarticlebo', { 'id': article.id }) }}">Details</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('supprimerarticlebo', { 'id': article.id }) }}">Supprimer</a>
-                        </li>
+                        <br>
+                            <a href="{{ path('afficherunarticlebo', { 'id': article.id }) }}"><center>Details</center></a>
+
+
+                            <a href="{{ path('supprimerarticlebo', { 'id': article.id }) }}"><center>Supprimer</center></a>
+
                     </ul>
                 </td>
             </tr>
