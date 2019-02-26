@@ -2,4 +2,90 @@ index:
     path:     /
     defaults: { _controller: ProfilingBundle:Default:index }
 
+ajouter_interet_admin:
+    path:     /ajouterInteretAdmin
+    defaults: { _controller: ProfilingBundle:InteretAdmin:ajouterInteretAdmin }
 
+supprimer_interet_admin:
+    path:     /supprimerInteretAdmin/{id}
+    defaults: { _controller: ProfilingBundle:InteretAdmin:supprimerInteretAdmin }
+
+afficher_interet_admin:
+    path:     /afficherInteretAdmin
+    defaults: { _controller: ProfilingBundle:InteretAdmin:afficherInteretAdmin }
+
+ajouter_badge_admin:
+    path:     /ajouterBadgeAdmin
+    defaults: { _controller: ProfilingBundle:BadgeAdmin:ajouterBadgeAdmin }
+
+afficher_badge_admin:
+    path:     /afficherBadgeAdmin
+    defaults: { _controller: ProfilingBundle:BadgeAdmin:afficherBadgeAdmin }
+
+supprimer_badge_admin:
+    path:     /supprimerBadgeAdmin/{id}
+    defaults: { _controller: ProfilingBundle:BadgeAdmin:supprimerBadgeAdmin }
+
+modifier_badge_admin:
+    path:     /modifierBadgeAdmin/{id}
+    defaults: { _controller: ProfilingBundle:BadgeAdmin:modifierBadgeAdmin }
+
+modifier_interet_admin:
+    path:     /modifierInteretAdmin/{id}
+    defaults: { _controller: ProfilingBundle:InteretAdmin:modifierInteretAdmin }
+
+
+ajouter_interet_user:
+    path:     /ajouterInteretUser
+    defaults: { _controller: ProfilingBundle:InteretUser:ajouterInteretUser }
+
+supprimer_interet_user:
+    path:     /supprimerInteretUser
+    defaults: { _controller: ProfilingBundle:InteretUser:supprimerInteretUser }
+
+ajouter_interet_categorie:
+    path:     /ajouterInteretCategorie
+    defaults: { _controller: ProfilingBundle:InteretCategorie:ajouterInteretCategorie }
+
+supprimer_interet_categorie:
+    path:     /supprimerInteretCategorie/{id}
+    defaults: { _controller: ProfilingBundle:InteretCategorie:supprimerInteretCategorie }
+
+afficher_interet_categorie:
+    path:     /afficherInteretCategorie
+    defaults: { _controller: ProfilingBundle:InteretCategorie:afficherInteretCategorie }
+
+modifier_interet_categorie:
+    path:     /modifierInteretCategorie/{id}
+    defaults: { _controller: ProfilingBundle:InteretCategorie:modifierInteretCategorie }
+
+afficher_user:
+    path:     /afficherUser
+    defaults: { _controller: ProfilingBundle:BadgeAdmin:afficherUser }
+
+attribuer_badge:
+        path:     /attribuerBadge/{id}
+        defaults: { _controller: ProfilingBundle:BadgeAdmin:attribuerBadge }
+update:
+    path:     /update
+    defaults: { _controller: ProfilingBundle:Jareb:update }
+
+jareb:
+    path:     /jareb
+    defaults: { _controller: ProfilingBundle:Jareb:jareb }
+
+user_search:
+    path:     /search
+    defaults: { _controller: ProfilingBundle:BadgeAdmin:searchElement }
+
+visualiser_user:
+        path:     /userStat
+        defaults: { _controller: ProfilingBundle:User:visualiserUser }
+
+visualiser_user_badge:
+    path:     /userStatB
+    defaults: { _controller: ProfilingBundle:User:visualiserUserBadge }
+
+interet_search:
+    path:     /searchInt
+    defaults: { _controller: ProfilingBundle:InteretAdmin:searchInteret }

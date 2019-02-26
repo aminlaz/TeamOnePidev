@@ -11,14 +11,14 @@
     {% block title %}<title>Tech-Events Admin</title>{% endblock title %}
     <!-- plugins:css -->
     {% block css %}
-    <link rel="stylesheet" href="{{ asset('bo/vendors/iconfonts/mdi/css/materialdesignicons.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('bo/vendors/css/vendor.bundle.base.css') }}" >
-    <link rel="stylesheet" href="{{ asset('bo/vendors/css/vendor.bundle.addons.css') }}">
-    <!-- endinject -->
-    <!-- plugin css for this page -->
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <link rel="stylesheet" href="{{ asset('bo/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('bo/vendors/iconfonts/mdi/css/materialdesignicons.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('bo/vendors/css/vendor.bundle.base.css') }}" >
+        <link rel="stylesheet" href="{{ asset('bo/vendors/css/vendor.bundle.addons.css') }}">
+        <!-- endinject -->
+        <!-- plugin css for this page -->
+        <!-- End plugin css for this page -->
+        <!-- inject:css -->
+        <link rel="stylesheet" href="{{ asset('bo/css/style.css') }}">
     {% endblock css  %}
     <!-- endinject -->
     <link rel="shortcut icon" href="{{ asset('bo/images/favicon.png') }}" />
@@ -44,12 +44,12 @@
                     </a>
                 </li>
                 <li class="nav-item active">
-                    <a href="#" class="nav-link">
-                        <i class="mdi mdi-elevation-rise"></i>Reports</a>
+                    <a href="{{ path('visualiser_user_badge')}}" class="nav-link">
+                        <i class="mdi mdi-elevation-rise"></i>Rapport des badges</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="mdi mdi-bookmark-plus-outline"></i>Score</a>
+                    <a href="{{ path('visualiser_user')}}" class="nav-link">
+                        <i class="mdi mdi-bookmark-plus-outline"  ></i>Rapport des scores</a>
                 </li>
             </ul>
             <ul class="navbar-nav navbar-nav-right">
@@ -241,27 +241,64 @@
                 <!-- ajouter les boutons des pages ici -->
 
                 <!-- ceci un exemple d'un boutons simple -->
-                <li class="nav-item">
-                    <a class="nav-link" href=""   ><!--metre le lien de la page dans href exmeple "{{ asset('exemple') }}" -->
-                    <i class="menu-icon mdi mdi-backup-restore"></i>
-                    <span class="menu-title">Form elements</span>
-                    </a>
-                </li>
+
                 <!-- ceci un exemple d'un bouton qui a deux boutons a l'interieur pour mieux catagorisé -->
+
+
+
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic" >
+                    <a class="nav-link" data-toggle="collapse" href="#gestion_int" aria-expanded="false" aria-controls="ui-basic" >
                         <i class="menu-icon mdi mdi-content-copy"></i>
-                        <span class="menu-title">Basic UI Elements</span>
+                        <span class="menu-title">Gestion des intérets</span>
+
                         <i class="menu-arrow"></i>
                     </a>
 
-                    <div class="collapse" id="ui-basic">
+                    <div class="collapse" id="gestion_int">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item">
-                                <a class="nav-link" href=""  >  Buttons     </a> <!--metre le lien de la page dans href exmeple "{{ asset('exemple') }}" -->
+                                <a class="nav-link" href="{{ path('ajouter_interet_categorie')}}"  >  Ajouter une catégorie     </a> <!--metre le lien de la page dans href exmeple "{{ asset('exemple') }}" -->
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href=""  >Typography      </a> <!--metre le lien de la page dans href exmeple "{{ asset('exemple') }}" -->
+                                <a class="nav-link" href="{{ path('afficher_interet_categorie')}}"  >  Afficher les catégories       </a> <!--metre le lien de la page dans href exmeple "{{ asset('exemple') }}" -->
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('ajouter_interet_admin')}}"  >  Ajouter un intéret     </a> <!--metre le lien de la page dans href exmeple "{{ asset('exemple') }}" -->
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('afficher_interet_admin')}}"  >Afficher les intérets      </a> <!--metre le lien de la page dans href exmeple "{{ asset('exemple') }}" -->
+                            </li>
+
+
+                        </ul>
+                    </div>
+                </li>
+
+
+
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#gestion_badge" aria-expanded="false" aria-controls="ui-basic" >
+                        <i class="menu-icon mdi mdi-content-copy"></i>
+                        <span class="menu-title">Gestion des badges</span>
+
+                        <i class="menu-arrow"></i>
+                    </a>
+
+                    <div class="collapse" id="gestion_badge">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('ajouter_badge_admin')}}"  >  Ajouter un type      </a> <!--metre le lien de la page dans href exmeple "{{ asset('exemple') }}" -->
+                            </li>
+
+
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('afficher_badge_admin')}}"  >Afficher les types      </a> <!--metre le lien de la page dans href exmeple "{{ asset('exemple') }}" -->
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('afficher_user')}}"  >Attribuer un badge      </a> <!--metre le lien de la page dans href exmeple "{{ asset('exemple') }}" -->
                             </li>
                         </ul>
                     </div>
@@ -312,18 +349,18 @@
 
 <!-- plugins:js -->
 {% block js %}
-<script src=" {{ asset('bo/vendors/js/vendor.bundle.base.js') }} "></script>
-<script src=" {{ asset('bo/vendors/js/vendor.bundle.addons.js') }} "></script>
-<!-- endinject -->
-<!-- Plugin js for this page-->
-<!-- End plugin js for this page-->
-<!-- inject:js -->
-<script src="{{ asset('bo/js/off-canvas.js') }}"></script>
-<script src="{{ asset('bo/js/misc.js') }}"></script>
-<!-- endinject -->
-<!-- Custom js for this page-->
-<script src="{{ asset('bo/js/dashboard.js') }}"></script>
-<!-- End custom js for this page-->
+    <script src=" {{ asset('bo/vendors/js/vendor.bundle.base.js') }} "></script>
+    <script src=" {{ asset('bo/vendors/js/vendor.bundle.addons.js') }} "></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page-->
+    <!-- End plugin js for this page-->
+    <!-- inject:js -->
+    <script src="{{ asset('bo/js/off-canvas.js') }}"></script>
+    <script src="{{ asset('bo/js/misc.js') }}"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="{{ asset('bo/js/dashboard.js') }}"></script>
+    <!-- End custom js for this page-->
 {% endblock js %}
 </body>
 

@@ -1,0 +1,100 @@
+<html>
+<head>
+</head>
+<body>
+<center><label for="typesomething">press something</label><input class="typesomething" placeholder="a7chi lil me7chi" type="number"></center>
+<select class="searchcriteria">
+    <option value="id">by id</option>
+    <option value="somestuff">by somestuff</option>
+</select>
+<table border="2px" class="row">
+    {% for x in data %}
+        <tr><td>id</td><td>{{ x.id }}</td><td>{{ x.somestuff }}</td><td><button class="clicked" id="{{ x.id }}">delete</button></td>
+            <td><input type="number" id="{{ x.id }}" class="done" placeholder="update"></tr>
+    {% endfor %}
+</table>
+
+<label for="adddata"></label><input id="adddata" type="number">
+<button class="senddata">send data</button>
+<script language = "javascript"
+        src = "https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+<script language = "javascript">
+    $(document).on('click','button.clicked',function () {
+        $.ajax(
+            {
+                type:'POST',
+                dataType:'json',
+                data:{'id':$(this).attr('id'),'stuff':5},
+                async:true,
+                success:function (data) {
+                    $('.row').empty();
+                    $.each(data, function(i, item) {
+                        var id=data[i].id;
+                        var stuff=data[i].somestuff;
+                        var classes="clicked";
+                        console.log(data[i].id);
+                        $('.row').append("<tr><td>id</td><td>"+id+"</td><td>"+stuff+"</td><td><button class=\"clicked\" id=\""+id+"\">delete</button></td></tr>")
+                    })
+                },
+                error:function () {
+                    alert("impossible");
+                }
+            });
+    });
+
+
+    $(document).on('click','button.senddata',function () {
+        $.ajax(
+            {
+                type:'POST',
+                dataType:'json',
+                data:{'somestuff':$('#adddata').val(),'stuff':5},
+                async:true,
+                success:function (data) {
+                    $('.row').empty();
+                    $.each(data, function(i, item) {
+                        var id=data[i].id;
+                        var stuff=data[i].somestuff;
+                        var classes="clicked";
+                        console.log(data[i].id);
+                        $('.row').append("<tr><td>id</td><td>"+id+"</td><td>"+stuff+"</td><td><button class=\"clicked\" id=\""+id+"\">delete</button></td></tr>")
+                    })
+                },
+                error:function () {
+                    alert("impossible");
+                }
+            });
+    });
+
+    $(document).on('keyup','input.typesomething',function () {
+        $.ajax(
+            {
+                type:'POST',
+                url: '{{ path('update')}}',
+
+                dataType:'json',
+                data:{'criteria':$('.searchcriteria').val(),'value':$('.typesomething').val()},
+                async:true,
+                success:function (data) {
+                    console.log(data);
+                    $('.row').empty();
+                    $.each(data, function(i, item) {
+                        var id=data[i].id;
+                        var stuff=data[i].somestuff;
+                        var classes="clicked";
+                        console.log(data[i].id);
+                        $('.row').append("<tr><td>id</td><td>"+id+"</td><td>"+stuff+"</td><td><button class=\"clicked\" id=\""+id+"\">delete</button></td>"+
+                            "<td><input type=\"number\" id=\""+id+"\" class=\"done\" placeholder=\"update\"></tr>")
+                    })
+                },
+                error:function () {
+                    alert("impossible");
+                }
+            });
+    });
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+{% extends 'basebo.html.twig' %}
+
+{% block content %}
+
+
+    <input class="mins" placeholder="Score minimum" type="number"></center>
+  <input class="maxs" placeholder="Score minimum" type="number"></center>
+
+
+
+
+
+    <h1>Liste des badges</h1>
+    <table border="2"  class="c">
+        <tr>
+           <th>User</th><th>Score</th><th>Attribuer un badge</th><th>Badge</th>
+        </tr>
+
+        {% for p in data %}
+            <tr>
+
+                <td>{{ p.name }}</td>
+                <td>{{ p.score }}</td>
+                <td>
+                    {% if p.badge %}
+
+                        <a href="{{ path('attribuer_badge' ,{'id':p.id})}}" >Modifier</a>
+
+
+                    {% else %}
+
+                    <a href="{{ path('attribuer_badge' ,{'id':p.id})}}" >Attribuer</a>
+                    {% endif %}
+
+
+                </td>
+
+                {% if p.badge %}
+
+                <td><img src="{{ asset('devis/' ~ p.badge.devisName) }}" height="150px"><td>
+
+                    {% endif %}
+
+
+
+
+
+            </tr>
+        {% endfor %}
+
+
+            </table>
+
+    <script language = "javascript"
+            src = "https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+    <script language = "javascript">
+
+        $(document).on('keyup','input.mins, input.maxs',function () {
+            $.ajax(
+                {
+                    type:'POST',
+                    url: '{{ path('user_search')}}',
+                    dataType:'json',
+                    data:{'min':$('.mins').val(),'max':$('.maxs').val()},
+                    async:true,
+                    success:function (data) {
+                        console.log(data);
+                        $('.c').empty();
+                        $('.c').append("<tr><th>User</th>"+"<th>Score</th>"+"<th>Attribuer un badge</th>"+"<th>Badge</th></tr>");
+
+                        $.each(data, function(i) {
+
+                            var name=data[i].name;
+                            var score=data[i].score;
+                            var id=data[i].id;
+                            var badge=data[i].badge;
+
+
+
+
+
+
+
+
+                            console.log(data[i].id);
+                            $('.c').append("<tr><td>"+name+"</td>"+"<td>"+score+"</td><td><a href='http://localhost/Profiling/web/app_dev.php/attribuerBadge/"+id+"'>Attribuer</a></td><td>"+badge+"</td></tr>");
+
+
+
+
+
+
+
+
+
+
+
+                        })
+                    },
+                    error:function () {
+                        alert("impossible");
+                    }
+                });
+        });
+
+    </script>
+
+
+{% endblock %}
