@@ -1,0 +1,200 @@
+{% extends 'base.html.twig' %}
+{% block title %} <title>Events</title> {% endblock title %}
+{% block menu_events %} class="active" {% endblock menu_events %}
+{% block current_page %}
+    <div class="home_content_container">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="home_content d-flex flex-row align-items-end justify-content-start">
+                        <div class="current_page">Events</div>
+                        <div class="breadcrumbs ml-auto">
+                            <ul>
+                                <li><a href="{{ path('index') }}">Home</a></li>
+                                <li>Events</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock current_page %}
+{% block content %}
+    <div class="container" style="padding-top: 50px;">
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            {% if(app.user.hasRole("ROLE_ORGANISATEUR")) %}
+                <div class="button header_button">
+                    <a class="dropdown-item " href="{{ path('events_new') }} ">
+                        Add Event
+                    </a>
+                </div>
+                <div class="button header_button">
+                    <a class="dropdown-item " href="{{ path('events_index',{'mine':'1'}) }} ">
+                        My Events
+                    </a>
+                </div>
+                <div class="button header_button float_right" >
+                    <a style="color: white" data-toggle="modal" data-target="#myModal" >Statistiques</a>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content ">
+                            <div id="div_piechart"></div>
+                            <div id="div_histogram"></div>
+
+                            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                            <script type="text/javascript">
+                                {{ gc_draw([piechart, histogram], ['div_piechart', 'div_histogram']) }}
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal -->
+
+
+
+            {% endif %}
+        {% endif %}
+    </div>
+
+
+
+    <div class="events" style="padding-top: 50px;">
+        <div class="container">
+            <div>
+                <form class="input-group mb-3" action="{{ path('events_index') }}" method="get" >
+                    <input class="form-control" name="rechercheN" type="text" placeholder="rechercher un nom" >
+                    <input class="form-control" name="rechercheD" type="text" placeholder="rechercher dans une description" >
+                    <div class="input-group-append">
+                    <button type="submit" class="btn btn-outline-secondary">Rechercher</button>
+                    </div>
+                </form>
+
+                <form action="{{ path('events_index') }}" method="get"
+                      style="display:inline; margin:0px; padding:15px;">
+
+
+
+                    <label >  Gratuit : </label>
+                    <input name="free" type="checkbox" value="free" style="width: 35px;" >
+
+                    <label >  Places Disponibles : </label>
+                    <input name="pascomplet" type="checkbox" value="pascomplet" style="width: 35px;" >
+
+                    <input list="browsers" name="eventtype">
+
+                    <datalist id="browsers">
+                        {% for type in eventtype %}
+                        <option value="{{ type.name }}">
+                        {% endfor %}
+                    </datalist>
+
+                    <button type="submit" class="btn btn-default btn-sm float-left"  >filtrer</button>
+
+                </form>
+            </div>
+        </div>
+        {% for event in events %}
+
+
+            <div class="container">
+
+
+                <div class="event" style="padding-top: 50px; padding-bottom: 50px;">
+                    <div class="row row-lg-eq-height">
+                        <div class="col-lg-6 ">
+                            <div class="event_image_container">
+                                <div class="background_image"
+                                     style="background-image:url({{ asset('images/event_9.jpg') }})"></div>
+                                <div class="date_container">
+                                    <a href="#">
+											<span class="date_content d-flex flex-column align-items-center justify-content-center">
+												<div class="date_day">{{ event.date|date('d') }}</div>
+												<div class="date_month">{{ event.date|date('M') }}</div>
+											</span>
+                                    </a>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-lg-6 event_col">
+                            <div class="event_content">
+                                <div class="event_title">{{ event.name }}</div>
+                                <div class="event_location">{{ event.etat }}</div>
+                                <div class="event_text">
+                                    <p>  {{ event.description|length > 50 ? event.description|slice(0, 100)|split(' ')|slice(0, -1)|join(' ') ~ '…' : event.description }} </p>
+                                </div>
+
+                                <div class="event_speakers">
+                                    <!-- Event Speaker -->
+                                    <div class="event_speaker d-flex flex-row align-items-center justify-content-start">
+                                        <div>
+                                            <div class="event_location"> Organisateur :</div>
+                                            <div class="event_speaker_name">{{ event.idorganisateur.name ~ ' ' ~ event.idorganisateur.lastname }}</div>
+                                            <div class="event_speaker_title"></div>
+                                        </div>
+                                    </div>
+                                    <!-- Event Speaker -->
+                                </div>
+                                <div class="event_buttons">
+                                    <div class="button event_button event_button_1"><a href="#">Buy Tickets Now!</a>
+                                    </div>
+                                    <div class="button_2 event_button event_button_2"><a
+                                                href="{{ path('events_show', { 'id': event.id }) }}">Read more</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        {% endfor %}
+        <div class="container ">
+            <div class="d-flex justify-content-center">
+                <div class="navigation ">
+                    {{ knp_pagination_render(events) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    {#
+
+          {% for event in events %}
+              <tr>
+                  <td><a href="{{ path('events_show', { 'id': event.id }) }}">{{ event.id }}</a></td>
+                  <td>{{ event.name }}</td>
+                  <td>{{ event.description }}</td>
+                  <td>{{ event.adresse }}</td>
+                  <td>{{ event.etat }}</td>
+                  <td>{{ event.ville }}</td>
+                  <td>{{ event.codepostal }}</td>
+                  <td>{% if event.free %}Yes{% else %}No{% endif %}</td>
+                  <td>{{ event.prix }}</td>
+                  <td>{{ event.capacity }}</td>
+                  <td>{{ event.reserved }}</td>
+                  <td>{% if event.date %}{{ event.date|date('Y-m-d') }}{% endif %}</td>
+                  <td>{% if event.time %}{{ event.time|date('H:i:s') }}{% endif %}</td>
+                  <td>{{ event.numberofdays }}</td>
+                  <td>
+                      <ul>
+                          <li>
+                              <a href="{{ path('events_show', { 'id': event.id }) }}">show</a>
+                          </li>
+                          <li>
+                              <a href="{{ path('events_edit', { 'id': event.id }) }}">edit</a>
+                          </li>
+                      </ul>
+                  </td>
+              </tr>
+          {% endfor %}
+  #}
+
+{% endblock %}

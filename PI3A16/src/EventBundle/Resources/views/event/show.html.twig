@@ -1,0 +1,499 @@
+{% extends 'base.html.twig' %}
+
+{% block menu_events %} class="active" {% endblock menu_events %}
+{% block current_page %}
+    <div class="home_content_container">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="home_content d-flex flex-row align-items-end justify-content-start">
+                        <div class="current_page">Events</div>
+                        <div class="breadcrumbs ml-auto">
+                            <ul>
+                                <li><a href="{{ path('index') }}">Home</a></li>
+                                <li>Events</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock current_page %}
+{% block content %}
+    <div class="container" style="padding-top: 50px;">
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            {% if(app.user.id == event.idorganisateur.id) %}
+
+                <div class="button header_button">
+                    <a href="{{ path('events_edit', { 'id': event.id }) }}">Edit Event</a>
+                </div>
+
+                <div class="button header_button">
+                    <a href="{{ path('events_delete', { 'id': event.id }) }}" data-method="delete">Delete Event</a>
+                </div>
+
+
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <div class="events" style="padding-top: 50px; padding-bottom: 50px">
+
+        <div class="container">
+
+
+            <div class="event" style="padding-top: 50px; padding-bottom: 50px;">
+                <div class="row row-lg-eq-height">
+                    <div class="col-lg-6 ">
+                        <div class="event_image_container">
+                            <div class="background_image"
+                                 style="background-image:url({{ asset('images/event_9.jpg') }})"></div>
+                            <div class="date_container">
+                                <a href="#">
+											<span class="date_content d-flex flex-column align-items-center justify-content-center">
+												<div class="date_day">{{ event.date|date('d') }}</div>
+												<div class="date_month">{{ event.date|date('M') }}</div>
+											</span>
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="col-lg-6 event_col">
+                        <div class="event_content">
+                            <div class="event_title">{{ event.name }}</div>
+                            <br>
+
+                            <div class="event_location"> Emplacement :</div>
+                            {{ event.etat ~', '~ event.ville ~' '~event.codepostal }} <br>
+                            {{ event.adresse }} <br>
+                            <div class="event_location"> Nombre de jours :</div>
+                            {{ event.numberofdays }}
+                            <br>
+                            {% if event.time %}
+                                <div class="event_location"> Heure de Debut :</div>
+                                {{ event.time|date('H:i:s') }}
+                            {% endif %}
+                            <div class="event_text">
+                                <div class="event_location"> Description :</div>
+                                <br>
+                                <p>{{ event.description }}</p>
+                            </div>
+                            <br>
+                            <div class="event_location"> Type de l'd’événement :</div>
+                            {{ event.eventtype.name }}
+                            <br> <br>
+                            <div class="event_location"> Prix :</div>
+                            {% if event.free %}Gratuit{% else %} {{ event.prix }} {% endif %}
+                            <br> <br>
+
+                            <div class="event_location"> Capacité :</div>
+                            {{ event.capacity }}
+                            <br> <br>
+
+                            <div class="event_location"> Place Disponible :</div>
+                            {{ event.capacity-event.reserved }}
+                            <br>
+
+                            <div class="event_speakers">
+                                <!-- Event Speaker -->
+                                <div class="event_speaker d-flex flex-row align-items-center justify-content-start">
+                                    <div>
+                                        <div class="event_location"> Organisateur :</div>
+                                        <div class="event_speaker_name">{{ event.idorganisateur.name ~ ' ' ~ event.idorganisateur.lastname }}</div>
+                                        <div class="event_speaker_title"></div>
+                                    </div>
+                                </div>
+                                <!-- Event Speaker -->
+                            </div>
+                            <div class="event_buttons">
+                                <div class="button event_button event_button_1">
+                                    <a href="#">Buy Tickets Now!</a>
+                                </div>
+                                <div class="button_2 event_button event_button_2">
+                                    <a href="{{ path('events_show', { 'id': event.id }) }}">Read more</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="events" style="padding-top: 50px; padding-bottom: 50px">
+
+        <div class="container">
+
+            {% if myreview == null %}
+                {% set reviewed = 'no' %}
+            {% else %}
+                {% set reviewed = 'yes' %}
+            {% endif %}
+
+            <!-- avreage rating -->
+
+            <div id="avg-rating" style="margin: 0 auto;  text-align: center;  width: 60%;">
+                <section class='rating-widget'>
+                    <div class='success-box'>
+                        <h3>Average review rate : </h3>
+                        {% if avgrate %}
+                            <h2 style="padding: 10px">{{ avgrate.rate|round(2,"floor") }}</h2>
+                            {% for i in range(1, avgrate.rate|round(2,"floor")) %}
+                                <span style="font-size: 2em;"><i class="text-warning fa fa-star "></i></span>
+                            {% endfor %}
+                        {% else %}
+                            <h2 style="padding: 10px">no reviews yet</h2>
+                        {% endif %}
+                    </div>
+                </section>
+            </div>
+            <!-- avreage rating -->
+
+
+            <!-- add rating if user haven't rated this yet or show the user's review -->
+            {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                {% if reviewed=='no' %}
+                    <div id="add-rating" style="margin: 0 auto;  text-align: center;  width: 60%;">
+
+                        <form method="POST" id="addreview">
+                            <section class='rating-widget'>
+
+
+                                <!-- Rating Stars Box -->
+                                <div class='success-box'>
+                                    <h3>Add a review</h3>
+                                    <br>
+                                    <div class="form-group">
+                                        <div class='rating-stars text-center'>
+                                            <ul id='stars'>
+                                                <li class='star' title='Poor' data-value='1'>
+                                                    <i class='fa fa-star fa-fw'></i>
+                                                </li>
+                                                <li class='star' title='Fair' data-value='2'>
+                                                    <i class='fa fa-star fa-fw'></i>
+                                                </li>
+                                                <li class='star' title='Good' data-value='3'>
+                                                    <i class='fa fa-star fa-fw'></i>
+                                                </li>
+                                                <li class='star' title='Excellent' data-value='4'>
+                                                    <i class='fa fa-star fa-fw'></i>
+                                                </li>
+                                                <li class='star' title='WOW!!!' data-value='5'>
+                                                    <i class='fa fa-star fa-fw'></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class='clearfix'></div>
+                                        <input type="number" name="reviewrate" class="text-message" required hidden><br>
+                                        <div class='text-message'></div>
+                                        <div class='clearfix'></div>
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+                                        <textarea class="form-control" style="width: 600px;height: 94px;"
+                                                  name="reviewtext"
+                                                  form="addreview" placeholder="Enter review here..."
+                                                  required></textarea>
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+                                        <input class="btn btn-primary" type="submit" value="ajouter">
+                                    </div>
+
+                                </div>
+
+
+                            </section>
+
+
+                        </form>
+                    </div>
+                {% elseif reviewed=='yes' %}
+                    <div id="showmyreview">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <img src="https://image.ibb.co/jw55Ex/def_face.jpg"
+                                             class="img img-rounded img-fluid"/>
+                                        <!-- <p class="text-secondary text-center">15 Minutes Ago</p> -->
+                                    </div>
+                                    <div class="col-md-10">
+                                        <p>
+                                            <a class="float-left"
+                                               href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>{{ myreview.iduser.name }}</strong></a>
+                                            {% for i in range(1, myreview.rate) %}
+                                                <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                                            {% endfor %}
+
+
+                                        </p>
+                                        <div class="clearfix"></div>
+                                        <p>{{ myreview.reviewtext }}</p>
+                                        <p>
+                                            <i class="fa fa-heart"></i> {{ myreview.likes }}
+                                            <a class="float-right btn text-white btn-dark"
+                                               href="{{ path('review_delete', { 'id': myreview.id ,'idevent' : event.id}) }}">Delete
+                                                Review</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                {% endif %}
+            {% endif %}
+            <!-- add rating if user haven't rated this yet or show the user's review -->
+
+
+            <!-- show all ratings by event -->
+            <div class="container">
+                {% for review in reviews %}
+                    {% if review==myreview %}
+                {% else %}
+                    <div class="card">
+                    <div class="card-body">
+                    <div class="row">
+                    <div class="col-md-2">
+                        <img src="https://image.ibb.co/jw55Ex/def_face.jpg"
+                             class="img img-rounded img-fluid"/>
+                        <!-- <p class="text-secondary text-center">15 Minutes Ago</p> -->
+                    </div>
+                    <div class="col-md-10">
+                    <p>
+                        <a class="float-left"
+                           href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>{{ review.iduser.name }}</strong></a>
+                        {% for i in range(1, review.rate) %}
+                            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                        {% endfor %}
+
+
+                    </p>
+                    <div class="clearfix"></div>
+                    <p>{{ review.reviewtext }}</p>
+                    <p>
+                    <i class="fa fa-heart"></i> {{ review.likes }}
+                    {% set liked = 'false' %}
+                    {% for reviewlike in reviewlikes %}
+                        {% if reviewlike.idreview == review     %}
+                            {% set liked = 'true' %}
+                        {% endif %}
+                    {% endfor %}
+                    {% if liked=='false' %}
+                        <a class="float-right btn text-white btn-danger"
+                           href="{{ path('review_like', { 'id': review.id ,'idevent' : event.id}) }}"> <i
+                                    class="fa fa-heart"></i>
+                            Like</a>
+                    {% else %}
+                        <a class="float-right btn text-white btn-dark"
+                           href="{{ path('review_like', { 'id': review.id ,'idevent' : event.id}) }}"> <i
+                                    class="fa fa-heart"></i>
+                            Dislike</a>
+                        {% endif %}
+
+                        </p>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+
+
+            </div>
+        </div>
+    </div>
+
+
+    {#
+
+                    <div id="show-ratings">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Reviewtext</th>
+                            <th>Rate</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for review in reviews %}
+
+                            <tr>
+                                <td><a href="{{ path('review_show', { 'id': review.id }) }}">{{ review.id }}</a></td>
+                                <td>{{ review.reviewtext }}</td>
+                                <td>{{ review.rate }}</td>
+                                <td>
+                                    <ul>
+                                        <li>
+                                            <a href="{{ path('review_show', { 'id': review.id }) }}">show</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('review_edit', { 'id': review.id }) }}">edit</a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <ul>
+                        <li>
+                            <a href="{{ path('review_new') }}">Create a new review</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- show all ratings by event -->
+    #}
+
+
+
+    <style>
+
+        .clearfix {
+            clear: both;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        a {
+            color: tomato;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #2196f3;
+        }
+
+        pre {
+            display: block;
+            padding: 9.5px;
+            margin: 0 0 10px;
+            font-size: 13px;
+            line-height: 1.42857143;
+            color: #333;
+            word-break: break-all;
+            word-wrap: break-word;
+            background-color: #F5F5F5;
+            border: 1px solid #CCC;
+            border-radius: 4px;
+        }
+
+        .success-box {
+            margin: 50px 0;
+            padding: 10px 10px;
+            border: 1px solid #eee;
+            background: #f9f9f9;
+        }
+
+        .success-box img {
+            margin-right: 10px;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .success-box > div {
+            vertical-align: top;
+            display: inline-block;
+            color: #888;
+        }
+
+        /* Rating Star Widgets Style */
+        .rating-stars ul {
+            list-style-type: none;
+            padding: 0;
+
+            -moz-user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .rating-stars ul > li.star {
+            display: inline-block;
+
+        }
+
+        /* Idle State of the stars */
+        .rating-stars ul > li.star > i.fa {
+            font-size: 2.5em; /* Change the size of the stars */
+            color: #ccc; /* Color on idle state */
+        }
+
+        /* Hover state of the stars */
+        .rating-stars ul > li.star.hover > i.fa {
+            color: #FFCC36;
+        }
+
+        /* Selected state of the stars */
+        .rating-stars ul > li.star.selected > i.fa {
+            color: #FF912C;
+        }
+
+
+    </style>
+
+
+    <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+
+            /* 1. Visualizing things on Hover - See next part for action on click */
+            $('#stars li').on('mouseover', function () {
+                var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
+
+                // Now highlight all the stars that's not after the current hovered star
+                $(this).parent().children('li.star').each(function (e) {
+                    if (e < onStar) {
+                        $(this).addClass('hover');
+                    }
+                    else {
+                        $(this).removeClass('hover');
+                    }
+                });
+
+            }).on('mouseout', function () {
+                $(this).parent().children('li.star').each(function (e) {
+                    $(this).removeClass('hover');
+                });
+            });
+
+
+            /* 2. Action to perform on click */
+            $('#stars li').on('click', function () {
+                var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+                var stars = $(this).parent().children('li.star');
+
+                for (i = 0; i < stars.length; i++) {
+                    $(stars[i]).removeClass('selected');
+                }
+
+                for (i = 0; i < onStar; i++) {
+                    $(stars[i]).addClass('selected');
+                }
+
+                // JUST RESPONSE (Not needed)
+                var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
+                $test = $("input[name='reviewrate']").val(ratingValue);
+                // $('.success-box div.text-message').html("<span>" + $test.val() + "</span>");
+
+            });
+
+
+        });
+
+
+    </script>
+
+{% endblock %}
+
+

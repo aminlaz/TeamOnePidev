@@ -5,7 +5,6 @@ namespace CommunicationBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class CategorieForumType extends AbstractType
 {
@@ -14,7 +13,7 @@ class CategorieForumType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('description',TextareaType::class);
+        $builder->add('nom')->add('description');
     }/**
      * {@inheritdoc}
      */

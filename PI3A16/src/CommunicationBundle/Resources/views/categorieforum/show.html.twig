@@ -1,9 +1,9 @@
-{% extends 'basebo.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block content %}
-    <h2>Affichage des catégories de questions</h2>
-    <br>
-    <table border="1px" width="400" style="text-align:center">
+{% block body %}
+    <h1>Categorieforum</h1>
+
+    <table>
         <tbody>
             <tr>
                 <th>Id</th>
@@ -19,13 +19,18 @@
             </tr>
         </tbody>
     </table>
-            <br>
-            <a class="btn btn-primary" href="{{ path('categorieforum_edit', { 'id': categorieForum.id }) }}">Modifier</a>
+
+    <ul>
+        <li>
+            <a href="{{ path('categorieforum_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('categorieforum_edit', { 'id': categorieForum.id }) }}">Edit</a>
+        </li>
+        <li>
             {{ form_start(delete_form) }}
-            <input class="btn btn-danger" type="submit" value="Supprimer">
+                <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
-            <br>
-            <a class="btn btn-dark" href="{{ path('categorieforum_index') }}">Afficher la liste des catégories</a>
-
-
-{% endblock content %}
+        </li>
+    </ul>
+{% endblock %}

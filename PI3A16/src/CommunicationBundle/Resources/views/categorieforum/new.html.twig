@@ -1,14 +1,16 @@
 {% extends 'basebo.html.twig' %}
 
 {% block content %}
-    <h2>Creation des catégories des questions</h2>
-    <br>
-<div style="max-width: 650px">
+    <h1>Categorieforum creation</h1>
+
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input class="btn btn-success btn-block" style="width:110px" type="submit" value="Créer" />
+        <input type="submit" value="Create" />
     {{ form_end(form) }}
-</div>
-    <br>
-    <a class="btn btn-dark" href="{{ path('categorieforum_index') }}">Afficher la liste des catégories</a>
-{% endblock content %}
+
+    <ul>
+        <li>
+            <a href="{{ path('categorieforum_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

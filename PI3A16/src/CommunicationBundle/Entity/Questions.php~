@@ -38,14 +38,9 @@ class Questions
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="datetime")
+     * @ORM\Column(name="date", type="date")
      */
     private $date;
-
-    public function __construct()
-    {
-        $this->date = new \DateTime();
-    }
 
     /**
      * @var int
@@ -69,13 +64,6 @@ class Questions
     private $resolue;
 
     /**
-     * @var bool
-     *
-     * @ORM\Column(name="Approuver", type="boolean")
-     */
-    private $approuver;
-
-    /**
      * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
@@ -83,16 +71,10 @@ class Questions
 
     /**
      * @ORM\ManyToOne(targetEntity="CommunicationBundle\Entity\CategorieForum")
-     * @ORM\JoinColumn(name="categorie_question", referencedColumnName="id")
+     * @ORM\JoinColumn(name="categorie_question", referencedColumnName="nom")
      */
     private $categorie;
 
-
-    /**
-     * @ORM\OneToOne(targetEntity="CommunicationBundle\Entity\Reponses")
-     * @ORM\JoinColumn(name="meilleurReponse_id", referencedColumnName="id")
-     */
-    private $idMR;
 
     /**
      * Get id
@@ -271,54 +253,4 @@ class Questions
     {
         return $this->idUser;
     }
-
-    /**
-     * Set categorie
-     *
-     * @param \CommunicationBundle\Entity\CategorieForum $categorie
-     *
-     * @return Questions
-     */
-    public function setCategorie(\CommunicationBundle\Entity\CategorieForum $categorie = null)
-    {
-        $this->categorie = $categorie;
-
-        return $this;
-    }
-
-    /**
-     * Get categorie
-     *
-     * @return \CommunicationBundle\Entity\CategorieForum
-     */
-    public function getCategorie()
-    {
-        return $this->categorie;
-    }
-
-    /**
-     * Set approuver
-     *
-     * @param boolean $approuver
-     *
-     * @return Questions
-     */
-    public function setApprouver($approuver)
-    {
-        $this->approuver = $approuver;
-
-        return $this;
-    }
-
-    /**
-     * Get approuver
-     *
-     * @return boolean
-     */
-    public function getApprouver()
-    {
-        return $this->approuver;
-    }
-
-    public function __toString(){ return $this->question; }
 }

@@ -1,0 +1,9 @@
+notification_index:
+    path:     /
+    defaults: { _controller: "NotificationBundle:Notification:index" }
+    methods:  GET
+
+notification_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "NotificationBundle:Notification:delete" }
+    methods:  GET

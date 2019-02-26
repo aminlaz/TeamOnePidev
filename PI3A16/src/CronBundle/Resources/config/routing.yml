@@ -1,0 +1,3 @@
+cron_homepage:
+    path:     /CronIndex
+    defaults: { _controller: CronBundle:Default:index }

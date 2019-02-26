@@ -4,7 +4,6 @@ namespace CommunicationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-
 /**
  * CategorieForum
  *
@@ -94,6 +93,4 @@ class CategorieForum
     {
         return $this->description;
     }
-
-    public function __toString(){ return $this->nom; }
 }

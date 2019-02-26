@@ -1,0 +1,24 @@
+typereclamation_index:
+    path:     /
+    defaults: { _controller: "ReclamationBundle:TypeReclamation:index" }
+    methods:  GET
+
+typereclamation_show:
+    path:     /{id}/show
+    defaults: { _controller: "ReclamationBundle:TypeReclamation:show" }
+    methods:  GET
+
+typereclamation_new:
+    path:     /new
+    defaults: { _controller: "ReclamationBundle:TypeReclamation:new" }
+    methods:  [GET, POST]
+
+typereclamation_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ReclamationBundle:TypeReclamation:edit" }
+    methods:  [GET, POST]
+
+typereclamation_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ReclamationBundle:TypeReclamation:delete" }
+    methods:  DELETE

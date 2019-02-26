@@ -21,4 +21,4 @@ categorieforum_edit:
 categorieforum_delete:
     path:     /{id}/delete
     defaults: { _controller: "CommunicationBundle:CategorieForum:delete" }
-
+    methods:  DELETE

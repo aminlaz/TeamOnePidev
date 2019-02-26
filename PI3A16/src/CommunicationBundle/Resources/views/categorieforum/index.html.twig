@@ -1,32 +1,41 @@
 {% extends 'basebo.html.twig' %}
 
 {% block content %}
-    <h1>Catégories des Questions</h1>
-    <br>
-    <table border="1px" width="900">
+    <h1>Categorieforums list</h1>
+
+    <table>
+        <thead>
             <tr>
-                <th style="text-align:center">Id</th>
-                <th style="text-align:center">Nom</th>
-                <th style="text-align:center">Description</th>
-                <th style="text-align:center">Actions</th>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for categorieForum in categorieForums %}
             <tr>
-                <td style="text-align:center"><a href="{{ path('categorieforum_show', { 'id': categorieForum.id }) }}">{{ categorieForum.id }}</a></td>
-                <td style="text-align:center">{{ categorieForum.nom }}</td>
-                <td style="text-align:center">{{ categorieForum.description }}</td>
-                <td align="center">
-                    <a class="btn btn-dark" href="{{ path('categorieforum_show', { 'id': categorieForum.id }) }}">Afficher</a>
-                    <a class="btn btn-primary" href="{{ path('categorieforum_edit', { 'id': categorieForum.id }) }}">Modifier</a>
-                    <a class="btn btn-danger" href="{{ path('categorieforum_delete', { 'id': categorieForum.id }) }}">Supprimer</a>
+                <td><a href="{{ path('categorieforum_show', { 'id': categorieForum.id }) }}">{{ categorieForum.id }}</a></td>
+                <td>{{ categorieForum.nom }}</td>
+                <td>{{ categorieForum.description }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('categorieforum_show', { 'id': categorieForum.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('categorieforum_edit', { 'id': categorieForum.id }) }}">edit</a>
+                        </li>
+                    </ul>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-    <br>
-    <a style="width:230px" class="btn btn-success btn-block" href="{{ path('categorieforum_new') }}">Créer nouvelle catégorie</a>
+
+    <ul>
+        <li>
+            <a href="{{ path('categorieforum_new') }}">Create a new categorieForum</a>
+        </li>
     </ul>
-{% endblock content %}
+{% endblock %}
