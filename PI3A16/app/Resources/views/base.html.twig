@@ -146,12 +146,17 @@
                                                     <div class="button header_button" style="width: auto">
                                                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 
-
-
+                                                        {% if(app.user.hasRole("ROLE_ADMIN")) %}
+                                                            <a class="dropdown-item" href="{{ path('back_office_index_homepage') }}">
+                                                                Back Office
+                                                            </a>
+                                                        {% else %}
                                                             <a class="dropdown-item" href="{{ path('fos_user_profile_show') }}">
                                                                 {{ 'Profil'|trans({}, 'FOSUserBundle') }}
                                                                 {{ app.user.username }}
                                                             </a>
+
+                                                            {% endif %}
 
                                                         {% else %}
                                                             <a class="dropdown-item" href="{{ path('fos_user_registration_register') }}">{{ 'Inscription'|trans({}, 'FOSUserBundle') }}</a>
