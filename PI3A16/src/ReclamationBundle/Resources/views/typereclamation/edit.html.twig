@@ -1,7 +1,23 @@
 {% extends 'basebo.html.twig' %}
 
+{% block navbar %}
+<ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
+    <li class="nav-item">
+        <a href="{{ path('typereclamation_index') }}" class="nav-link">Back
+        </a>
+    </li>
+
+</ul>
+{% endblock %}
 {% block content %}
     <center>
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6 contact_form_container">
+
             <h1>Type Reclamation : Modifier</h1>
         <br/>
         <table>
@@ -9,16 +25,23 @@
                 {{ form_start(edit_form) }}
                 <td>  Nom   :  </td>
                 <td>{{ form_widget(edit_form.nom) }}</td>
-               <td> <input type="submit" value="Edit" /></td>
+               <td> <input type="submit" value="Edit"  class="btn btn-success btn-block" /></td>
                 {{ form_end(edit_form) }}
                 {{ form_start(delete_form) }}
-                <td><input type="submit" value="Delete"></td>
+                <td><input type="submit" value="Supprimer" class="btn btn-success btn-block" ></td>
                 {{ form_end(delete_form) }}
             </tr>
         </table>
 
         <br>
-        <a href="{{ path('typereclamation_index') }}">Back to the list</a>
+
+
+
+                </div>
+            </div>
+        </div>
+
+
 
     </center>
 {% endblock %}

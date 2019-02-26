@@ -1,5 +1,13 @@
 {% extends 'basebo.html.twig' %}
+{% block navbar %}
+    <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
+        <li class="nav-item">
+            <a href="{{ path('typereclamation_index') }}" class="nav-link">Back
+            </a>
+        </li>
 
+    </ul>
+{% endblock %}
 {% block content %}
    <center>
        <h1>Type reclamation</h1>
@@ -23,8 +31,7 @@
                <input type="submit" value="Delete">
                {{ form_end(delete_form) }}
 
-             <br>
-              <a href="{{ path('typereclamation_index') }}">Back to the list</a>
+
 
    </center>
 {% endblock %}

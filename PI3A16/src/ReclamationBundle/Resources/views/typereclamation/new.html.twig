@@ -1,15 +1,35 @@
 {% extends 'basebo.html.twig' %}
 
+{% block navbar %}
+    <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
+        <li class="nav-item">
+            <a href="{{ path('typereclamation_index') }}" class="nav-link">Back
+            </a>
+        </li>
+
+    </ul>
+{% endblock %}
 {% block content %}
     <center>
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6 contact_form_container">
+
+                    <br><br>
+
         <h1>Creation d'un nouveau type de reclamation</h1>
         <br><br>
         {{ form_start(form) }}
         Nom : {{ form_widget(form.nom) }}
-        <input type="submit" value="Create" />
+        <input type="submit" value="Create" class="btn btn-success btn-block"/>
         {{ form_end(form) }}
-        <br><br>
-      <a href="{{ path('typereclamation_index') }}">Back to the list</a>
 
+
+                </div>
+            </div>
+        </div>
     </center>
 {% endblock %}

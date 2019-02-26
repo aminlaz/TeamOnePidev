@@ -52,45 +52,56 @@ class ReclamationController extends Controller
      */
     public function newAction(Request $request)
     {
-        $reclamation = new Reclamation();
-        $form = $this->createForm(ReclamationType::class, $reclamation);
-
-        $em = $this->getDoctrine()->getManager();
-        $events = $em->getRepository('ReclamationBundle:Reclamation')
-                     ->findEventDQL($this->getUser()->getId());
-
-        $organisateurs = $em->getRepository('ReclamationBundle:Reclamation')
-                            ->findOrganisateurDQL($this->getUser()->getId());
-
-        $idEvent=$request->get('idEvent');
-        $idOrganisateur=$request->get('idOrganisateur');
-
-        $form->handleRequest($request);
-        if (($form->isValid())&&(isset($idEvent))&&(isset($idOrganisateur)))
+        if ( $this->getUser() == null)
         {
-            $event = $em->getRepository('EventBundle:Event')->find($idEvent);
-            $organisateur = $em->getRepository('UserBundle:User')->find($idOrganisateur);
-
-            $reclamation->setDateR(new \DateTime);
-            $reclamation->setTraite(false);
-            $reclamation->setCorbeille(false);
-            $reclamation->setDateCorbeille(null);
-            $reclamation->setArchive(false);
-            $reclamation->setDateArchive(null);
-            $reclamation->setUser($this->getUser());
-            $reclamation->setEvent($event);
-            $reclamation->setOrganisateur($organisateur);
-            $em->persist($reclamation);
-            $em->flush();
-
-            return $this->redirectToRoute('reclamation_show', array('id' => $reclamation->getId()));
+            return $this->redirectToRoute('fos_user_security_login');
         }
 
-        return $this->render('@Reclamation/Reclamation/new.html.twig', array(
-            'form' => $form->createView(),
-            'events'=>$events,
-            'organisateurs'=>$organisateurs,
-        ));
+        else{
+
+            $reclamation = new Reclamation();
+            $form = $this->createForm(ReclamationType::class, $reclamation);
+
+            $em = $this->getDoctrine()->getManager();
+            $events = $em->getRepository('ReclamationBundle:Reclamation')
+                ->findEventDQL($this->getUser()->getId());
+
+            $organisateurs = $em->getRepository('ReclamationBundle:Reclamation')
+                ->findOrganisateurDQL($this->getUser()->getId());
+
+            $idEvent=$request->get('idEvent');
+            $idOrganisateur=$request->get('idOrganisateur');
+
+            $form->handleRequest($request);
+            if (($form->isValid())&&(isset($idEvent))&&(isset($idOrganisateur)))
+            {
+                $event = $em->getRepository('EventBundle:Event')->find($idEvent);
+                $organisateur = $em->getRepository('UserBundle:User')->find($idOrganisateur);
+
+                $reclamation->setDateR(new \DateTime);
+                $reclamation->setTraite(false);
+                $reclamation->setCorbeille(false);
+                $reclamation->setDateCorbeille(null);
+                $reclamation->setArchive(false);
+                $reclamation->setDateArchive(null);
+                $reclamation->setUser($this->getUser());
+                $reclamation->setEvent($event);
+                $reclamation->setOrganisateur($organisateur);
+                $em->persist($reclamation);
+                $em->flush();
+
+                return $this->redirectToRoute('reclamation_show', array('id' => $reclamation->getId()));
+            }
+
+            return $this->render('@Reclamation/Reclamation/new.html.twig', array(
+                'form' => $form->createView(),
+                'events'=>$events,
+                'organisateurs'=>$organisateurs,
+
+            ));
+
+        }
+
     }
 
     /**

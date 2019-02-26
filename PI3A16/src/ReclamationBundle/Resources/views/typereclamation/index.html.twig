@@ -1,14 +1,21 @@
 {% extends 'basebo.html.twig' %}
-
+{% block navbar %}{% endblock %}
 {% block content %}
     <center>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6 contact_form_container">
+
+                    <br><br>
         <h1> Types des reclamations </h1>
 
-        <table border="0" style="width: 10cm; text-align: center">
-            <tr>
-                <th colspan="3"> <a href="{{ path('typereclamation_new') }}">Create a new Type Reclamation</a></th>
-            </tr>
-            <tr>
+                    <br><br>
+                    <a href="{{ path('typereclamation_new') }}" class="btn btn-success btn-block" >Create a new Type de Reclamation</a>
+        <table  class="table   table-hover table-striped" style="text-align: center"  >
+
+            <tr class="thead-dark">
                 <th> Id </th>
                 <th> Nom </th>
                 <th> Actions </th>
@@ -27,6 +34,11 @@
         </table>
 
 
+
+
+                </div>
+            </div>
+        </div>
 
 
     </center>

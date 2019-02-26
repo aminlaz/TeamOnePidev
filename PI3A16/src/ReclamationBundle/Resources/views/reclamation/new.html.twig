@@ -57,7 +57,9 @@
                                   <br><br>
                             {{ form_widget(form.sujet, {'attr' : {'class': 'contact_input','placeholder':'Sujet...'}}) }}<br><br>
                             {{ form_widget(form.contenu, {'attr' : {'class': 'contact_textarea contact_input','placeholder':'Contenu...'}}) }}<br><br>
-                            <button class="button contact_button"><span> Envoyer la Reclamation </span></button>
+
+                              <button class="button contact_button"><span> Envoyer la Reclamation </span></button>
+
 
                                       {{ form_end(form) }}
                               </center>
@@ -110,21 +112,19 @@
     $(document).ready(
      function() {
          //alert("Script working properly"); });
-         $('#event').hide();
          $('#org').hide();
+         $('#event').hide();
 
          $("#reclamationbundle_reclamation_type").change(function () {
-             $.ajax({
-                 type: 'POST',
-                 typeValue: {"Select": $('#reclamationbundle_reclamation_type').val()}
 
-             });
 
-             if ($typeValue.val() == "Organisateur") {
+             if ( $("#reclamationbundle_reclamation_type option:selected").text() == "Organisateur") {
                  $('#org').show();
+                 $('#event').hide();
              }
-             else if ($typeValue.val().equals('Événement')) {
+             else if ( $("#reclamationbundle_reclamation_type option:selected").text() =='Événement') {
                  $('#event').show();
+                 $('#org').hide();
              }
 
 
