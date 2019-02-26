@@ -9,6 +9,7 @@ imports:
     - { resource: "@ProfilingBundle/Resources/config/services.yml" }
     - { resource: "@ReservationBundle/Resources/config/services.yml" }
     - { resource: "@BlogBundle/Resources/config/services.yml" }
+    - { resource: "@BackOfficeIndexBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -45,8 +46,8 @@ twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
     form_themes:
-        - 'bootstrap_3_layout.html.twig'
 
+    - 'bootstrap_3_layout.html.twig'
 # Doctrine Configuration
 doctrine:
     dbal:
@@ -87,11 +88,18 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
     user_class: UserBundle\Entity\User
+    registration:
+        form:
+            type: UserBundle\Form\UserType
+    profile:
+        form:
+            type: UserBundle\Form\UserProfileType
     service:
         mailer:  fos_user.mailer.twig_swift
     from_email:
         address: "tech-events@esprit.tn"
         sender_name: "tech-events"
+
 
 fos_comment:
     db_driver: orm
@@ -105,3 +113,21 @@ fos_comment:
 
 assetic:
     bundles: [ "FOSCommentBundle" ]
+
+services:
+    user.form.registration:
+        class: UserBundle\Form\UserType
+        tags:
+        - { name: form.type }
+    user.form.profile:
+        class: UserBundle\Form\UserProfileType
+        tags:
+        - { name: form.type }
+vich_uploader:
+    db_driver: orm
+    mappings:
+        devis:
+            uri_prefix: /devis/
+            upload_destination: '%kernel.root_dir%/../web/devis/'
+            namer: vich_uploader.namer_uniqid
+

@@ -2,6 +2,9 @@
 
 namespace UserBundle\Repository;
 
+
+use Doctrine\ORM\Query;
+
 /**
  * UserRepository
  *
@@ -10,4 +13,105 @@ namespace UserBundle\Repository;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function intoArray()
+    {
+        $dql=$this->getEntityManager();
+        $query=$dql->createQuery('SELECT m from UserBundle:User m');
+        $result=$query->getResult(Query::HYDRATE_ARRAY);
+        return $result;
+    }
+
+
+    public function searchByMin($min)
+    {
+        $dql=$this->getEntityManager();
+        $query=$dql->createQuery("SELECT u FROM UserBundle:User u WHERE u.score >= '$min%'");
+        return $query->getResult(Query::HYDRATE_ARRAY);
+    }
+
+    public function searchByMax($max)
+    {
+        $dql=$this->getEntityManager();
+        $query=$dql->createQuery("SELECT u FROM UserBundle:User u WHERE u.score <= '$max%'");
+        return $query->getResult(Query::HYDRATE_ARRAY);
+    }
+
+
+    public function searchByMinMax($min,$max)
+    {
+        $dql=$this->getEntityManager();
+        $query=$dql->createQuery("SELECT u FROM UserBundle:User u WHERE u.score >= '$min%' AND u.score <= '$max%'");
+        return $query->getResult(Query::HYDRATE_ARRAY);
+    }
+
+
+
+    public function NombreDesUser()
+    {
+        $queryBuilder = $this->_em->createQueryBuilder()
+            ->select('COUNT(e)')
+            ->from('UserBundle:User', 'e');
+
+        return $queryBuilder->getQuery()->getSingleScalarResult();
+    }
+
+    public function NombreDesUtilisateurInactifs()
+    {
+        $queryBuilder = $this->_em->createQueryBuilder()
+            ->select('COUNT(e)')
+            ->from('UserBundle:User', 'e')->where('e.score=0');
+
+        return $queryBuilder->getQuery()->getSingleScalarResult();
+    }
+
+
+    public function NombreDesUtilisateurPeuActifs()
+    {
+        $queryBuilder = $this->_em->createQueryBuilder()
+            ->select('COUNT(e)')
+            ->from('UserBundle:User', 'e')->where('e.score>0 AND e.score < 50');
+
+        return $queryBuilder->getQuery()->getSingleScalarResult();
+    }
+
+
+    public function NombreDesUtilisateurActifs()
+    {
+        $queryBuilder = $this->_em->createQueryBuilder()
+            ->select('COUNT(e)')
+            ->from('UserBundle:User', 'e')->where('e.score>=50 AND e.score < 100');
+
+        return $queryBuilder->getQuery()->getSingleScalarResult();
+    }
+
+
+    public function NombreDesUtilisateurTresActifs()
+    {
+        $queryBuilder = $this->_em->createQueryBuilder()
+            ->select('COUNT(e)')
+            ->from('UserBundle:User', 'e')->where('e.score>=100');
+
+        return $queryBuilder->getQuery()->getSingleScalarResult();
+    }
+
+    public function NombreDesUtilisateurBadge()
+    {
+        $queryBuilder = $this->_em->createQueryBuilder()
+            ->select('COUNT(e)')
+            ->from('UserBundle:User', 'e')->where('e.badge >0');
+
+        return $queryBuilder->getQuery()->getSingleScalarResult();
+    }
+
+
+    public function NombreDesUtilisateurNonBadge()
+    {
+        $queryBuilder = $this->_em->createQueryBuilder()
+            ->select('COUNT(e)')
+            ->from('UserBundle:User', 'e')->where('e.badge IS NULL OR e.badge=0');
+
+        return $queryBuilder->getQuery()->getSingleScalarResult();
+    }
+
+
 }

@@ -1,0 +1,39 @@
+{% extends 'basebo.html.twig' %}
+
+{% block content %}
+
+    <h1>Attribuer un badge pour {{ projet.name }} ( Score : {{ projet.score }} )</h1>
+
+    {{ form_start(form) }}
+
+
+    {{ form_widget(form.badge) }}
+    <tr><td> <input type="submit" class="btn btn-success mr-2" value="{{ 'Affecter'|trans }}"/></td></tr>
+
+
+    {{ form_end(form) }}
+
+
+    <h1>Liste des badges</h1>
+    <table border="2" >
+        <tr>
+            <th>Titre</th><th>Score minimal</th><th>Score maximal</th><th>Logo</th>
+        </tr>
+
+        {% for p in reader %}
+            <tr>
+                <td>{{ p.nom }}</td>
+                <td>{{ p.min }}</td>
+                <td>{{ p.max }}</td>
+
+
+                <td> <img src="{{ asset('devis/' ~ p.devisName) }}" height="150px"></td>
+
+
+            </tr>
+        {% endfor %}
+
+
+    </table>
+
+{% endblock %}

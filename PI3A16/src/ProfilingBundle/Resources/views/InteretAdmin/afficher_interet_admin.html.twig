@@ -1,0 +1,85 @@
+{% extends 'basebo.html.twig' %}
+
+{% block content %}
+
+    <input  class="categories" placeholder="Insérer la categorie"  ></center>
+
+    <h1 >Liste des intérêts</h1>
+    <table border="2" class="c" width="900px" style="text-align: center">
+
+        <tr><th>Catégorie</th><th>Sous-catégorie</th><th>Description</th><th>Supression</th><th>Modification</th></tr>
+
+        {% for p in data %}
+            <tr>
+                <td>{{ p.categorie.nom }}</td>
+
+                <td>{{ p.souscategorie }}</td>
+                <td>{{ p.description }}</td>
+
+                <td><a class="btn btn-danger" href="{{ path('supprimer_interet_admin' ,{'id':p.id})}}" >Supprimer</a></td>
+                <td><a class="btn btn-primary" href="{{ path('modifier_interet_admin' ,{'id':p.id})}}" >Modifier</a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </tr>
+        {% endfor %}
+
+    </table>
+
+
+    <script language = "javascript"
+            src = "https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+    <script language = "javascript">
+
+        $(document).on('keyup','input.categories',function () {
+            $.ajax(
+                {
+                    type:'POST',
+                    url: '{{ path('interet_search')}}',
+                    dataType:'json',
+                    data:{'categorie':$('.categories').val()},
+                    async:true,
+                    success:function (data) {
+                        console.log(data);
+                        $('.c').empty();
+                        $('.c').append("<tr><th>Sous-catégorie</th><th>Description</th><th>Supression</th><th>Modification</th></tr>");
+
+
+                        $.each(data, function(i) {
+
+
+
+                            var id=data[i].id;
+
+                            var sousc=data[i].souscategorie;
+
+                            var desc=data[i].description;
+
+
+
+
+                            console.log(data[i].id);
+                            $('.c').append("<tr><td>"+sousc+"</td><td>"+desc+"</td><td><a class=\"btn btn-danger\" href='http://localhost/Profiling/web/app_dev.php/supprimerInteretAdmin/"+id+"'>Supprimer</a></td><td><a class=\"btn btn-primary\" href='http://localhost/Profiling/web/app_dev.php/modifierInteretAdmin/"+id+"'>Modifier</a></td></tr>");
+
+
+                        })
+                    },
+                    error:function () {
+                        alert("impossible");
+                    }
+                });
+        });
+
+    </script>
+{% endblock %}

@@ -1,0 +1,17 @@
+
+{% extends 'basebo.html.twig' %}
+
+{% block content %}
+
+    <h1>Ajout d'une catégorie</h1>
+    {{ form_start(form) }}
+    <table>
+        <tr><td>Choisir la catégorie</td><td>{{ form_widget(form.nom) }}</td></tr>
+
+        <tr><td>Ajouter une description</td><td>{{ form_widget(form.description) }}</td></tr>
+
+
+        <tr><td> <input type="submit" class="btn btn-success mr-2" value="{{ 'Ajouter'|trans }}"/></td></tr>
+    </table>
+    {{ form_end(form) }}
+{% endblock %}

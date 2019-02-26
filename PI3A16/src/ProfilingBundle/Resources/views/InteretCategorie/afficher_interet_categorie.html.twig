@@ -1,0 +1,23 @@
+{% extends 'basebo.html.twig' %}
+
+{% block content %}
+
+    <h1>Liste des catégories</h1>
+    <table border="2" width="900px" style="text-align: center">
+        <tr>
+            <th>Catégorie</th><th>Description</th><th>Supression</th><th>Modification</th>
+        </tr>
+        {% for p in reader %}
+            <tr>
+                <td>{{ p.nom }}</td>
+
+                <td>{{ p.description }}</td>
+
+                <td><a class="btn btn-danger" href="{{ path('supprimer_interet_categorie' ,{'id':p.id})}}" >Supprimer</a></td>
+                <td><a class="btn btn-primary" href="{{ path('modifier_interet_categorie' ,{'id':p.id})}}" >Modifier</a></td>
+
+            </tr>
+        {% endfor %}
+
+    </table>
+{% endblock %}

@@ -1,3 +1,7 @@
+back_office_index:
+    resource: "@BackOfficeIndexBundle/Resources/config/routing.yml"
+    prefix:   /bo
+
 blog:
     resource: "@BlogBundle/Resources/config/routing.yml"
     prefix:   /
