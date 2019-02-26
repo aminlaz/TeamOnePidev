@@ -1,0 +1,104 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<div class="events container " style="max-width: 650px">
+
+<h1>Event edit</h1>
+
+    {{ form_start(edit_form) }}
+
+    <div class="form-group">
+        {{ form_widget(edit_form.name, {'attr' : {'class': 'form-control','placeholder':'Nom'}}) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_widget(edit_form.description, {'attr' : {'class': 'form-control','placeholder':'Description'}}) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_widget(edit_form.name, {'attr' : {'class': 'form-control','placeholder':'Nom'}}) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_widget(edit_form.adresse, {'attr' : {'class': 'form-control','placeholder':'Adresse'}}) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_widget(edit_form.etat, {'attr' : {'class': 'form-control','placeholder':'Etat'}}) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_widget(edit_form.ville, {'attr' : {'class': 'form-control','placeholder':'Ville'}}) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_widget(edit_form.codepostal, {'attr' : {'class': 'form-control','placeholder':'Code postal'}}) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_widget(edit_form.capacity, {'attr' : {'class': 'form-control','placeholder':'Capacité'}}) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_widget(edit_form.reserved, {'attr' : {'class': 'form-control','placeholder':'Réservé','readonly':'true'}}) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_widget(edit_form.date) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_widget(edit_form.time, {'attr' : {'class': 'form-control','placeholder':'Heure'}}) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_widget(edit_form.numberofdays, {'attr' : {'class': 'form-control','placeholder':'Nombre de jours'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_widget(edit_form.eventtype, {'attr' : {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_widget(edit_form.free) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_widget(edit_form.prix, {'attr' : {'class': 'form-control','placeholder':'Prix'}}) }}
+    </div>
+
+        {{ form_widget(edit_form) }}
+
+        <input type="submit" class="btn btn-primary" value="Edit" />
+    {{ form_end(edit_form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('events_index') }}" class="btn btn-link">Back to the list</a>
+        </li>
+    </ul>
+</div>
+
+    <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+    <script>
+
+        $(document).ready(function(){
+
+            $('#eventbundle_event_free').prop("checked", false);
+            $('#eventbundle_event_free').change(function(){
+                if(this.checked)
+                    $('#eventbundle_event_prix').hide();
+                else
+                    $('#eventbundle_event_prix').show();
+
+            });
+        });
+
+        $(function(){
+            $('[type="date"]').prop('min', function(){
+                return new Date().toJSON().split('T')[0];
+            });
+        });
+
+
+
+    </script>
+{% endblock %}

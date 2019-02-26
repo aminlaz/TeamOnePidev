@@ -1,0 +1,46 @@
+{% extends 'basebo.html.twig' %}
+
+{% block content %}
+<div class="content-wrapper">
+    <h1>Eventtypes list</h1>
+
+    <table class="table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for eventtype in eventtypes %}
+            <tr>
+                <td><a href="{{ path('eventtype_show', { 'id': eventtype.id }) }}">{{ eventtype.id }}</a></td>
+                <td>{{ eventtype.name }}</td>
+                <td>{{ eventtype.description }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('eventtype_show', { 'id': eventtype.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('eventtype_edit', { 'id': eventtype.id }) }}">edit</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('eventtype_delete', { 'id': eventtype.id }) }}">delete</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('eventtype_new') }}">Create a new eventtype</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}
