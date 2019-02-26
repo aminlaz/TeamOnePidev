@@ -10,7 +10,7 @@
     $(document).ready(function () {
         $(document).ready(
             function (){
-                $('#notificationDropdown').click(function () {
+                $('#notificationDropdown').blur(function () {
                      $.ajax({
                              url: '{{ (path('update_route')) }}',
                              async: true,
@@ -25,7 +25,7 @@
 
 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
 
-    <a class="dropdown-item" href="">
+    <a class="dropdown-item" href="{{ path('notification_index') }}">
 
         <p class="mb-0 font-weight-normal float-left">
             You have  {{ notif }} new notifications

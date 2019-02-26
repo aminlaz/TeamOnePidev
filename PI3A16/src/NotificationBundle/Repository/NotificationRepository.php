@@ -22,14 +22,12 @@ class NotificationRepository extends \Doctrine\ORM\EntityRepository
     }
     public function updateDQL()
     {
-        $dqlresult = $this->getEntityManager()
-
-            ->createQuery(" UPDATE NotificationBundle:Notification r
-                                 SET r.seen= 1
-                                 WHERE r.seen= 0
-                               ");
-        return $dqlresult->getResult();
-
+        $dqlQuery = $this->getEntityManager()
+                          ->createQueryBuilder()->UPDATE('NotificationBundle:Notification' ,'r')
+                                                ->SET('r.seen', 1)
+                                                ->WHERE('r.seen = 0 ')
+                                                ->getQuery();
+         $dqlQuery->execute();
     }
 
 

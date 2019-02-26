@@ -28,7 +28,7 @@
                 <div class="col-lg-6">
                     <div class="contact_form_container">
                         <div class="contact_form_title">Get in touch</div>
-                              <center>
+                      <center>
                                     {{ form_start(form) }}
                            <div id="type">
                                {{ form_widget(form.type, {'attr' : {'class': 'contact_input','placeholder':'Type'}}) }}<br><br>
@@ -107,20 +107,30 @@
     <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
     <script>
     //pour vérifier l'intégration de la biblio jquery
-    //$(document).ready(
-    // function(){
-    //alert("Script working properly"); });
-    $('#event').hide();
-    $('#org').hide();
+    $(document).ready(
+     function() {
+         //alert("Script working properly"); });
+         $('#event').hide();
+         $('#org').hide();
 
-    $('#type').click(
-        function () {
+         $("#reclamationbundle_reclamation_type").change(function () {
+             $.ajax({
+                 type: 'POST',
+                 typeValue: {"Select": $('#reclamationbundle_reclamation_type').val()}
 
-            $('')
-            $('#org').show();
+             });
 
-        }
-    );
+             if ($typeValue.val() == "Organisateur") {
+                 $('#org').show();
+             }
+             else if ($typeValue.val().equals('Événement')) {
+                 $('#event').show();
+             }
+
+
+         });
+
+     });
 
     </script>
 

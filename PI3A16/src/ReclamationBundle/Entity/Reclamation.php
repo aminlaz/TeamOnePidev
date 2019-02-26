@@ -89,7 +89,7 @@ class Reclamation implements NotifiableInterface , \JsonSerializable
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateArchive", type="date")
+     * @ORM\Column(name="dateArchive", type="date",nullable=true)
      */
     private $dateArchive;
 
@@ -103,7 +103,7 @@ class Reclamation implements NotifiableInterface , \JsonSerializable
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateCorbeille", type="date")
+     * @ORM\Column(name="dateCorbeille", type="date",nullable=true)
      */
     private $dateCorbeille;
 
@@ -393,8 +393,9 @@ class Reclamation implements NotifiableInterface , \JsonSerializable
     {
         $notification = new Notification();
         $notification
+           // ->setIcon($this->getUser()->getName())
             ->setTitle('New Reclamation')
-            ->setDescription('"'.$this->contenu.'" has been created')
+            ->setDescription('"'.$this->sujet.'" has been created')
             ->setRoute('reclamation_index')
             ->setParameters(array('id' => $this->id))
         ;

@@ -6,21 +6,18 @@
         </li>
         <li class="nav-item">
             <a href="{{  path('reclamation_list') }}" class="nav-link">Reclamations
-                <span class="badge badge-primary ml-1">New</span>
             </a>
         </li>
         <li class="nav-item active">
-            <a href="{{  path('archive') }}" class="nav-link">Archive
+            <a href="{{  path('archive') }}" class="nav-link">
+                <img src="{{ asset ('images/archive.png') }}" style="width: 30px"/>Archive
             </a>
         </li>
         <li class="nav-item ">
             <a href="{{ path('corbeille') }}" class="nav-link">
-                <i class="mdi mdi-elevation-rise"></i>Corbeille</a>
+                <img src="{{ asset ('images/Delete.png') }}" style="width: 30px"/> Corbeille</a>
         </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="mdi mdi-bookmark-plus-outline"></i></a>
-        </li>
+
     </ul>
 {% endblock %}
 

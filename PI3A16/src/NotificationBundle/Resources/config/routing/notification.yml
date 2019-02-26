@@ -3,22 +3,7 @@ notification_index:
     defaults: { _controller: "NotificationBundle:Notification:index" }
     methods:  GET
 
-notification_show:
-    path:     /{id}/show
-    defaults: { _controller: "NotificationBundle:Notification:show" }
-    methods:  GET
-
-notification_new:
-    path:     /new
-    defaults: { _controller: "NotificationBundle:Notification:new" }
-    methods:  [GET, POST]
-
-notification_edit:
-    path:     /{id}/edit
-    defaults: { _controller: "NotificationBundle:Notification:edit" }
-    methods:  [GET, POST]
-
 notification_delete:
     path:     /{id}/delete
     defaults: { _controller: "NotificationBundle:Notification:delete" }
-    methods:  DELETE
+    methods:  GET
