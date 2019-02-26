@@ -1,0 +1,11 @@
+{% extends 'basebo.html.twig' %}
+
+{% block content %}
+    <h2>Suppression du catégorie de questions</h2>
+    <br>
+    {{ form_start(delete_form) }}
+    <input class="btn btn-danger" type="submit" value="Supprimer">
+    {{ form_end(delete_form) }}
+    <br>
+    <a class="btn btn-dark" href="{{ path('categorieforum_index') }}">Afficher la liste des catégories</a>
+{% endblock content %}

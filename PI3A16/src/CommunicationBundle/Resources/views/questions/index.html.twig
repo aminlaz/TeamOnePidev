@@ -1,0 +1,124 @@
+{% extends 'base.html.twig' %}
+{% block title %} <title>Forum</title> {% endblock title %}
+{% block menu_forum %} class="active" {% endblock menu_forum %}
+{% block current_page %}
+    <div class="home_content_container">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="home_content d-flex flex-row align-items-end justify-content-start">
+                        <div class="current_page">Forum</div>
+                        <div class="breadcrumbs ml-auto">
+                            <ul>
+                                <li><a href="{{ path('index') }}">Home</a></li>
+                                <li>Forum</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock current_page %}
+{% block content %}
+    <div class="events">
+        <div class="container">
+            <link href="{{ asset ('styles/forumsk.css') }}" rel="stylesheet">
+            <link href="{{ asset ('styles/forum.css') }}" rel="stylesheet">
+
+            <div class="toggleview">
+                <table width="1255px">
+                    <tr>
+                        <th>
+                <div align="left">
+                    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                        <a href="{{ path('questions_new') }}" class="btn btn-primary">Add question</a>
+                    {% else %}
+                        <a href="{{ path('fos_user_security_login') }}" class="btn btn-primary">Add question</a>
+                    {% endif %}
+                    <a href="{{ path('questions_top') }}" class="btn btn-primary">Top questions</a>
+                </div>
+                        </th>
+                        <th>
+                            <div align="right">
+                            <form style="width:400px" class="input-group mb-3" action="{{ path('questions_index') }}" method="get">
+                                <input class="form-control" name="filter" type="text" placeholder="Recherche par categorie" >
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-outline-secondary">Rechercher</button>
+                                </div>
+                            </form>
+                            </div>
+                        </th>
+
+                    </tr>
+                </table>
+                <div class="large-12 forum-head" style="width:110%">
+                    <div class="large-8 small-8 column lpad">
+                        Question
+                    </div>
+
+                    <div class="large-1 column lpad">
+                        Utilisateur
+                    </div>
+                    <div class="large-1 column lpad">
+                        Upvotes
+                    </div>
+                    <div class="large-1 column lpad">
+                        Downvotes
+                    </div>
+                    <div class="large-1 column lpad">
+                        Categorie
+                    </div>
+                </div>
+                {% for question in questions %}
+                    {% if question.approuver==true %}
+                    <div class="large-12 forum-topic" style="width:110%">
+                        <div class="large-1 column lpad">
+                            <i class="icon-file"></i>
+                        </div>
+                        <div class="large-7 small-8 column lpad">
+
+
+
+                        <span class="overflow-control">
+              <a href="{{ path('questions_show', { 'id': question.id }) }}">{{ question.question }}
+                  {% if question.resolue==true %}
+
+                      <img style="height:15px" width="15px" src="{{ asset('images/tick.png') }}" />
+
+                  {% endif %}</a>
+
+            </span>
+                            <span class="overflow-control">
+              {{ question.texte }}
+            </span>
+                        </div>
+                        <div class="large-1 column lpad">
+                            <span class="center">{{ question.idUser }}</span>
+                        </div>
+                        <div class="large-1 column lpad">
+                            <span class="center">{{ question.upvotes }}</span>
+                        </div>
+                        <div class="large-1 column lpad">
+                            <span class="center">{{ question.downvotes }}</span>
+                        </div>
+                        <div class="large-1 column lpad">
+                            <span class="center">{{ question.categorie.nom }}</span>
+                        </div>
+                    </div>
+
+                    {% endif %}
+                {% endfor %}
+
+
+            </div>
+        </div>
+    </div>
+
+    </div>
+    </div>
+    <br><br><br><br>
+{% endblock content %}
+
+    {% block getyourticket %}
+    {% endblock getyourticket %}

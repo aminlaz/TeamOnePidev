@@ -1,0 +1,30 @@
+{% extends 'basebo.html.twig' %}
+{% block content %}
+    <h1>Questions à approuver</h1>
+    <br>
+    <table border="1px" width="900">
+        <tr>
+            <th style="text-align:center">Question</th>
+            <th style="text-align:center">Texte</th>
+            <th style="text-align:center">User</th>
+            <th style="text-align:center">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for question in questions %}
+            {% if question.approuver==false %}
+            <tr>
+                <td style="text-align:center">{{ question.question }}</td>
+                <td style="text-align:center">{{ question.texte }}</td>
+                <td style="text-align:center">{{ question.idUser }}</td>
+                <td align="center">
+                    <a class="btn btn-primary" href="{{ path('questions_approuvee', { 'id': question.id }) }}">Approuver</a>
+                    <a class="btn btn-danger" href="{{ path('questions_deleteQ', { 'id': question.id }) }}">Supprimer</a>
+                </td>
+            </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+    </ul>
+{% endblock content %}

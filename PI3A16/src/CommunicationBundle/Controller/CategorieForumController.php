@@ -59,7 +59,7 @@ class CategorieForumController extends Controller
     {
         $deleteForm = $this->createDeleteForm($categorieForum);
 
-        return $this->render('categorieforum/show.html.twig', array(
+        return $this->render('@Communication/categorieforum/show.html.twig', array(
             'categorieForum' => $categorieForum,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -81,7 +81,7 @@ class CategorieForumController extends Controller
             return $this->redirectToRoute('categorieforum_edit', array('id' => $categorieForum->getId()));
         }
 
-        return $this->render('categorieforum/edit.html.twig', array(
+        return $this->render('@Communication/categorieforum/edit.html.twig', array(
             'categorieForum' => $categorieForum,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -97,11 +97,11 @@ class CategorieForumController extends Controller
         $form = $this->createDeleteForm($categorieForum);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+
             $em = $this->getDoctrine()->getManager();
             $em->remove($categorieForum);
             $em->flush();
-        }
+
 
         return $this->redirectToRoute('categorieforum_index');
     }

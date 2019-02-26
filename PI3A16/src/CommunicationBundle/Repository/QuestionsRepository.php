@@ -10,4 +10,8 @@ namespace CommunicationBundle\Repository;
  */
 class QuestionsRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function createFindAllQuery()
+    {
+        return $this->_em->getRepository('CommunicationBundle:Questions')->createQueryBuilder('q');
+    }
 }

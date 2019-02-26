@@ -38,9 +38,14 @@ class Questions
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="date")
+     * @ORM\Column(name="date", type="datetime")
      */
     private $date;
+
+    public function __construct()
+    {
+        $this->date = new \DateTime();
+    }
 
     /**
      * @var int
@@ -64,6 +69,13 @@ class Questions
     private $resolue;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="Approuver", type="boolean")
+     */
+    private $approuver;
+
+    /**
      * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
@@ -75,6 +87,12 @@ class Questions
      */
     private $categorie;
 
+
+    /**
+     * @ORM\OneToOne(targetEntity="CommunicationBundle\Entity\Reponses")
+     * @ORM\JoinColumn(name="meilleurReponse_id", referencedColumnName="id")
+     */
+    private $idMR;
 
     /**
      * Get id
@@ -276,5 +294,55 @@ class Questions
     public function getCategorie()
     {
         return $this->categorie;
+    }
+
+    /**
+     * Set approuver
+     *
+     * @param boolean $approuver
+     *
+     * @return Questions
+     */
+    public function setApprouver($approuver)
+    {
+        $this->approuver = $approuver;
+
+        return $this;
+    }
+
+    /**
+     * Get approuver
+     *
+     * @return boolean
+     */
+    public function getApprouver()
+    {
+        return $this->approuver;
+    }
+
+    public function __toString(){ return $this->question; }
+
+    /**
+     * Set idMR
+     *
+     * @param \CommunicationBundle\Entity\Reponses $idMR
+     *
+     * @return Questions
+     */
+    public function setIdMR(\CommunicationBundle\Entity\Reponses $idMR = null)
+    {
+        $this->idMR = $idMR;
+
+        return $this;
+    }
+
+    /**
+     * Get idMR
+     *
+     * @return \CommunicationBundle\Entity\Reponses
+     */
+    public function getIdMR()
+    {
+        return $this->idMR;
     }
 }
