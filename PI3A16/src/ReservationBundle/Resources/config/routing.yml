@@ -1,3 +1,0 @@
-reservation:
-    path:     /reservation
-    defaults: { _controller: ReservationBundle:Default:reservation }
