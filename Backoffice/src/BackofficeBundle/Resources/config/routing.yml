@@ -1,4 +1,0 @@
-index:
-    path:     /
-    defaults: { _controller: BackofficeBundle:Default:home }
-
