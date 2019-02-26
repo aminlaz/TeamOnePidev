@@ -1,0 +1,39 @@
+back_office_index:
+    resource: "@BackOfficeIndexBundle/Resources/config/routing.yml"
+    prefix:   /boindex
+
+blog:
+    resource: "@BlogBundle/Resources/config/routing.yml"
+    prefix:   /
+
+reservation:
+    resource: "@ReservationBundle/Resources/config/routing.yml"
+    prefix:   /
+
+profiling:
+    resource: "@ProfilingBundle/Resources/config/routing.yml"
+    prefix:   /
+
+reclamation:
+    resource: "@ReclamationBundle/Resources/config/routing.yml"
+    prefix:   /
+
+communication:
+    resource: "@CommunicationBundle/Resources/config/routing.yml"
+    prefix:   /
+
+
+event:
+    resource: "@EventBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

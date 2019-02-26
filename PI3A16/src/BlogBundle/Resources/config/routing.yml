@@ -1,0 +1,4 @@
+
+blog:
+    path:     /blog
+    defaults: { _controller: BlogBundle:Default:blog }

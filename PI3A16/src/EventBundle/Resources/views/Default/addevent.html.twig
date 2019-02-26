@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block title %} <title>Events</title> {% endblock title %}
+{% block menu_events %} class="active" {% endblock menu_events %}
+{% block current_page %}
+    <div class="home_content_container">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="home_content d-flex flex-row align-items-end justify-content-start">
+                        <div class="current_page">Events</div>
+                        <div class="breadcrumbs ml-auto">
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li>Events</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock current_page %}
+{% block content %}
+    <div class="events container">
+        <div class="card">
+            <div class="card-body">
+                <label class="col-form-label">{{ app.user.hasRole("admin") }}</label>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

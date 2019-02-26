@@ -1,0 +1,40 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<div class="events container " style="max-width: 650px">
+
+{{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+<div class="card">
+
+    <div class="form-group">
+        {{ form_widget(form.name, {'attr' : {'class': 'form-control'}}) }}
+
+    </div>
+    <div class="form-group">
+        {{ form_widget(form.lastname, {'attr' : {'class': 'form-control'}}) }}
+
+    </div>
+
+    <div class="form-group">
+        {{ form_widget(form.username, {'attr' : {'class': 'form-control'}}) }}
+
+    </div>
+
+    <div class="form-group">
+        {{ form_widget(form.email, {'attr' : {'class': 'form-control'}}) }}
+
+    </div>
+
+    <div class="form-group">
+        {{ form_widget(form.current_password, {'attr' : {'class': 'form-control','placeholder':'Entrer votre mot de passe' }}) }}
+
+    </div>
+
+
+    <div class="card-body">    <div>
+
+        <input type="submit" class="btn btn-success mr-2" value="{{ 'Modifier'|trans }}" />
+    </div>
+    </div>
+</div>
+{{ form_end(form) }}
+
+</div>

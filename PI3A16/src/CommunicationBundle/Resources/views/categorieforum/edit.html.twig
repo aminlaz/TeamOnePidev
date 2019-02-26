@@ -1,0 +1,12 @@
+{% extends 'basebo.html.twig' %}
+
+{% block content %}
+    <h2>Modification du catégorie de questions</h2>
+    <br>
+    {{ form_start(edit_form) }}
+    {{ form_widget(edit_form) }}
+    <input class="btn btn-primary" type="submit" value="Confirmer" />
+    {{ form_end(edit_form) }}
+    <br>
+    <a class="btn btn-dark" href="{{ path('categorieforum_index') }}">Afficher la liste des catégories</a>
+{% endblock content %}

@@ -1,0 +1,244 @@
+{% extends 'base.html.twig' %}
+{% block title %} <title>Forum</title> {% endblock title %}
+{% block menu_forum %} class="active" {% endblock menu_forum %}
+{% block current_page %}
+    <div class="home_content_container">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="home_content d-flex flex-row align-items-end justify-content-start">
+                        <div class="current_page">Forum</div>
+                        <div class="breadcrumbs ml-auto">
+                            <ul>
+                                <li><a href="{{ path('index') }}">Home</a></li>
+                                <li>Forum</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock current_page %}
+{% block content %}
+    <div class="events">
+        <div class="container">
+            <link href="{{ asset ('styles/upvotes.css') }}" rel="stylesheet">
+
+            <table>
+
+                <col width="100">
+                <col width="900">
+                <tr>
+                    <th></th>
+
+                <tr>
+                    <th></th>
+                    <th style="text-align:left"><font size="2" color="black"> Posted
+                            by {{ question.idUser }} {% if question.date %}{{ question.date|date('M d, Y @ H:i') }}{% endif %} </font>
+                    </th>
+                </tr>
+                <tr>
+                </tr>
+                <th>
+                    <div style="text-align:center">
+                        <div class="main">
+                            <button id="upButton" type="button" onclick="upVote()" class="vote">
+
+                                <svg class="upArrow" viewBox="0 0 11.5 6.4" xml:space="preserve">
+                                <path d="M11.4,5.4L6,0C5.9-0.1,5.8-0.1,5.8-0.1c-0.1,0-0.2,0-0.2,0.1
+                              L0.1,5.4C0,5.6,0,5.7,0.1,5.9l0.4,0.4c0.1,0.1,0.3,0.1,0.4,0l4.8-4.8l4.8,4.8c0.1,0.1,0.3,0.1,0.4,0l0.4-0.4
+                              C11.5,5.7,11.5,5.6,11.4,5.4z"/>
+                                </svg>
+                            </button>
+                            <h3 id="scoreCounter"></h3>
+                            <button id="downButton" type="button" onclick="downVote()" class="vote">
+
+                                <svg class="downArrow" xmlns="http://www.w3.org/2000/svg"
+                                     xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 11.5 6.4"
+                                     xml:space="preserve">
+                                <path d="M0.1,0.9l5.4,5.4c0.1,0.1,0.1,0.1,0.2,0.1c0.1,0,0.2,0,0.2-0.1
+                              l5.4-5.4c0.1-0.1,0.1-0.3,0-0.4L11,0c-0.1-0.1-0.3-0.1-0.4,0L5.8,4.8L0.9,0C0.8-0.1,0.6-0.1,0.5,0L0.1,0.4C0,0.6,0,0.7,0.1,0.9z"/>
+                              </svg>
+                            </button>
+                        </div>
+                        <script>
+                            var score = document.getElementById("scoreCounter");
+                            score.innerHTML = {{ question.upvotes }};
+                            var scoreValue = {{ question.upvotes }};
+                            checkScore();
+
+                            function upVote() {
+                                scoreValue++;
+                                score.innerHTML = scoreValue;
+                                checkScore();
+                            }
+
+                            function downVote() {
+                                scoreValue--;
+                                score.innerHTML = scoreValue;
+                                checkScore();
+                            }
+
+                            function checkScore() {
+                                if (scoreValue < 0) {
+                                    score.style.color = "#FF586C";
+                                } else if (scoreValue > 0) {
+                                    score.style.color = "#6CC576";
+                                } else {
+                                    score.style.color = "#666666";
+                                }
+                            }
+                        </script>
+                    </div>
+                </th>
+                <td style="color: black"><font size="6">{{ question.question }} </font>
+                    {% if app.user.username is defined %}
+                        {% if app.user.username==question.idUser %}
+                            {{ form_start(delete_form) }}
+                            <input class="btn btn-danger" type="submit" value="Delete">
+                            {{ form_end(delete_form) }}
+                            {% endif %}
+                        {% if app.user.username is not defined %}
+                            {{ form_start(delete_form) }}
+                            {{ form_end(delete_form) }}
+                            {% endif %}
+                    {% endif %}
+                </td>
+                </tr>
+            </table>
+            <br><br>
+            <table>
+                <tr>
+                    <td style="color: black"><font size="3">{{ question.texte }}</font></td>
+                </tr>
+            </table>
+            <br><br>
+            <table>
+                {% if question.resolue==false %}
+                <form method="POST" action="{{ path("reponses_new",{"id":question.id }) }}">
+                    <textarea rows="4" style="width: 1150px" placeholder="Ajouter une reponse"
+                              name="reponse"></textarea>
+                    <input type="submit" class="btn btn-secondary">
+                </form>
+                {% endif %}
+            </table>
+            <br><br><br><br>
+            <table>
+                <link href="{{ asset ('styles/comment.css') }}" rel="stylesheet">
+                {% for reponse in reponses %}
+                    {% if question.id==reponse.idQuestion.id %}
+                    {% if question.idMR.id is not defined %}
+                        <tr>
+                            <th width="900px">
+                                <div class="comments user-info-comments">
+                                    <div class="comment-wrap">
+                                        <div class="photo">
+                                            <div class="avatar"
+                                                 style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg')"></div>
+                                        </div>
+                                        <div class="comment-block">
+                                            <div style="color:black" class="comment-tile">{{ reponse.idUser }}</div>
+                                            <p style="color:black" class="comment-text">{{ reponse.texte }}</p>
+                                            <div class="bottom-comment">
+                                                <div style="color:black"
+                                                     class="comment-date">{{ reponse.date|date('M d, Y @ H:i') }}</div>
+                                                <ul class="comment-actions">
+                                                </ul>
+                                            </div>
+                                            <br>
+                                            {% if reponse.idUser.id==app.user.id %}
+                                                <a class="btn btn-danger"
+                                                   href="{{ path("reponses_delete",{"idR":reponse.id, 'id':question.id }) }}">Supprimer</a>
+                                                <a class="btn btn-success"
+                                                   href="{{ path("reponses_meilleur",{"idR":reponse.id, 'id':question.id }) }}">Meilleur
+                                                    reponse</a>
+                                            {% endif %}
+                                            {{ twitterButton() }}
+                                            {{ pinterestButton() }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </th>
+                        </tr>
+                    {% elseif question.idMR.id is defined %}
+                        {% if question.idMR.id==reponse.id %}
+                            <tr>
+                                <th width="900px">
+                                    <div class="comments user-info-comments">
+                                        <div class="comment-wrap">
+                                            <div class="photo">
+                                                <div class="avatar"
+                                                     style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg')"></div>
+                                            </div>
+                                            <div style="background-color:#00bf60" class="comment-block">
+                                                <div style="color:black" class="comment-tile">{{ reponse.idUser }}</div>
+                                                <p style="color:black" class="comment-text">{{ reponse.texte }}</p>
+                                                <div class="bottom-comment">
+                                                    <div style="color:black"
+                                                         class="comment-date">{{ reponse.date|date('M d, Y @ H:i') }}</div>
+                                                    <ul class="comment-actions">
+                                                    </ul>
+                                                </div>
+                                                <br>
+                                                {% if app.user.id is defined %}
+                                                    {% if reponse.idUser.id==app.user.id %}
+                                                        <a class="btn btn-danger"
+                                                           href="{{ path("reponses_delete",{"idR":reponse.id, 'id':question.id }) }}">Supprimer</a>
+                                                        <a class="btn btn-success"
+                                                           href="{{ path("reponses_meilleur",{"idR":reponse.id, 'id':question.id }) }}">Meilleur
+                                                            reponse</a>
+                                                        {% endif %}
+                                                {% endif %}
+                                                {{ twitterButton() }}
+                                                {{ pinterestButton() }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </th>
+                            </tr>
+                            {% else %}
+                                <tr>
+                                    <th width="900px">
+                                        <div class="comments user-info-comments">
+                                            <div class="comment-wrap">
+                                                <div class="photo">
+                                                    <div class="avatar"
+                                                         style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg')"></div>
+                                                </div>
+                                                <div class="comment-block">
+                                                    <div style="color:black" class="comment-tile">{{ reponse.idUser }}</div>
+                                                    <p style="color:black" class="comment-text">{{ reponse.texte }}</p>
+                                                    <div class="bottom-comment">
+                                                        <div style="color:black"
+                                                             class="comment-date">{{ reponse.date|date('M d, Y @ H:i') }}</div>
+                                                        <ul class="comment-actions">
+                                                        </ul>
+                                                    </div>
+                                                    <br>
+                                                  {% if app.user.id is defined %}
+                                                    {% if reponse.idUser.id==app.user.id %}
+                                                        <a class="btn btn-danger"
+                                                           href="{{ path("reponses_delete",{"idR":reponse.id, 'id':question.id }) }}">Supprimer</a>
+                                                        <a class="btn btn-success"
+                                                           href="{{ path("reponses_meilleur",{"idR":reponse.id, 'id':question.id }) }}">Meilleur
+                                                            reponse</a>
+                                                        {% endif %}
+                                                    {% endif %}
+                                                    {{ twitterButton() }}
+                                                    {{ pinterestButton() }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </th>
+                                </tr>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock content %}
+{% block getyourticket %}
+{% endblock getyourticket %}

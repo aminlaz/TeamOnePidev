@@ -1,0 +1,50 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<div class="events container " style="max-width: 650px">
+
+    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+    <div class="card">
+        <div class="card-body">
+            <div class="form-group">
+                {{ form_widget(form.name, {'attr' : {'class': 'form-control','placeholder':'Nom'}}) }}
+
+            </div>
+            <div class="form-group">
+                {{ form_widget(form.last_name, {'attr' : {'class': 'form-control','placeholder':'Prénom'}}) }}
+
+            </div>
+            <div class="form-group">
+                {{ form_widget(form.username, {'attr' : {'class': 'form-control','placeholder':'Pseudo'}}) }}
+
+            </div>
+            <div class="form-group">
+                {{ form_widget(form.email, {'attr' : {'class': 'form-control','placeholder':'Adresse e-mail'}}) }}
+
+            </div>
+
+
+            <div class="form-group">
+                {{ form_widget(form.plainPassword.first, {'attr' : {'class': 'form-control','placeholder':'Mot de passe'}}) }}
+
+            </div>
+
+            <div class="form-group">
+                {{ form_widget(form.plainPassword.second, {'attr' : {'class': 'form-control','placeholder':'Confirmer votre mot de passe'}}) }}
+
+            </div>
+
+            <div class="form-group">
+                <div class="list-group">
+                {{ form_widget(form.roles, {'attr' : {'class': 'list-group-item '}}) }}
+                </div>
+            </div>
+
+
+            <div>
+                <input type="submit" class="btn btn-success mr-2" value="{{ 'Register'|trans }}"/>
+            </div>
+
+        </div>
+    </div>
+    {{ form_end(form) }}
+
+</div>

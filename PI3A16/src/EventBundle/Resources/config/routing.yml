@@ -1,0 +1,11 @@
+
+
+events:
+    path:     /event
+    defaults: { _controller: EventBundle:Default:event }
+
+
+addevent:
+    path:     /addevent
+    defaults: { _controller: EventBundle:Default:addevent }
+
