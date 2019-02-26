@@ -1,0 +1,72 @@
+{% extends 'basebo.html.twig' %}
+{% block navbar %}
+        <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
+            <li class="nav-item active">
+                <a href="{{  path('reclamation_list') }}" class="nav-link">Reclamations
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{  path('archive') }}" class="nav-link">
+                    <img src="{{ asset ('images/archive.png') }}" style="width: 25px"/> Archive
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a href="{{ path('corbeille') }}" class="nav-link">
+                    <img src="{{ asset ('images/Delete.png') }}" style="width: 30px"/> Corbeille</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="mdi mdi-bookmark-plus-outline"></i></a>
+            </li>
+        </ul>
+        {% endblock %}
+
+        {% block content %}
+    <center>
+
+        <div class="container">
+
+   <h1> Liste des  Reclamations </h1>
+
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Sujet</th>
+                <th>Contenu</th>
+                <th>Traite</th>
+                <th>Dater</th>
+                <th>Archive</th>
+                <th>Corbeille</th>
+                <th>Actions</th>
+            </tr>
+
+
+            {% for reclamation in reclamations %}
+                <tr>
+                    <td><a href="{{ path('reclamation_show', { 'id': reclamation.id }) }}">{{ reclamation.id }}</a></td>
+                    <td>{{ reclamation.sujet }}</td>
+                    <td>{{ reclamation.contenu }}</td>
+                    <td>{% if reclamation.traite %}Yes{% else %}No{% endif %}</td>
+                    <td>{% if reclamation.dateR %}{{ reclamation.dateR|date('Y-m-d') }}{% endif %}</td>
+                    <td>{% if reclamation.archive %}Yes{% else %}No{% endif %}</td>
+                    <td>{% if reclamation.corbeille %}Yes{% else %}No{% endif %}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('reclamation_show', { 'id': reclamation.id }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('reclamation_edit', { 'id': reclamation.id }) }}">edit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+
+        </table>
+
+                <a href="{{ path('reclamation_new') }}">Create a new reclamation</a>
+
+        </div>
+    </center>
+{% endblock %}

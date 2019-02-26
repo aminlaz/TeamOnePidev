@@ -1,0 +1,30 @@
+{% extends 'basebo.html.twig' %}
+
+{% block content %}
+   <center>
+       <h1>Type reclamation</h1>
+
+       <table>
+
+           <tr>
+               <th>Id</th>
+               <td>{{ typeReclamation.id }}</td>
+           </tr>
+           <tr>
+               <th>Nom</th>
+               <td>{{ typeReclamation.nom }}</td>
+           </tr>
+
+       </table>
+
+               <a href="{{ path('typereclamation_edit', { 'id': typeReclamation.id }) }}">Edit</a>
+
+               {{ form_start(delete_form) }}
+               <input type="submit" value="Delete">
+               {{ form_end(delete_form) }}
+
+             <br>
+              <a href="{{ path('typereclamation_index') }}">Back to the list</a>
+
+   </center>
+{% endblock %}

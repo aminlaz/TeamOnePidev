@@ -10,8 +10,6 @@ class AppKernel extends Kernel
     {
         $bundles = [
             new FOS\UserBundle\FOSUserBundle(),
-            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
-            new CMEN\GoogleChartsBundle\CMENGoogleChartsBundle(),
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
@@ -28,6 +26,10 @@ class AppKernel extends Kernel
             new ReservationBundle\ReservationBundle(),
             new BlogBundle\BlogBundle(),
             new BackOfficeIndexBundle\BackOfficeIndexBundle(),
+            new \SBC\NotificationsBundle\NotificationsBundle(),
+            new NotificationBundle\NotificationBundle(),
+            new Cron\CronBundle\CronCronBundle(),
+            new CronBundle\CronBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

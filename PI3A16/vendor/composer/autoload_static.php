@@ -4,13 +4,14 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit9c6d65801ddd67a478a8de0ba0625bdc
+class ComposerStaticInita20c8122eff44e4bc430488868f452cd
 {
     public static $files = array (
         '92c8763cd6170fce6fcfe7e26b4e8c10' => __DIR__ . '/..' . '/symfony/phpunit-bridge/bootstrap.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
-        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
+        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
+        '3109cb1a231dcd04bee1f9f620d46975' => __DIR__ . '/..' . '/paragonie/sodium_compat/autoload.php',
         '32dcc8afd4335739640db7d200c1971d' => __DIR__ . '/..' . '/symfony/polyfill-apcu/bootstrap.php',
         '6a47392539ca2329373e0d33e1dba053' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/bootstrap.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -20,6 +21,10 @@ class ComposerStaticInit9c6d65801ddd67a478a8de0ba0625bdc
     );
 
     public static $prefixLengthsPsr4 = array (
+        'V' => 
+        array (
+            'Vich\\UploaderBundle\\' => 20,
+        ),
         'T' => 
         array (
             'Twig\\' => 5,
@@ -49,6 +54,7 @@ class ComposerStaticInit9c6d65801ddd67a478a8de0ba0625bdc
         ),
         'P' => 
         array (
+            'Pusher\\' => 7,
             'Psr\\SimpleCache\\' => 16,
             'Psr\\Log\\' => 8,
             'Psr\\Link\\' => 9,
@@ -58,10 +64,6 @@ class ComposerStaticInit9c6d65801ddd67a478a8de0ba0625bdc
         'M' => 
         array (
             'Monolog\\' => 8,
-        ),
-        'K' => 
-        array (
-            'Knp\\Bundle\\PaginatorBundle\\' => 27,
         ),
         'I' => 
         array (
@@ -83,12 +85,17 @@ class ComposerStaticInit9c6d65801ddd67a478a8de0ba0625bdc
         ),
         'C' => 
         array (
+            'Cron\\CronBundle\\' => 16,
+            'Cron\\' => 5,
             'Composer\\CaBundle\\' => 18,
-            'CMEN\\GoogleChartsBundle\\' => 24,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'Vich\\UploaderBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/vich/uploader-bundle',
+        ),
         'Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
@@ -173,6 +180,10 @@ class ComposerStaticInit9c6d65801ddd67a478a8de0ba0625bdc
         array (
             0 => __DIR__ . '/..' . '/sensiolabs/security-checker/SensioLabs/Security',
         ),
+        'Pusher\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/pusher/pusher-php-server/src',
+        ),
         'Psr\\SimpleCache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/simple-cache/src',
@@ -196,10 +207,6 @@ class ComposerStaticInit9c6d65801ddd67a478a8de0ba0625bdc
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
-        ),
-        'Knp\\Bundle\\PaginatorBundle\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/knplabs/knp-paginator-bundle',
         ),
         'Incenteev\\ParameterHandler\\' => 
         array (
@@ -237,13 +244,17 @@ class ComposerStaticInit9c6d65801ddd67a478a8de0ba0625bdc
         array (
             0 => __DIR__ . '/..' . '/doctrine/doctrine-bundle',
         ),
+        'Cron\\CronBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cron/cron-bundle',
+        ),
+        'Cron\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cron/cron/src',
+        ),
         'Composer\\CaBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/composer/ca-bundle/src',
-        ),
-        'CMEN\\GoogleChartsBundle\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/cmen/google-charts-bundle',
         ),
     );
 
@@ -259,11 +270,18 @@ class ComposerStaticInit9c6d65801ddd67a478a8de0ba0625bdc
                 0 => __DIR__ . '/..' . '/twig/twig/lib',
             ),
         ),
-        'K' => 
+        'S' => 
         array (
-            'Knp\\Component' => 
+            'SBC\\NotificationsBundle' => 
             array (
-                0 => __DIR__ . '/..' . '/knplabs/knp-components/src',
+                0 => __DIR__ . '/..' . '/mrad/notifications-bundle',
+            ),
+        ),
+        'M' => 
+        array (
+            'Metadata\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/jms/metadata/src',
             ),
         ),
         'D' => 
@@ -311,11 +329,11 @@ class ComposerStaticInit9c6d65801ddd67a478a8de0ba0625bdc
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit9c6d65801ddd67a478a8de0ba0625bdc::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit9c6d65801ddd67a478a8de0ba0625bdc::$prefixDirsPsr4;
-            $loader->fallbackDirsPsr4 = ComposerStaticInit9c6d65801ddd67a478a8de0ba0625bdc::$fallbackDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit9c6d65801ddd67a478a8de0ba0625bdc::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit9c6d65801ddd67a478a8de0ba0625bdc::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInita20c8122eff44e4bc430488868f452cd::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInita20c8122eff44e4bc430488868f452cd::$prefixDirsPsr4;
+            $loader->fallbackDirsPsr4 = ComposerStaticInita20c8122eff44e4bc430488868f452cd::$fallbackDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInita20c8122eff44e4bc430488868f452cd::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInita20c8122eff44e4bc430488868f452cd::$classMap;
 
         }, null, ClassLoader::class);
     }

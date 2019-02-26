@@ -1,0 +1,24 @@
+{% extends 'basebo.html.twig' %}
+
+{% block content %}
+    <center>
+            <h1>Type Reclamation : Modifier</h1>
+        <br/>
+        <table>
+            <tr>
+                {{ form_start(edit_form) }}
+                <td>  Nom   :  </td>
+                <td>{{ form_widget(edit_form.nom) }}</td>
+               <td> <input type="submit" value="Edit" /></td>
+                {{ form_end(edit_form) }}
+                {{ form_start(delete_form) }}
+                <td><input type="submit" value="Delete"></td>
+                {{ form_end(delete_form) }}
+            </tr>
+        </table>
+
+        <br>
+        <a href="{{ path('typereclamation_index') }}">Back to the list</a>
+
+    </center>
+{% endblock %}

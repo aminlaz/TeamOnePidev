@@ -1,0 +1,33 @@
+{% extends 'basebo.html.twig' %}
+
+{% block content %}
+    <center>
+        <h1> Types des reclamations </h1>
+
+        <table border="0" style="width: 10cm; text-align: center">
+            <tr>
+                <th colspan="3"> <a href="{{ path('typereclamation_new') }}">Create a new Type Reclamation</a></th>
+            </tr>
+            <tr>
+                <th> Id </th>
+                <th> Nom </th>
+                <th> Actions </th>
+            </tr>
+
+            {% for typeReclamation in typeReclamations %}
+            <tr>
+                <td><a href="{{ path('typereclamation_show', { 'id': typeReclamation.id }) }}">{{ typeReclamation.id }}</a></td>
+                <td>{{ typeReclamation.nom }}</td>
+
+                <td>
+                    <a href="{{ path('typereclamation_edit', { 'id': typeReclamation.id }) }}"> Edit </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+
+
+
+    </center>
+{% endblock %}

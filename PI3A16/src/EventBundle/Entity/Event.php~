@@ -46,61 +46,13 @@ class Event
      *
      * @ORM\Column(name="description", type="string", length=255)
      */
-
-
     private $description;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="adresse", type="string", length=255)
-     */
-    private $adresse;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="etat", type="string", length=255)
-     */
-    private $etat;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="ville", type="string", length=255)
-     */
-    private $ville;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="codepostal", type="integer")
-     */
-    private $codepostal;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="free", type="boolean")
-     */
-    private $free;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="prix", type="float")
-     */
-
-
-    private $prix;
 
     /**
      * @var int
      *
      * @ORM\Column(name="capacity", type="integer")
      */
-
-
     private $capacity;
 
     /**
@@ -111,17 +63,11 @@ class Event
     private $reserved;
 
     /**
-     * @var \Date
+     * @var \DateTime
      *
-     * @ORM\Column(name="date", type="date")
+     * @ORM\Column(name="date", type="datetime")
      */
     private $date;
-    /**
-     * @var \Time
-     *
-     * @ORM\Column(name="time", type="time")
-     */
-    private $time;
 
     /**
      * @var int
@@ -284,76 +230,5 @@ class Event
     {
         return $this->numberofdays;
     }
-
-    /**
-     * Set idorganisateur
-     *
-     * @param \UserBundle\Entity\User $idorganisateur
-     *
-     * @return Event
-     */
-    public function setIdorganisateur(\UserBundle\Entity\User $idorganisateur = null)
-    {
-        $this->idorganisateur = $idorganisateur;
-
-        return $this;
-    }
-
-    /**
-     * Get idorganisateur
-     *
-     * @return \UserBundle\Entity\User
-     */
-    public function getIdorganisateur()
-    {
-        return $this->idorganisateur;
-    }
-
-    /**
-     * Set eventtype
-     *
-     * @param \EventBundle\Entity\eventtype $eventtype
-     *
-     * @return Event
-     */
-    public function setEventtype(\EventBundle\Entity\eventtype $eventtype = null)
-    {
-        $this->eventtype = $eventtype;
-
-        return $this;
-    }
-
-    /**
-     * Get eventtype
-     *
-     * @return \EventBundle\Entity\eventtype
-     */
-    public function getEventtype()
-    {
-        return $this->eventtype;
-    }
-
-    /**
-     * Set time
-     *
-     * @param \DateTime $time
-     *
-     * @return Event
-     */
-    public function setTime($time)
-    {
-        $this->time = $time;
-
-        return $this;
-    }
-
-    /**
-     * Get time
-     *
-     * @return \DateTime
-     */
-    public function getTime()
-    {
-        return $this->time;
-    }
 }
+

@@ -1,0 +1,125 @@
+{% extends 'basebo.html.twig' %}
+
+{% block navbar %}
+    <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
+        <li class="nav-item">
+            <a href="{{  path('reclamation_list') }}" class="nav-link">Reclamations
+                <span class="badge badge-primary ml-1">New</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{  path('archive') }}" class="nav-link">Archive
+            </a>
+        </li>
+        <li class="nav-item ">
+            <a href="{{ path('corbeille') }}" class="nav-link">
+                <i class="mdi mdi-elevation-rise"></i>Corbeille</a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="mdi mdi-bookmark-plus-outline"></i></a>
+        </li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <center>
+     <div class="container">
+        <div class="row">
+          <div class="col-md-1"></div>
+             <div class="col-md-7">
+                      <h3>Reclamation de type : {{ reclamation.type.nom }}</h3>
+             <table class="table   table-hover table-striped">
+             <tr>
+                <th>Id</th>
+                <td>{{ reclamation.id }}</td>
+             </tr>
+                 <tr>
+                     <th>User</th>
+                     <td>{{ reclamation.user.name}}</td>
+                 </tr>
+             <tr>
+                <th>Sujet</th>
+                <td>{{ reclamation.sujet }}</td>
+             </tr>
+              {% if reclamation.organisateur != null %}
+              <tr>
+                <th>Organisateur</th>
+                <td>{{ reclamation.organisateur.name }}</td>
+              </tr>
+              {% elseif reclamation.event != null %}
+                <tr>
+                <th>Événement</th>
+                    <td>{{ reclamation.event.name }}</td>
+                </tr>
+              {% endif %}
+             <tr>
+                <th>Contenu</th>
+                <td>{{ reclamation.contenu }}</td>
+             </tr>
+             <tr>
+                <th>Date</th>
+                <td>{% if reclamation.dateR %}{{ reclamation.dateR|date('Y-m-d') }}{% endif %}</td>
+             </tr>
+             <tr>
+                 <th>Traité</th>
+                 <td>{% if reclamation.traite %}Yes{% else %}No{% endif %}</td>
+                 </tr>
+             </table>
+             </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-3" style="background-color: white">
+                {% if reclamation.corbeille %}
+                    <br><br>
+                    <a href="{{ path('corbeille') }}" class="btn btn-success btn-block" style="width: 5cm">
+                        <span>Back to the list</span>
+                    </a>
+                    <br>
+                    <a href="{{ path('restaurerCorb', { 'id': reclamation.id }) }}" class="btn btn-success btn-block" style="width: 5cm">
+                        <span> Restaurer </span>
+                    </a>
+                    <br>
+                    <a href="{{ path('deleteCorb', { 'id': reclamation.id }) }}" class="btn btn-success btn-block" style="width: 5cm">
+                        <span> Delete </span>
+                    </a>
+                {% elseif reclamation.archive %}
+                    <br><br>
+                    <a href="{{ path('archive') }}" class="btn btn-success btn-block" style="width: 5cm">
+                        <span>Back to the list</span>
+                    </a>
+                    <br>
+                    <a href="{{ path('restaurerArch', { 'id': reclamation.id }) }}" class="btn btn-success btn-block" style="width: 5cm">
+                        <span> Restaurer </span>
+                    </a>
+                    <br>
+                    <a href="{{ path('toCorbeille', { 'id': reclamation.id }) }}" class="btn btn-success btn-block" style="width: 5cm">
+                        <span> Delete </span>
+                    </a>
+
+                {% else %}
+                    <br><br>
+                    <a href="{{ path('reclamation_index') }}" class="btn btn-success btn-block" style="width: 5cm">
+                        <span>Back to the list</span>
+                    </a>
+                    <br>
+                    <a href="{{ path('reclamation_edit', { 'id': reclamation.id }) }}" class="btn btn-success btn-block" style="width: 5cm">
+                        <span> Modifier </span>
+                    </a>
+                    <br>
+                    <a href="{{ path('toArchive', { 'id': reclamation.id }) }}" class="btn btn-success btn-block" style="width: 5cm">
+                        <span> Envoyer vers l'archive </span>
+                    </a>
+                    <br>
+                    <a href="{{ path('toCorbeille', { 'id': reclamation.id }) }}" class="btn btn-success btn-block" style="width: 5cm">
+                        <span> Delete </span>
+                    </a>
+
+                {% endif %}
+
+
+            </div>
+          </div>
+
+     </div>
+    </center>
+{% endblock %}

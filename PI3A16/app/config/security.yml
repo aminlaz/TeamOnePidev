@@ -35,5 +35,4 @@ security:
     - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/admin/, role: ROLE_ADMIN }
-    - { path: ^/events/new, roles: [ROLE_ADMIN, ROLE_ORGANISATEUR] }
 

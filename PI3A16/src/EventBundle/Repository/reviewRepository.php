@@ -2,8 +2,6 @@
 
 namespace EventBundle\Repository;
 
-use EventBundle\Entity\Event;
-
 /**
  * reviewRepository
  *
@@ -12,31 +10,4 @@ use EventBundle\Entity\Event;
  */
 class reviewRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function mRate(Event $event){
-        $conn = $this->getEntityManager()
-            ->getConnection();
-        $sql = 'SELECT AVG(rate) as rate
-      FROM review 
-      WHERE idevent = :eid
-      GROUP BY idevent ';
-
-        $stmt = $conn->prepare($sql);
-        $stmt->execute(array('eid' => $event->getId()));
-        return $stmt->fetch();
-
-
-
-
-
-
-
-
-       /* $query = $this->getEntityManager()
-            ->createQuery('SELECT AVG(review.score) as avg_rating
-      FROM review 
-      WHERE idevent = :eid
-      GROUP BY :eid ')
-            ->setParameter('eid',$event->getId());
-        return $query->getResult();*/
-    }
 }

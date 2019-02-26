@@ -2,8 +2,6 @@
 
 namespace EventBundle\Repository;
 
-use EventBundle\Entity\Event;
-
 /**
  * EventRepository
  *
@@ -12,8 +10,4 @@ use EventBundle\Entity\Event;
  */
 class EventRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function createFindAllQuery()
-    {
-        return $this->_em->getRepository('EventBundle:Event')->createQueryBuilder('E');
-    }
 }

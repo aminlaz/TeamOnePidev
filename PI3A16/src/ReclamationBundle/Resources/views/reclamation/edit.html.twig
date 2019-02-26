@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} <title>Reclamation</title> {% endblock title %}
+{% block menu_reclamation %} class="active" {% endblock menu_reclamation %}
+{% block current_page %}
+    <div class="home_content_container">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="home_content d-flex flex-row align-items-end justify-content-start">
+                        <div class="current_page">Reclamation</div>
+                        <div class="breadcrumbs ml-auto">
+                            <ul>
+                                <li><a href="{{ path('index') }}">Home</a></li>
+                                <li>Reclamation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock current_page %}
+
+{% block content %}
+
+<br><br><br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 contact_form_container">
+         <h1 class="contact_form_title" style="text-align: center">Reclamation edit</h1>
+
+              {{ form_start(edit_form) }}
+             {{ form_widget(edit_form) }}
+            <center>
+            <button class="button contact_button"><span> Valider </span></button>
+              {{ form_end(edit_form) }}
+
+
+
+            {{ form_start(delete_form) }}
+            <button class="button contact_button">
+                <span> Supprimer la Reclamation </span>
+            </button>
+            {{ form_end(delete_form) }}
+
+          </center>
+
+        </div>
+    </div>
+</div>
+<br><br>
+{% endblock %}
