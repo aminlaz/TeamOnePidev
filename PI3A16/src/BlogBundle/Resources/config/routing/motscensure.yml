@@ -1,0 +1,24 @@
+motscensure_index:
+    path:     /
+    defaults: { _controller: "BlogBundle:Motscensure:index" }
+    methods:  GET
+
+motscensure_show:
+    path:     /{id}/show
+    defaults: { _controller: "BlogBundle:Motscensure:show" }
+    methods:  GET
+
+motscensure_new:
+    path:     /new
+    defaults: { _controller: "BlogBundle:Motscensure:new" }
+    methods:  [GET, POST]
+
+motscensure_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BlogBundle:Motscensure:edit" }
+    methods:  [GET, POST]
+
+motscensure_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BlogBundle:Motscensure:delete" }
+    methods:  DELETE

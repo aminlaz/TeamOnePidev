@@ -1,0 +1,61 @@
+{% extends 'basebo.html.twig' %}
+
+{% block content %}
+
+
+    <h1>Details Article</h1>
+<br>
+    <table width="400">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ article.id }}</td>
+        </tr>
+        <tr>
+            <th>Titrearticle</th>
+            <td>{{ article.titrearticle }}</td>
+        </tr>
+        <tr>
+            <th>Contenuarticle</th>
+            <td>{{ article.contenuarticle }}</td>
+        </tr>
+        <tr>
+            <th>Photoarticle</th>
+            <td>{{ article.photoarticle }}</td>
+        </tr>
+        <tr>
+            <th>Nbrvu</th>
+            <td>{{ article.nbrvu }}</td>
+        </tr>
+        <tr>
+            <th>Nbrcomment</th>
+            <td>{{ article.nbrcomment }}</td>
+        </tr>
+        <tr>
+            <th>Catégorie</th>
+            <td>{{ categ.libelecategorie }}</td>
+        </tr>
+
+        <tr>
+            <th>Datearticle</th>
+            <td>{% if article.datearticle %}{{ article.datearticle|date('Y-m-d') }}{% endif %}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('afficherarticlebo') }}">Retour</a>
+        </li>
+
+
+        <li>
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+
+    </ul>
+
+
+{% endblock %}

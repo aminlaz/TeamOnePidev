@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Article</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ article.id }}</td>
+            </tr>
+            <tr>
+                <th>Titrearticle</th>
+                <td>{{ article.titrearticle }}</td>
+            </tr>
+            <tr>
+                <th>Contenuarticle</th>
+                <td>{{ article.contenuarticle }}</td>
+            </tr>
+            <tr>
+                <th>Videoarticle</th>
+                <td>{{ article.videoarticle }}</td>
+            </tr>
+            <tr>
+                <th>Photoarticle</th>
+                <td>{{ article.photoarticle }}</td>
+            </tr>
+            <tr>
+                <th>Nbrlike</th>
+                <td>{{ article.nbrlike }}</td>
+            </tr>
+            <tr>
+                <th>Nbrdislike</th>
+                <td>{{ article.nbrdislike }}</td>
+            </tr>
+            <tr>
+                <th>Nbrvu</th>
+                <td>{{ article.nbrvu }}</td>
+            </tr>
+            <tr>
+                <th>Nbrcomment</th>
+                <td>{{ article.nbrcomment }}</td>
+            </tr>
+            <tr>
+                <th>Datearticle</th>
+                <td>{% if article.datearticle %}{{ article.datearticle|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('article_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('article_edit', { 'id': article.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

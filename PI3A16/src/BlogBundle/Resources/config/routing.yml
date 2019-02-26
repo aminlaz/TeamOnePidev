@@ -1,4 +1,80 @@
+blog_categorie:
+    resource: "@BlogBundle/Resources/config/routing/categorie.yml"
+    prefix:   /categorie
+
 
 blog:
     path:     /blog
     defaults: { _controller: BlogBundle:Default:blog }
+
+ajouterarticle:
+    path:     /blog/ajouterarticle/{id}
+    defaults: { _controller: BlogBundle:Article:ajouterarticle }
+
+supprimerarticle:
+    path:     /blog/supprimerarticle/{id}
+    defaults: { _controller: BlogBundle:Article:supprimerarticle }
+
+supprimerarticlebo:
+    path:     /blog/supprimerarticlebo/{id}
+    defaults: { _controller: BlogBundle:Article:supprimerarticlebo }
+
+afficherarticle:
+    path:     /blog/afficherarticle/{id}
+    defaults: { _controller: BlogBundle:Article:afficherarticle }
+
+afficherarticlebo:
+    path:     /blog/afficherarticlebo
+    defaults: { _controller: BlogBundle:Article:afficherarticlebo }
+
+modifierarticle:
+    path:     /blog/modifierarticle/{id}
+    defaults: { _controller: BlogBundle:Article:modifierarticle }
+
+afficherunarticle:
+    path:     /blog/afficherunarticle/{id}
+    defaults: { _controller: BlogBundle:Article:afficherunarticle }
+
+afficherunarticlebo:
+    path:     /blog/afficherunarticlebo/{id}
+    defaults: { _controller: BlogBundle:Article:afficherunarticlebo }
+
+abonner:
+    path:     /blog/abonner/{id}
+    defaults: { _controller: BlogBundle:Article:abonner }
+
+affichercategoriesbo:
+    path:     /affichercategoriesbo
+    defaults: { _controller: BlogBundle:Categorie:index }
+
+affichercategoriebo:
+    path:     /affichercategoriebo/{id}
+    defaults: { _controller: BlogBundle:Categorie:show }
+
+effacercategoriesbo:
+    path:     /effacercategoriesbo/{id}
+    defaults: { _controller: BlogBundle:Categorie:delete }
+
+modifiercategoriebo:
+    path:     /modifiercategoriebo/{id}
+    defaults: { _controller: BlogBundle:Categorie:edit }
+
+ajoutercategoriebo:
+    path:     /ajoutercategoriebo
+    defaults: { _controller: BlogBundle:Categorie:new }
+
+affichermotsclebo:
+    path:     /affichermotsclebo
+    defaults: { _controller: BlogBundle:Motscensure:index }
+
+ajoutermotsclebo:
+    path:     /ajoutermotsclebo
+    defaults: { _controller: BlogBundle:Motscensure:new }
+
+modifiermotsclebo:
+    path:     /modifiermotsclebo/{id}
+    defaults: { _controller: BlogBundle:Motscensure:edit }
+
+effacermotsclebo:
+    path:     /effacermotsclebo/{id}
+    defaults: { _controller: BlogBundle:Motscensure:delete }

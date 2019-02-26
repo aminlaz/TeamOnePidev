@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block current_page %}
+    <div class="home_content_container">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="home_content d-flex flex-row align-items-end justify-content-start">
+                        <div class="current_page">Blog</div>
+                        <div class="breadcrumbs ml-auto">
+                            <ul>
+                                <li><a href="{{ path('index') }}">Home</a></li>
+                                <li>Blog</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock current_page %}
+{% block content %}
+    <br> <br> <br>
+    <center><h1 style="color: #062c33">Créer un article</h1></center>
+<div class="contact_form_container">
+    {{ form_start(form) }}
+    Titre Article : <br><br>{{ form_widget(form.titrearticle) }}<br><br>
+    Contenu Article : <br><br>{{ form_widget(form.contenuarticle) }}<br><br>
+    Photo Article :
+    {{ form_widget(form.photoarticle) }}
+    <br><br>
+    <center><input type="submit" value="            Créer             " width="900" /></center>
+    {{ form_end(form) }}
+</div>
+    <br>
+    <ul>
+        <li>
+            <a href="{{ path('afficherarticle', { 'id': idcateg }) }}" class="dropdown-item"><h3>Retour</h3></a>
+        </li>
+    </ul>
+    <br> <br> <br>
+{% endblock content %}
+
+{% block getyourticket  %}
+
+{% endblock getyourticket %}

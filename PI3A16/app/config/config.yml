@@ -18,6 +18,8 @@ parameters:
 framework:
     #esi: ~
     #translator: { fallbacks: ['%locale%'] }
+    templating:
+            engines: ['twig']
     secret: '%secret%'
     router:
         resource: '%kernel.project_dir%/app/config/routing.yml'
@@ -42,6 +44,8 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    form_themes:
+        - 'bootstrap_3_layout.html.twig'
 
 # Doctrine Configuration
 doctrine:
@@ -69,6 +73,8 @@ doctrine:
 swiftmailer:
     transport: '%mailer_transport%'
     host: '%mailer_host%'
+    port: '%mailer_port%'
+    encryption: '%mailer_encryption%'
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
@@ -76,6 +82,7 @@ swiftmailer:
 sensio_framework_extra:
    router:
         annotations: false
+
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
@@ -85,3 +92,16 @@ fos_user:
     from_email:
         address: "tech-events@esprit.tn"
         sender_name: "tech-events"
+
+fos_comment:
+    db_driver: orm
+    class:
+        model:
+            comment: BlogBundle\Entity\Comment
+            thread: BlogBundle\Entity\Thread
+            vote: BlogBundle\Entity\Vote
+
+
+
+assetic:
+    bundles: [ "FOSCommentBundle" ]

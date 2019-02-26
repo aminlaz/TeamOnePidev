@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Articles list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titrearticle</th>
+                <th>Contenuarticle</th>
+                <th>Videoarticle</th>
+                <th>Photoarticle</th>
+                <th>Nbrlike</th>
+                <th>Nbrdislike</th>
+                <th>Nbrvu</th>
+                <th>Nbrcomment</th>
+                <th>Datearticle</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td><a href="{{ path('article_show', { 'id': article.id }) }}">{{ article.id }}</a></td>
+                <td>{{ article.titrearticle }}</td>
+                <td>{{ article.contenuarticle }}</td>
+                <td>{{ article.videoarticle }}</td>
+                <td>{{ article.photoarticle }}</td>
+                <td>{{ article.nbrlike }}</td>
+                <td>{{ article.nbrdislike }}</td>
+                <td>{{ article.nbrvu }}</td>
+                <td>{{ article.nbrcomment }}</td>
+                <td>{% if article.datearticle %}{{ article.datearticle|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('article_show', { 'id': article.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('article_edit', { 'id': article.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('article_new') }}">Create a new article</a>
+        </li>
+    </ul>
+{% endblock %}

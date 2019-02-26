@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+{% block current_page %}
+
+    <div class="home_content_container">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="home_content d-flex flex-row align-items-end justify-content-start">
+                        <div class="current_page">Blog</div>
+                        <div class="breadcrumbs ml-auto">
+                            <ul>
+                                <li><a href="{{ path('index') }}">Home</a></li>
+                                <li>Blog</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock current_page %}
+{% block content %}
+
+
+    <h1>Article</h1>
+
+    <table>
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ article.id }}</td>
+        </tr>
+        <tr>
+            <th>Titrearticle</th>
+            <td>{{ article.titrearticle }}</td>
+        </tr>
+        <tr>
+            <th>Contenuarticle</th>
+            <td>{{ article.contenuarticle }}</td>
+        </tr>
+        <tr>
+            <th>Videoarticle</th>
+            <td>{{ article.videoarticle }}</td>
+        </tr>
+        <tr>
+            <th>Photoarticle</th>
+            <td>{{ article.photoarticle }}</td>
+        </tr>
+        <tr>
+            <th>Nbrlike</th>
+            <td>{{ article.nbrlike }}</td>
+        </tr>
+        <tr>
+            <th>Nbrdislike</th>
+            <td>{{ article.nbrdislike }}</td>
+        </tr>
+        <tr>
+            <th>Nbrvu</th>
+            <td>{{ article.nbrvu }}</td>
+        </tr>
+        <tr>
+            <th>Nbrcomment</th>
+            <td>{{ article.nbrcomment }}</td>
+        </tr>
+        <tr>
+            <th>Datearticle</th>
+            <td>{% if article.datearticle %}{{ article.datearticle|date('Y-m-d') }}{% endif %}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('afficherarticle', {'id': idcateg }) }}">Back to the list</a>
+        </li>
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+        {% if article.iduser == app.user.username %}
+        <li>
+            <a href="{{ path('modifierarticle', { 'id': article.id }) }}">Edit</a>
+        </li>
+
+        <li>
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+        {% endif %}{% endif %}
+    </ul>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    {% include '@FOSComment/Thread/async.html.twig' with {'id': article.id} %}
+
+{% endblock %}
+{% block getyourticket  %}
+
+{% endblock getyourticket %}

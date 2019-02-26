@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+{% block current_page %}
+    <div class="home_content_container">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="home_content d-flex flex-row align-items-end justify-content-start">
+                        <div class="current_page">Blog</div>
+                        <div class="breadcrumbs ml-auto">
+                            <ul>
+                                <li><a href="{{ path('index') }}">Home</a></li>
+                                <li>Blog</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock current_page %}
+{% block content %}
+    <center>  <table><td><h1>{{ libele }}</h1></td><td>{% if test==0 %} <a href="{{ path('abonner', { 'id': idcateg }) }}">S'abonner</a> {% endif %}</td></table>
+<br>
+    <table border="1" width="900">
+        <thead>
+        <tr>
+
+            <th><center>>Titrearticle</center></th>
+            <th><center>Contenuarticle</center></th>
+            <th><center>Photoarticle</center></th>
+            <th><center>Nbrvu</center></th>
+            <th><center>Nbrcomment</center></th>
+            <th><center>Datearticle</center></th>
+            <th><center>Actions</center></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+
+                <td><center>{{ article.titrearticle }}</center></td>
+                <td><center>{{ article.contenuarticle }}</center></td>
+                <td><center>{{ article.photoarticle }}</center></td>
+                <td><center>{{ article.nbrvu }}</center></td>
+                <td><center>{{ article.nbrcomment }}</center></td>
+                <td>{% if article.datearticle %}<center>{{ article.datearticle|date('Y-m-d') }}</center>{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('afficherunarticle', { 'id': article.id }) }}"><center>show</center></a>
+                        </li>
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        {% if article.iduser == app.user.username %}
+                        <li>
+                            <a href="{{ path('modifierarticle', { 'id': article.id }) }}"><center>edit</center></a>
+                        </li>
+                    </ul>{% endif %}{% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+      {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    <ul>
+        <li>
+            <a href="{{ path('ajouterarticle', { 'id': idcateg }) }}">Create a new article</a>
+        </li>
+    </ul>
+      {% endif %}
+  </center>
+{% endblock %}
+{% block getyourticket  %}
+
+{% endblock getyourticket %}
