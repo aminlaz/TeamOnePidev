@@ -16,7 +16,7 @@ use SBC\NotificationsBundle\Model\NotifiableInterface;
  * @ORM\Table(name="reclamation")
  * @ORM\Entity(repositoryClass="ReclamationBundle\Repository\ReclamationRepository")
  */
-class Reclamation implements NotifiableInterface
+class Reclamation implements NotifiableInterface , \JsonSerializable
 {
     /**
      * @var int
@@ -87,11 +87,25 @@ class Reclamation implements NotifiableInterface
     private $archive;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateArchive", type="date")
+     */
+    private $dateArchive;
+
+    /**
      * @var bool
      *
      * @ORM\Column(name="corbeille", type="boolean")
      */
     private $corbeille;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateCorbeille", type="date")
+     */
+    private $dateCorbeille;
 
 
     /**
@@ -334,6 +348,41 @@ class Reclamation implements NotifiableInterface
         return $this->corbeille;
     }
 
+    /**
+     * @return \DateTime
+     */
+    public function getDateArchive()
+    {
+        return $this->dateArchive;
+    }
+
+    /**
+     * @param \DateTime $dateArchive
+     */
+    public function setDateArchive($dateArchive)
+    {
+        $this->dateArchive = $dateArchive;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateCorbeille()
+    {
+        return $this->dateCorbeille;
+    }
+
+    /**
+     * @param \DateTime $dateCorbeille
+     */
+    public function setDateCorbeille($dateCorbeille)
+    {
+        $this->dateCorbeille = $dateCorbeille;
+    }
+
+
+
+
 
     /**
      * Build notifications on entity creation
@@ -346,7 +395,7 @@ class Reclamation implements NotifiableInterface
         $notification
             ->setTitle('New Reclamation')
             ->setDescription('"'.$this->contenu.'" has been created')
-            ->setRoute('reclamation_new')
+            ->setRoute('reclamation_index')
             ->setParameters(array('id' => $this->id))
         ;
         $builder->addNotification($notification);
@@ -385,5 +434,9 @@ class Reclamation implements NotifiableInterface
         return $builder;
     }
 
+    public function jsonSerialize()
+    {
+        return get_object_vars($this);
+    }
 }
 

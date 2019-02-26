@@ -45,28 +45,45 @@
             </tr>
         </table>
 
-            <a href="{{ path('reclamation_edit', { 'id': reclamation.id }) }}">
-            <button class="button contact_button" style="width: 2.7cm">
+
+            <button id="valider" class="button contact_button" style="width: 2.7cm">
                 <span> Valider </span>
             </button>
             </a>
 
-            <a href="{{ path('reclamation_edit', { 'id': reclamation.id }) }}">
+            <a id="modifier" href="{{ path('reclamation_edit', { 'id': reclamation.id }) }}">
             <button class="button contact_button" style="width: 2.7cm">
                 <span> Modifier </span>
             </button>
             </a>
 
                 {{ form_start(delete_form) }}
-            <button class="button contact_button">
+            <button id="supprimer" class="button contact_button">
                 <span> Supprimer la Reclamation </span>
             </button>
                 {{ form_end(delete_form) }}
-
-
+            <h6 id="txt" class="contact_form_title"  > a été bien envoyée </h6>
         </div>
     </div>
 </div>
-<br><br><br>
+<br><br>
 </center>
+
+<script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+<script>
+    $(document).ready(function () {
+        $('#txt').hide();
+        $(document).ready(
+            function (){
+                $('#valider').click(function () {
+                    $('#valider').hide();
+                    $('#modifier').hide();
+                    $('#supprimer').hide();
+                    $('#txt').show();
+                })
+            })
+    });
+</script>
+
+
 {% endblock %}

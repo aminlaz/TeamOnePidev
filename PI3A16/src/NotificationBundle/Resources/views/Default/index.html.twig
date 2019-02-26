@@ -10,13 +10,14 @@
     $(document).ready(function () {
         $(document).ready(
             function (){
-                $('#notificationDropdown').blur(function () {
+                $('#notificationDropdown').click(function () {
                      $.ajax({
                              url: '{{ (path('update_route')) }}',
                              async: true,
                          })
                      location.reload();
                 })
+
             }
         );
     });
@@ -24,7 +25,7 @@
 
 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
 
-    <a class="dropdown-item">
+    <a class="dropdown-item" href="">
 
         <p class="mb-0 font-weight-normal float-left">
             You have  {{ notif }} new notifications
@@ -33,7 +34,7 @@
     </a>
     {% for notification in notifications %}
     <div class="dropdown-divider"></div>
-    <a class="dropdown-item preview-item" href=" {{ notification.fullUrl }} ">
+    <a class="dropdown-item preview-item" href="#">
         <div class="preview-thumbnail">
             <div class="preview-icon bg-success">
                 <i class="mdi mdi-alert-circle-outline mx-0"></i>

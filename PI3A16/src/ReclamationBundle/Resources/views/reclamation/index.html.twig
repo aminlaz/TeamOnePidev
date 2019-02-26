@@ -25,20 +25,21 @@
     <center>
 
         <div class="container">
-
-
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6 contact_form_container">
 
    <h1> Liste des nouveaux Reclamations </h1>
 
-        <table style="text-align: center; width: 10cm">
-
+        <table class="table   table-hover table-striped">
+          <thead class="thead-dark">
             <tr>
                 <th>Id</th>
                 <th>Sujet</th>
                 <th>Date</th>
                 <th>Actions</th>
             </tr>
-
+          </thead>
 
             {% for reclamation in reclamations %}
                 <tr>
@@ -46,7 +47,7 @@
                     <td>{{ reclamation.sujet }}</td>
                     <td>{% if reclamation.dateR %}{{ reclamation.dateR|date('Y-m-d') }}{% endif %}</td>
                     <td>
-                        <a href="{{ path('reclamation_show', { 'id': reclamation.id }) }}">show</a>
+                        <a href="{{ path('reclamation_showBo', { 'id': reclamation.id }) }}">show</a>
                     </td>
                 </tr>
             {% endfor %}
@@ -54,6 +55,8 @@
         </table>
 
 
+        </div>
+            </div>
         </div>
     </center>
 {% endblock %}

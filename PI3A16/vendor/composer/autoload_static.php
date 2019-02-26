@@ -85,6 +85,8 @@ class ComposerStaticInita20c8122eff44e4bc430488868f452cd
         ),
         'C' => 
         array (
+            'Cron\\CronBundle\\' => 16,
+            'Cron\\' => 5,
             'Composer\\CaBundle\\' => 18,
         ),
     );
@@ -241,6 +243,14 @@ class ComposerStaticInita20c8122eff44e4bc430488868f452cd
         'Doctrine\\Bundle\\DoctrineBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/doctrine-bundle',
+        ),
+        'Cron\\CronBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cron/cron-bundle',
+        ),
+        'Cron\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cron/cron/src',
         ),
         'Composer\\CaBundle\\' => 
         array (

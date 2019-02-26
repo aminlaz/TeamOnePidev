@@ -2,6 +2,8 @@
 
 namespace ReclamationBundle\Controller;
 
+use EventBundle\Entity\Event;
+use EventBundle\EventBundle;
 use ReclamationBundle\Entity\Reclamation;
 use ReclamationBundle\Form\ReclamationType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -14,30 +16,31 @@ use Symfony\Component\HttpFoundation\Request;
 class ReclamationController extends Controller
 {
     /**
-     * Lists all reclamation entities.
+     * Lists all  reclamation entities.
+     *
+     */
+    public function listAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $reclamations = $em->getRepository('ReclamationBundle:Reclamation')->findDQL();
+        return $this->render('@Reclamation/Reclamation/list.html.twig', array(
+            'reclamations' => $reclamations,
+        ));
+    }
+
+    /**
+     * Lists the new  reclamation entities.
      *
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $reclamations = $em->getRepository('ReclamationBundle:Reclamation')->findDQL(0);
+        $reclamations = $em->getRepository('ReclamationBundle:Reclamation')->findDQL();
         $list = $em->getRepository('ReclamationBundle:Reclamation')->RechercheDQL('traite',0);
 
 
         return $this->render('@Reclamation/Reclamation/index.html.twig', array(
-            'reclamations' => $reclamations,
-        ));
-    }
-
-    public function listAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $reclamations = $em->getRepository('ReclamationBundle:Reclamation')->findDQL(0);
-
-
-        return $this->render('@Reclamation/Reclamation/list.html.twig', array(
             'reclamations' => $reclamations,
         ));
     }
@@ -51,17 +54,32 @@ class ReclamationController extends Controller
     {
         $reclamation = new Reclamation();
         $form = $this->createForm(ReclamationType::class, $reclamation);
-        $form->handleRequest($request);
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
+        $events = $em->getRepository('ReclamationBundle:Reclamation')
+                     ->findEventDQL($this->getUser()->getId());
+
+        $organisateurs = $em->getRepository('ReclamationBundle:Reclamation')
+                            ->findOrganisateurDQL($this->getUser()->getId());
+
+        $idEvent=$request->get('idEvent');
+        $idOrganisateur=$request->get('idOrganisateur');
+
+        $form->handleRequest($request);
+        if (($form->isValid())&&(isset($idEvent))&&(isset($idOrganisateur)))
+        {
+            $event = $em->getRepository('EventBundle:Event')->find($idEvent);
+            $organisateur = $em->getRepository('UserBundle:User')->find($idOrganisateur);
+
             $reclamation->setDateR(new \DateTime);
             $reclamation->setTraite(false);
             $reclamation->setCorbeille(false);
+            $reclamation->setDateCorbeille(null);
             $reclamation->setArchive(false);
-            $reclamation->setUser(null);
-            $reclamation->setEvent(null);
-            $reclamation->setOrganisateur(null);
+            $reclamation->setDateArchive(null);
+            $reclamation->setUser($this->getUser());
+            $reclamation->setEvent($event);
+            $reclamation->setOrganisateur($organisateur);
             $em->persist($reclamation);
             $em->flush();
 
@@ -69,20 +87,10 @@ class ReclamationController extends Controller
         }
 
         return $this->render('@Reclamation/Reclamation/new.html.twig', array(
-            'reclamation' => $reclamation,
             'form' => $form->createView(),
+            'events'=>$events,
+            'organisateurs'=>$organisateurs,
         ));
-    }
-
-    public function validerAction(Reclamation $reclamation)
-    {
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($reclamation);
-            $em->flush();
-
-            return $this->redirectToRoute('reclamation_show', array('id' => $reclamation->getId()));
-
     }
 
     /**
@@ -94,6 +102,16 @@ class ReclamationController extends Controller
         $deleteForm = $this->createDeleteForm($reclamation);
 
         return $this->render('@Reclamation/Reclamation/show.html.twig', array(
+            'reclamation' => $reclamation,
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    public function showBoAction(Reclamation $reclamation)
+    {
+        $deleteForm = $this->createDeleteForm($reclamation);
+
+        return $this->render('@Reclamation/Reclamation/showBo.html.twig', array(
             'reclamation' => $reclamation,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -112,7 +130,7 @@ class ReclamationController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('reclamation_edit', array('id' => $reclamation->getId()));
+            return $this->redirectToRoute('reclamation_show', array('id' => $reclamation->getId()));
         }
 
         return $this->render('@Reclamation/Reclamation/edit.html.twig', array(
@@ -167,6 +185,35 @@ class ReclamationController extends Controller
         ));
     }
 
+    public function toCorbeilleAction(Reclamation $reclamation )
+    {
+        $em = $this->getDoctrine()->getManager();
+        $reclamation->setCorbeille(1);
+        $reclamation->setDateCorbeille(new \DateTime);
+        $em->persist($reclamation);
+        $em->flush();
+        return $this->redirectToRoute('reclamation_list');
+    }
+
+    public function restaurerCorbAction(Reclamation $reclamation )
+    {
+        $em = $this->getDoctrine()->getManager();
+        $reclamation->setCorbeille(0);
+        $reclamation->setDateCorbeille(null);
+        $em->persist($reclamation);
+        $em->flush();
+        return $this->redirectToRoute('corbeille');
+    }
+
+    public function deleteCorbAction(Reclamation $reclamation)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($reclamation);
+        $em->flush();
+
+        return $this->redirectToRoute('corbeille');
+    }
+
     public function archiveAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -176,5 +223,40 @@ class ReclamationController extends Controller
         return $this->render('@Reclamation/Reclamation/archive.html.twig', array(
             'reclamations' => $reclamations,
         ));
+    }
+
+    public function toArchiveAction(Reclamation $reclamation)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $reclamation->setArchive(1);
+        $reclamation->setDateArchive(new \DateTime);
+        $em->persist($reclamation);
+        $em->flush();
+        return $this->redirectToRoute('reclamation_list');
+    }
+
+    public function restaurerArchAction(Reclamation $reclamation)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $reclamation->setArchive(0);
+        $reclamation->setDateArchive(null);
+        $em->persist($reclamation);
+        $em->flush();
+        return $this->redirectToRoute('archive');
+    }
+
+    public function cronJobClearCorbeille()
+    {
+        $em=$this->getDoctrine()->getManager();
+        $reclamations = $em->getRepository(Reclamation::class)->rechercheDQL('Corbeille',1);
+        foreach ($reclamations as $reclamation)
+        {
+            if(date_diff( new \DateTime(),$reclamation->getDateCorbeille())->days >1 )
+            {
+                $em->remove($reclamation);
+                $em->flush();
+            }
+
+        }
     }
 }

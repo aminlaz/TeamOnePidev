@@ -42,4 +42,20 @@ class DefaultController extends Controller
         return $this->displayAction();
 
     }
+
+    public function cronJobDeleteNotification()
+    {
+        $em=$this->getDoctrine()->getManager();
+        $notifications = $em->getRepository(Notification::class)->rechercheDQL('seen',1);
+        foreach ($notifications as $notification)
+        {
+            if(date_diff( new \DateTime(),$notification->getDate())->days >1 )
+            {
+                $em->remove($notification);
+                $em->flush();
+            }
+
+        }
+    }
+
 }

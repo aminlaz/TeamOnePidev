@@ -24,16 +24,6 @@ class ReclamationType extends AbstractType
                      'choice_label'=>'nom',
                      'multiple'=>false
                  ))
-                ->add('event',EntityType::class,array(
-                      'class'=>'EventBundle\Entity\Event',
-                      'choice_label'=>'name',
-                       'multiple'=>false
-                 ))
-                ->add('organisateur',EntityType::class,array(
-                        'class'=>'UserBundle\Entity\User',
-                        'choice_label'=>'username',
-                         'multiple'=>false
-                 ))
                  ->add('sujet')
                  ->add('contenu');
 

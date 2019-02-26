@@ -1,3 +1,7 @@
+cron:
+    resource: "@CronBundle/Resources/config/routing.yml"
+    prefix:   /
+
 notification:
     resource: "@NotificationBundle/Resources/config/routing.yml"
     prefix:   /

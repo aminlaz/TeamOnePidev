@@ -10,6 +10,17 @@ namespace ReclamationBundle\Repository;
  */
 class ReclamationRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findDQL()
+    {
+        $dqlresult = $this->getEntityManager()
+            ->createQuery("SELECT r
+                               FROM ReclamationBundle:Reclamation r
+                               WHERE r.corbeille= 0
+                               AND   r.archive= 0
+                              ");
+        return $dqlresult->getResult();
+    }
+
     public function RechercheDQL($champ,$id)
     {
         $dqlresult = $this->getEntityManager()
@@ -20,14 +31,33 @@ class ReclamationRepository extends \Doctrine\ORM\EntityRepository
         return $dqlresult->getResult();
     }
 
-    public function findDQL($id)
+
+    public function findEventDQL($id)
     {
         $dqlresult = $this->getEntityManager()
             ->createQuery("SELECT r
-                               FROM ReclamationBundle:Reclamation r
-                               WHERE r.corbeille= '$id'
-                               AND r.archive='$id'
+                               FROM EventBundle:Evenement_Participant r
+                               WHERE r.idParticipant= '$id'
                               ");
         return $dqlresult->getResult();
     }
+
+    public function findOrganisateurDQL($id)
+    {
+        $dqlresult = $this->getEntityManager()
+            ->createQuery("SELECT org
+                               FROM 
+                                    EventBundle:Evenement_Participant r, 
+                                    EventBundle:Event e, 
+                                    UserBundle:User org
+                               WHERE
+                                    r.idParticipant = '$id'
+                               AND  e.id = r.idEvent   
+                               AND  org.id = e.idorganisateur      
+                              ");
+        return $dqlresult->getResult();
+    }
+
+
+
 }

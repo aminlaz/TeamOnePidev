@@ -23,6 +23,11 @@ reclamation_show:
     defaults: { _controller: "ReclamationBundle:Reclamation:show" }
     methods:  GET
 
+reclamation_showBo:
+    path:     /{id}/showBo
+    defaults: { _controller: "ReclamationBundle:Reclamation:showBo" }
+    methods:  GET
+
 reclamation_new:
     path:     /new
     defaults: { _controller: "ReclamationBundle:Reclamation:new" }
@@ -37,3 +42,28 @@ reclamation_delete:
     path:     /{id}/delete
     defaults: { _controller: "ReclamationBundle:Reclamation:delete" }
     methods:  DELETE
+
+toCorbeille:
+    path:     /{id}/toCorbeille
+    defaults: { _controller: "ReclamationBundle:Reclamation:toCorbeille" }
+    methods:  GET
+
+restaurerCorb:
+    path:     /{id}/restaurer
+    defaults: { _controller: "ReclamationBundle:Reclamation:restaurerCorb" }
+    methods:  GET
+
+deleteCorb:
+    path:     /{id}/delete
+    defaults: { _controller: "ReclamationBundle:Reclamation:deleteCorb" }
+    methods:  GET
+
+toArchive:
+    path:    /{id}/toArchive
+    defaults: { _controller: "ReclamationBundle:Reclamation:toArchive" }
+    methods:  GET
+
+restaurerArch:
+    path:     /{id}/restaurer
+    defaults: { _controller: "ReclamationBundle:Reclamation:restaurerArch" }
+    methods:  GET

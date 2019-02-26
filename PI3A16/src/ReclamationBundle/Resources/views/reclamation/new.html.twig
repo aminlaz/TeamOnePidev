@@ -34,12 +34,27 @@
                                {{ form_widget(form.type, {'attr' : {'class': 'contact_input','placeholder':'Type'}}) }}<br><br>
                            </div>
                            <div id="event" >
-                               {{ form_widget(form.event, {'attr' : {'class': 'contact_input','placeholder':'Événement'}}) }}<br><br>
+                               <select name="idEvent" class="contact_input">
+                                   <option value="null"  >  </option>
+                                   {% for e in events %}
+                                   <option value="{{ e.idEvent.id }}">
+                                       {{ e.idEvent.name }}
+                                   </option>
+                                   {% endfor %}
+                               </select>
                             </div>
+                           <br><br>
                             <div id="org" >
-                                {{ form_widget(form.organisateur, {'attr' : {'class': 'contact_input','placeholder':'Organisateur'}}) }}<br><br>
-
+                                <select name="idOrganisateur" class="contact_input">
+                                    <option value="null">  </option>
+                                    {% for org in organisateurs %}
+                                        <option value="{{ org.id }}">
+                                            {{ org.name }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
                             </div>
+                                  <br><br>
                             {{ form_widget(form.sujet, {'attr' : {'class': 'contact_input','placeholder':'Sujet...'}}) }}<br><br>
                             {{ form_widget(form.contenu, {'attr' : {'class': 'contact_textarea contact_input','placeholder':'Contenu...'}}) }}<br><br>
                             <button class="button contact_button"><span> Envoyer la Reclamation </span></button>
@@ -100,7 +115,9 @@
 
     $('#type').click(
         function () {
-            $('#event').show();
+
+            $('')
+            $('#org').show();
 
         }
     );

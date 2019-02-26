@@ -24,46 +24,37 @@
             <center>
 
                 <div class="container">
-                    <h1>Reclamations list</h1>
-                      <table class="table table-bordered table-striped table-hover">
-                        <tr>
-                            <th>Id</th>
-                            <th>Sujet</th>
-                            <th>Contenu</th>
-                            <th>Traite</th>
-                            <th>Dater</th>
-                            <th>Archive</th>
-                            <th>Corbeille</th>
-                            <th>Actions</th>
-                        </tr>
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6 contact_form_container">
 
 
-                        {% for reclamation in reclamations %}
-                            <tr>
-                                <td><a href="{{ path('reclamation_show', { 'id': reclamation.id }) }}">{{ reclamation.id }}</a></td>
-                                <td>{{ reclamation.sujet }}</td>
-                                <td>{{ reclamation.contenu }}</td>
-                                <td>{% if reclamation.traite %}Yes{% else %}No{% endif %}</td>
-                                <td>{% if reclamation.dateR %}{{ reclamation.dateR|date('Y-m-d') }}{% endif %}</td>
-                                <td>{% if reclamation.archive %}Yes{% else %}No{% endif %}</td>
-                                <td>{% if reclamation.corbeille %}Yes{% else %}No{% endif %}</td>
-                                <td>
-                                    <ul>
-                                        <li>
-                                            <a href="{{ path('reclamation_show', { 'id': reclamation.id }) }}">show</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ path('reclamation_edit', { 'id': reclamation.id }) }}">edit</a>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                        {% endfor %}
+                            <table class="table   table-hover table-striped">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Sujet</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
 
-                    </table>
+                                {% for reclamation in reclamations %}
+                                    <tr>
+                                        <td><a href="{{ path('reclamation_show', { 'id': reclamation.id }) }}">{{ reclamation.id }}</a></td>
+                                        <td>{{ reclamation.sujet }}</td>
+                                        <td>{% if reclamation.dateR %}{{ reclamation.dateR|date('Y-m-d') }}{% endif %}</td>
+                                        <td>
+                                            <a href="{{ path('reclamation_showBo', { 'id': reclamation.id }) }}">show</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
 
-                    <a href="{{ path('reclamation_new') }}">Create a new reclamation</a>
+                            </table>
 
+
+                        </div>
+                    </div>
                 </div>
             </center>
         {% endblock %}
