@@ -42,17 +42,12 @@ framework:
     assets: ~
     php_errors:
         log: true
-    templating:
-        engines: ['twig']
 # Twig Configuration
 twig:
-    form_themes:
-        - 'bootstrap_3_layout.html.twig'
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
     form_themes: ['bootstrap_4_layout.html.twig']
 
-    - 'bootstrap_3_layout.html.twig'
 # Doctrine Configuration
 doctrine:
     dbal:

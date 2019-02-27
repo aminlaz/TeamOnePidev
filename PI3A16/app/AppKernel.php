@@ -11,7 +11,6 @@ class AppKernel extends Kernel
         $bundles = [
             new FOS\UserBundle\FOSUserBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
-            new CMEN\GoogleChartsBundle\CMENGoogleChartsBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new FOS\CommentBundle\FOSCommentBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
