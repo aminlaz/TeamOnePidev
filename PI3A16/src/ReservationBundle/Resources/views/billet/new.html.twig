@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<br><br><br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6" style="">
+    <h1>Billet creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+            <center>
+                <br>
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <br><br>
+            <a href="{{ path('billet_index') }}">Back to the list</a>
+            </center>
+        </div>
+
+    </div>
+</div>
+
+    <br><br><br>
+
+
+{% endblock %}

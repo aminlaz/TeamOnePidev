@@ -1,3 +1,13 @@
+
+
 reservation:
-    path:     /reservation
+    resource: "@ReservationBundle/Resources/config/routing/reservation.yml"
+    prefix:   /reservation
+
+reservation_billet:
+    resource: "@ReservationBundle/Resources/config/routing/billet.yml"
+    prefix:   /billet
+
+reservation:
+    path:     /
     defaults: { _controller: ReservationBundle:Default:reservation }

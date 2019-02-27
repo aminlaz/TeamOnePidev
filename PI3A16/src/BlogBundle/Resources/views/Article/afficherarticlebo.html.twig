@@ -1,0 +1,43 @@
+{% extends 'basebo.html.twig' %}
+
+{% block content %}
+    <center>  <table><td><h1>Articles</h1></td></table>
+
+    <table border="1" width="900">
+        <thead>
+        <tr>
+
+            <th><center>Titrearticle</center></th>
+            <th><center>Contenuarticle</center></th>
+            <th><center>Nbrvu</center></th>
+            <th><center>Nbrcomment</center></th>
+            <th><center>Datearticle</center></th>
+            <th><center>Actions</center></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+
+                <td><center>{{ article.titrearticle }}</center></td>
+                <td><center>{{ article.contenuarticle }}</center></td>
+                <td><center>{{ article.nbrvu }}</center></td>
+                <td><center>{{ article.nbrcomment }}</center></td>
+                <td>{% if article.datearticle %}<center>{{ article.datearticle|date('Y-m-d') }}</center>{% endif %}</td>
+                <td>
+                    <ul>
+                        <br>
+                            <a href="{{ path('afficherunarticlebo', { 'id': article.id }) }}"><center>Details</center></a>
+
+
+                            <a href="{{ path('supprimerarticlebo', { 'id': article.id }) }}"><center>Supprimer</center></a>
+
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+  </center>
+{% endblock %}

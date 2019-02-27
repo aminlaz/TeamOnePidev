@@ -1,0 +1,54 @@
+{% extends 'basebo.html.twig' %}
+{% block content %}
+
+    <center>
+        <h1>Chercher une reservation</h1>
+        <form method="post">
+            id:<input type="text" name="id">
+            <input type="submit" value="chercher">
+        </form>
+
+
+
+
+
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for reservation in reservations %}
+                <tr>
+                    <td><a href="{{ path('reservation_show', { 'id': reservation.id }) }}">{{ reservation.id }}</a></td>
+                    <td>{% if reservation.date %}{{ reservation.date|date('Y-m-d') }}{% endif %}</td>
+                    <td>{{ reservation.email }}</td>
+                    <td>{{ reservation.phone }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('reservation_show', { 'id': reservation.id }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('reservation_edit', { 'id': reservation.id }) }}">edit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+
+    </center>
+
+
+
+
+    {% endblock %}

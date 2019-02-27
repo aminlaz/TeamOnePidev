@@ -21,12 +21,38 @@
     </div>
 {% endblock current_page %}
 {% block content %}
+    <h1>Categories</h1>
 
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Libelecategorie</th>
+            <th>Nbrabo</th>
+            <th>Nbrvu</th>
+            <th>Desccategorie</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for categorie in categories %}
+            <tr>
+                <td>{{ categorie.libelecategorie }}</td>
+                <td>{{ categorie.nbrabo }}</td>
+                <td>{{ categorie.nbrvu }}</td>
+                <td>{{ categorie.desccategorie }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('afficherarticle', { 'id': categorie.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
+{% endblock %}
+{% block getyourticket  %}
 
-    <!-- MAIN CODE OF CONTENT here -->
-
-
-
-
-{% endblock content %}
+{% endblock getyourticket %}

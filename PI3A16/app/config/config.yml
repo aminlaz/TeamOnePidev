@@ -21,6 +21,8 @@ parameters:
 framework:
     #esi: ~
     #translator: { fallbacks: ['%locale%'] }
+    templating:
+            engines: ['twig']
     secret: '%secret%'
     router:
         resource: '%kernel.project_dir%/app/config/routing.yml'
@@ -50,6 +52,7 @@ twig:
     strict_variables: '%kernel.debug%'
     form_themes: ['bootstrap_4_layout.html.twig']
 
+    - 'bootstrap_3_layout.html.twig'
 # Doctrine Configuration
 doctrine:
     dbal:
@@ -76,6 +79,8 @@ doctrine:
 swiftmailer:
     transport: '%mailer_transport%'
     host: '%mailer_host%'
+    port: '%mailer_port%'
+    encryption: '%mailer_encryption%'
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
@@ -83,10 +88,17 @@ swiftmailer:
 sensio_framework_extra:
    router:
         annotations: false
+
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
     user_class: UserBundle\Entity\User
+    registration:
+        form:
+            type: UserBundle\Form\UserType
+    profile:
+        form:
+            type: UserBundle\Form\UserProfileType
     service:
         mailer:  fos_user.mailer.twig_swift
     from_email:
@@ -150,3 +162,32 @@ nomaya_social:
         facebook:           "http://www.facebook.com/yann.chauvel"
         googleplus:         "https://plus.google.com/105931415830389032796"
     theme:                  'default' # optional
+fos_comment:
+    db_driver: orm
+    class:
+        model:
+            comment: BlogBundle\Entity\Comment
+            thread: BlogBundle\Entity\Thread
+            vote: BlogBundle\Entity\Vote
+
+
+
+assetic:
+    bundles: [ "FOSCommentBundle" ]
+
+services:
+    user.form.registration:
+        class: UserBundle\Form\UserType
+        tags:
+        - { name: form.type }
+    user.form.profile:
+        class: UserBundle\Form\UserProfileType
+        tags:
+        - { name: form.type }
+vich_uploader:
+    db_driver: orm
+    mappings:
+        devis:
+            uri_prefix: /devis/
+            upload_destination: '%kernel.root_dir%/../web/devis/'
+            namer: vich_uploader.namer_uniqid

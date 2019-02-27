@@ -1,0 +1,38 @@
+{% extends 'basebo.html.twig' %}
+{% block content %}
+    <center><h1>Liste des mots censuré</h1></center>
+<br>
+    <center><table width="900" border="1">
+        <thead>
+        <tr>
+            <th><center>Id</center></th>
+            <th><center>Textmot</center></th>
+            <th><center>Gravitemot</center></th>
+            <th><center>Actions</center></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for motscensure in motscensures %}
+            <tr>
+                <td><center>{{ motscensure.id }}</center></td>
+                <td><center>{{ motscensure.textmot }}</center></td>
+                <td><center>{{ motscensure.gravitemot }}</center></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('modifiermotsclebo', { 'id': motscensure.id }) }}"><center>Modifier</center></a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </center>
+    <br>
+    <ul>
+        <li>
+            <center> <a href="{{ path('ajoutermotsclebo') }}">Ajouter un mot censure</a></center>
+        </li>
+    </ul>
+{% endblock %}

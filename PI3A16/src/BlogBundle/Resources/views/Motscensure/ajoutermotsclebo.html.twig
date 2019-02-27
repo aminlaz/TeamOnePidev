@@ -1,0 +1,16 @@
+{% extends 'basebo.html.twig' %}
+{% block content %}
+    <h1>Ajouter un mot censure </h1>
+
+    {{ form_start(form) }}
+    Texte mot : {{ form_widget(form.textmot) }}
+    Gravite mot : {{ form_widget(form.gravitemot) }}
+    <input type="submit" value="Créer" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('affichermotsclebo') }}">Retour</a>
+        </li>
+    </ul>
+{% endblock %}

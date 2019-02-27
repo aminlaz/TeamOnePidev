@@ -1,0 +1,26 @@
+{% extends 'basebo.html.twig' %}
+
+{% block content %}
+
+    <h1>Modification d'un badge</h1>
+
+    <table>
+        {{ form_start(form) }}
+        <tr> <td>Nouveau titre du badge {{ form_widget(form.nom) }}</td></tr>
+        <tr> <td>Nouveau score minimal requis {{ form_widget(form.min) }}</td></tr>
+
+        <tr> <td>Nouveau score maximal requis{{ form_widget(form.max) }}</td></tr>
+
+        <tr><td>Choix du nouveau logo</td></tr><tr><td> {{ form_widget(form.devisFile) }}</td></tr>
+
+        <tr> <td><input type="submit" class="btn btn-success mr-2" value="{{ 'Modifier'|trans }}"></td></tr>
+
+
+
+        {{ form_end(form) }}
+    </table>
+
+
+
+
+{% endblock %}

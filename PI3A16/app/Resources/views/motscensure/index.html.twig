@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Motscensures list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Textmot</th>
+                <th>Gravitemot</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for motscensure in motscensures %}
+            <tr>
+                <td><a href="{{ path('motscensure_show', { 'id': motscensure.id }) }}">{{ motscensure.id }}</a></td>
+                <td>{{ motscensure.textmot }}</td>
+                <td>{{ motscensure.gravitemot }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('motscensure_show', { 'id': motscensure.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('motscensure_edit', { 'id': motscensure.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('motscensure_new') }}">Create a new motscensure</a>
+        </li>
+    </ul>
+{% endblock %}

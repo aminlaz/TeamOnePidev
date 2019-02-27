@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+
+{% block content %}
+    {% for reservation in r %}
+      {% set diff = (reservation.capacity) - (reservation.reserved) %}
+            {% if  diff  == 0 %}
+                <b>expier</b>
+            {% else %}
+                <b>non expirer</b>
+                {% endif %}
+
+
+    {% endfor %}
+{% endblock %}
+

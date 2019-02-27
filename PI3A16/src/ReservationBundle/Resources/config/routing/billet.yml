@@ -1,0 +1,35 @@
+billet_index:
+    path:     /
+    defaults: { _controller: "ReservationBundle:Billet:index" }
+    methods:  GET
+
+billet_recherche:
+    path:     /r
+    defaults: { _controller: "ReservationBundle:Billet:recherche" }
+    methods:  [GET, POST]
+
+billet_show:
+    path:     /{id}/show
+    defaults: { _controller: "ReservationBundle:Billet:show" }
+    methods:  GET
+
+billet_new:
+    path:     /new
+    defaults: { _controller: "ReservationBundle:Billet:new" }
+    methods:  [GET, POST]
+
+billet_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ReservationBundle:Billet:edit" }
+    methods:  [GET, POST]
+
+billet_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ReservationBundle:Billet:delete" }
+    methods:  DELETE
+
+billet_dispo:
+  path: /dispo
+  defaults: { _controller: "ReservationBundle:Billet:res"}
+  methods:  [GET, POST]
+

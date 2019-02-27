@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<br><br><br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6" style="">
+    <center>
+
+        <h1>Reservation edit</h1>
+<table>
+        {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        <input type="submit" value="Edit" />
+        {{ form_end(edit_form) }}
+
+
+            <br>
+                <a href="{{ path('reservation_index') }}">Back to the list</a>
+
+    <br>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+                {{ form_end(delete_form) }}
+
+
+</table>
+    </center>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

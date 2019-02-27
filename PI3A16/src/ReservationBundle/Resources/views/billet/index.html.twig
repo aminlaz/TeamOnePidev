@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <center>
+    <h1>Billets list</h1><br>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Code</th>
+                <th>Prix</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for billet in billets %}
+            <tr>
+                <td><a href="{{ path('billet_show', { 'id': billet.id }) }}">{{ billet.id }}</a></td>
+                <td>{{ billet.code }}</td>
+                <td>{{ billet.prix }}</td>
+                <td>{% if billet.date %}{{ billet.date|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('billet_show', { 'id': billet.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('billet_edit', { 'id': billet.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul><br>
+        <li>
+            <a href="{{ path('billet_new') }}">Create a new billet</a>
+        </li>
+    </ul>
+        <a href="{{ path('billet_recherche') }}"> chercher </a>
+    </center>
+{% endblock %}

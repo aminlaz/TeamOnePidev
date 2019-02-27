@@ -1,0 +1,48 @@
+{% extends 'basebo.html.twig' %}
+{% block content %}
+    <h1>Categorie</h1>
+
+    <table width="400" >
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ categorie.id }}</td>
+        </tr>
+        <tr>
+            <th>Libele categorie</th>
+            <td>{{ categorie.libelecategorie }}</td>
+        </tr>
+        <tr>
+            <th>Nombre d'abonnés</th>
+            <td>{{ categorie.nbrabo }}</td>
+        </tr>
+        <tr>
+            <th>Nombre de vu</th>
+            <td>{{ categorie.nbrvu }}</td>
+        </tr>
+        <tr>
+            <th>Photo categorie</th>
+            <td>{{ categorie.photocategorie }}</td>
+        </tr>
+        <tr>
+            <th>Description categorie</th>
+            <td>{{ categorie.desccategorie }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('affichercategoriesbo') }}">Retour</a>
+        </li>
+        <li>
+            <a href="{{ path('modifiercategoriebo', { 'id': categorie.id }) }}">Modifier</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Supprimer">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+
+{% endblock %}

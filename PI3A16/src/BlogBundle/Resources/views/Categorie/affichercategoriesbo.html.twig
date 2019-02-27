@@ -1,0 +1,41 @@
+{% extends 'basebo.html.twig' %}
+{% block content %}
+
+ <center>   <h1>Categories</h1> </center>
+    <br>
+<center>
+<table border="1" width="900">
+    <thead>
+    <tr>
+        <th><center>Libelecategorie</center></th>
+        <th><center>Nbrabo</center></th>
+        <th><center>Nbrvu</center></th>
+        <th><center>Desccategorie</center></th>
+        <th><center>Actions</center></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for categorie in categories %}
+        <tr>
+            <td><center>{{ categorie.libelecategorie }}</center></td>
+            <td><center>{{ categorie.nbrabo }}</center></td>
+            <td><center>{{ categorie.nbrvu }}</center></td>
+            <td><center>{{ categorie.desccategorie }}</center></td>
+            <td>
+                <ul>
+                    <li>
+                        <center><a href="{{ path('affichercategoriebo', { 'id': categorie.id }) }}">Details</a></center>
+                    </li>
+                    <li>
+                        <center><a href="{{ path('modifiercategoriebo', { 'id': categorie.id }) }}">Modifier</a></center>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</center>
+    <br>
+    <center><a href="{{ path('ajoutercategoriebo') }}">Ajouter Catégorie</a></center>
+{% endblock %}
