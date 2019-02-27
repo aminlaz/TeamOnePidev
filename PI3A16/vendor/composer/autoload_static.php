@@ -17,6 +17,7 @@ class ComposerStaticInit8e522a0ab484ad2d164a18392254af4f
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'bd9634f2d41831496de0d3dfe4c94881' => __DIR__ . '/..' . '/symfony/polyfill-php56/bootstrap.php',
         '023d27dca8066ef29e6739335ea73bad' => __DIR__ . '/..' . '/symfony/polyfill-php70/bootstrap.php',
+        '3b5531f8bb4716e1b6014ad7e734f545' => __DIR__ . '/..' . '/illuminate/support/Illuminate/Support/helpers.php',
         '719971e375036615a0685b6fb054583d' => __DIR__ . '/..' . '/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php',
     );
 
@@ -276,6 +277,13 @@ class ComposerStaticInit8e522a0ab484ad2d164a18392254af4f
     );
 
     public static $prefixesPsr0 = array (
+        'V' => 
+        array (
+            'Vis\\NovayaPochta\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/vis/novaya-pochta/src',
+            ),
+        ),
         'T' => 
         array (
             'Twig_' => 
@@ -290,6 +298,13 @@ class ComposerStaticInit8e522a0ab484ad2d164a18392254af4f
                 0 => __DIR__ . '/..' . '/mrad/notifications-bundle',
             ),
         ),
+        'N' => 
+        array (
+            'Nomaya\\SocialBundle\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/nomaya/social-bundle',
+            ),
+        ),
         'M' => 
         array (
             'Metadata\\' => 
@@ -302,6 +317,13 @@ class ComposerStaticInit8e522a0ab484ad2d164a18392254af4f
             'Knp\\Component' => 
             array (
                 0 => __DIR__ . '/..' . '/knplabs/knp-components/src',
+            ),
+        ),
+        'I' => 
+        array (
+            'Illuminate\\Support' => 
+            array (
+                0 => __DIR__ . '/..' . '/illuminate/support',
             ),
         ),
         'D' => 
@@ -344,6 +366,8 @@ class ComposerStaticInit8e522a0ab484ad2d164a18392254af4f
         'SessionUpdateTimestampHandlerInterface' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/SessionUpdateTimestampHandlerInterface.php',
         'SqlFormatter' => __DIR__ . '/..' . '/jdorn/sql-formatter/lib/SqlFormatter.php',
         'TypeError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/TypeError.php',
+        'Vis\\NovayaPochta\\IndexController' => __DIR__ . '/..' . '/vis/novaya-pochta/src/controllers/IndexController.php',
+        'Vis\\NovayaPochta\\NP' => __DIR__ . '/..' . '/vis/novaya-pochta/src/models/NP.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

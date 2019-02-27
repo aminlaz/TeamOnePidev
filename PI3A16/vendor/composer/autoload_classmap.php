@@ -20,4 +20,6 @@ return array(
     'SessionUpdateTimestampHandlerInterface' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/SessionUpdateTimestampHandlerInterface.php',
     'SqlFormatter' => $vendorDir . '/jdorn/sql-formatter/lib/SqlFormatter.php',
     'TypeError' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/TypeError.php',
+    'Vis\\NovayaPochta\\IndexController' => $vendorDir . '/vis/novaya-pochta/src/controllers/IndexController.php',
+    'Vis\\NovayaPochta\\NP' => $vendorDir . '/vis/novaya-pochta/src/models/NP.php',
 );

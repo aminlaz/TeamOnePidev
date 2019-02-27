@@ -31,9 +31,14 @@ class Reponses
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="date")
+     * @ORM\Column(name="date", type="datetime")
      */
     private $date;
+
+    public function __construct()
+    {
+        $this->date = new \DateTime();
+    }
 
     /**
      * @var int
@@ -246,4 +251,5 @@ class Reponses
     {
         return $this->idUser;
     }
+    public function __toString(){ return $this->texte; }
 }

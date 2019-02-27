@@ -5,23 +5,22 @@ namespace CommunicationBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
-class CategorieForumType extends AbstractType
+class QuestionsType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('description',TextareaType::class);
+        $builder->add('question')->add('texte')->add('date')->add('upvotes')->add('downvotes')->add('resolue')->add('idUser')->add('categorie');
     }/**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'CommunicationBundle\Entity\CategorieForum'
+            'data_class' => 'CommunicationBundle\Entity\Questions'
         ));
     }
 
@@ -30,7 +29,7 @@ class CategorieForumType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'communicationbundle_categorieforum';
+        return 'communicationbundle_questions';
     }
 
 

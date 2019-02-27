@@ -32,6 +32,7 @@ class AppKernel extends Kernel
             new NotificationBundle\NotificationBundle(),
             new Cron\CronBundle\CronCronBundle(),
             new CronBundle\CronBundle(),
+            new Nomaya\SocialBundle\NomayaSocialBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

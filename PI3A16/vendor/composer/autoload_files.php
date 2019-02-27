@@ -16,5 +16,6 @@ return array(
     '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => $vendorDir . '/symfony/polyfill-mbstring/bootstrap.php',
     'bd9634f2d41831496de0d3dfe4c94881' => $vendorDir . '/symfony/polyfill-php56/bootstrap.php',
     '023d27dca8066ef29e6739335ea73bad' => $vendorDir . '/symfony/polyfill-php70/bootstrap.php',
+    '3b5531f8bb4716e1b6014ad7e734f545' => $vendorDir . '/illuminate/support/Illuminate/Support/helpers.php',
     '719971e375036615a0685b6fb054583d' => $vendorDir . '/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php',
 );

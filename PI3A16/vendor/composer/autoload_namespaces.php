@@ -6,10 +6,13 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Vis\\NovayaPochta\\' => array($vendorDir . '/vis/novaya-pochta/src'),
     'Twig_' => array($vendorDir . '/twig/twig/lib'),
     'SBC\\NotificationsBundle' => array($vendorDir . '/mrad/notifications-bundle'),
+    'Nomaya\\SocialBundle\\' => array($vendorDir . '/nomaya/social-bundle'),
     'Metadata\\' => array($vendorDir . '/jms/metadata/src'),
     'Knp\\Component' => array($vendorDir . '/knplabs/knp-components/src'),
+    'Illuminate\\Support' => array($vendorDir . '/illuminate/support'),
     'Doctrine\\ORM\\' => array($vendorDir . '/doctrine/orm/lib'),
     'Doctrine\\DBAL\\' => array($vendorDir . '/doctrine/dbal/lib'),
     'Doctrine\\Common\\Lexer\\' => array($vendorDir . '/doctrine/lexer/lib'),

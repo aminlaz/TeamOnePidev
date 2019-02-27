@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "49f1aba0b543075d20e0bd7be2b690f1",
+    "content-hash": "f24fd534abe69b14fe250f1b05d87fa0",
     "packages": [
         {
             "name": "cmen/google-charts-bundle",
@@ -1527,6 +1527,69 @@
             "time": "2019-01-23T09:13:36+00:00"
         },
         {
+            "name": "nomaya/social-bundle",
+            "version": "dev-master",
+            "target-dir": "Nomaya/SocialBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nomayann/NomayaSocialButtonsBundle.git",
+                "reference": "5a8a24954189e6f2d39368f755498bc2e13e0e6f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nomayann/NomayaSocialButtonsBundle/zipball/5a8a24954189e6f2d39368f755498bc2e13e0e6f",
+                "reference": "5a8a24954189e6f2d39368f755498bc2e13e0e6f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "twig/twig": "*"
+            },
+            "require-dev": {
+                "matthiasnoback/symfony-config-test": "0.*",
+                "symfony/framework-bundle": ">=2.1"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Nomaya\\SocialBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Yann Chauvel",
+                    "email": "yann@nomaya.net",
+                    "homepage": "http://www.nomaya.net/"
+                }
+            ],
+            "description": "A bundle to easily add facebook, twitter, G+, Linkedin buttons to your templates",
+            "homepage": "http://github.com/nomayann/NomayaSocialButtonsBundle",
+            "keywords": [
+                "Symfony2",
+                "bundle",
+                "buttons",
+                "facebook",
+                "google plus",
+                "like",
+                "linkedin",
+                "share",
+                "social",
+                "symfony",
+                "symfony2bundle",
+                "twitter"
+            ],
+            "time": "2016-01-28T15:39:34+00:00"
+        },
+        {
             "name": "paragonie/random_compat",
             "version": "v2.0.18",
             "source": {
@@ -3000,6 +3063,54 @@
     ],
     "packages-dev": [
         {
+            "name": "illuminate/support",
+            "version": "v4.2.17",
+            "target-dir": "Illuminate/Support",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/support.git",
+                "reference": "db61f3f6d507ce417ca993e1f93585db7efd8b12"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/db61f3f6d507ce417ca993e1f93585db7efd8b12",
+                "reference": "db61f3f6d507ce417ca993e1f93585db7efd8b12",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "jeremeamia/superclosure": "~1.0.1",
+                "patchwork/utf8": "~1.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Illuminate\\Support": ""
+                },
+                "files": [
+                    "Illuminate/Support/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                }
+            ],
+            "time": "2015-01-27T20:51:43+00:00"
+        },
+        {
             "name": "sensio/generator-bundle",
             "version": "v3.1.7",
             "source": {
@@ -3118,11 +3229,52 @@
             "description": "Symfony PHPUnit Bridge",
             "homepage": "https://symfony.com",
             "time": "2019-01-30T13:30:37+00:00"
+        },
+        {
+            "name": "vis/novaya-pochta",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/arturishe21/np.git",
+                "reference": "e036346d559df926828d886d61da9ae8203cd434"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/arturishe21/np/zipball/e036346d559df926828d886d61da9ae8203cd434",
+                "reference": "e036346d559df926828d886d61da9ae8203cd434",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "4.2.*",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/migrations",
+                    "src/controllers",
+                    "src/models"
+                ],
+                "psr-0": {
+                    "Vis\\NovayaPochta\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "vis",
+                    "email": "artur@vis-design.com"
+                }
+            ],
+            "description": "Api NP city->department",
+            "time": "2015-01-12T11:00:39+00:00"
         }
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "nomaya/social-bundle": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
