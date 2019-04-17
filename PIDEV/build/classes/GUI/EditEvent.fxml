@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.EditEventController">
+   <children>
+      <GridPane fx:id="gridPane" layoutX="57.0" layoutY="14.0" prefHeight="388.0" prefWidth="698.0">
+        <columnConstraints>
+          <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="99.0" minHeight="10.0" prefHeight="73.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextField fx:id="EventName" prefHeight="25.0" prefWidth="200.0" promptText="Nom" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <TextField fx:id="EventCapacity" promptText="Capacité" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+            <TextField fx:id="EventReserved" promptText="Reservé" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+            <TextArea fx:id="EventDescription" prefHeight="93.0" prefWidth="200.0" promptText="Description..." GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <ChoiceBox fx:id="EventType" prefWidth="150.0" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <DatePicker fx:id="EventDate" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+            <TextField fx:id="EventAdresse" prefHeight="25.0" prefWidth="200.0" promptText="Adresse" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <TextField fx:id="EventEtat" alignment="TOP_LEFT" promptText="Etat" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <TextField fx:id="EventVille" promptText="Ville" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <TextField fx:id="EventNumberOfDays" promptText="Nombre de Jours" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+            <TextField fx:id="EventCodePostal" promptText="Code Postal" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+            <CheckBox fx:id="EventFree" mnemonicParsing="false" text="Gratuit" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+            <TextField fx:id="EventPrix" promptText="Prix" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+            <Button fx:id="EditBTN" mnemonicParsing="false" onAction="#EditEvent" text="Edit" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets left="90.0" />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="ResetBTN" mnemonicParsing="false" onAction="#ResetFields" text="Reset" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets right="90.0" />
+               </GridPane.margin>
+            </Button>
+         </children>
+      </GridPane>
+      <ImageView fx:id="backImageV" fitHeight="25.0" fitWidth="44.0" layoutX="15.0" layoutY="5.0" onMouseClicked="#GoBack" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+         <image>
+            <Image url="@image/Back_Arrow.png" />
+         </image></ImageView>
+   </children>
+</AnchorPane>
